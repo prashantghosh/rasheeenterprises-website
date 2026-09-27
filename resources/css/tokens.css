@@ -1,0 +1,154 @@
+/* ============================================================
+   Rashee Enterprises — design tokens
+   Ported from the Rashee Enterprises Design System (Claude Design).
+   ============================================================ */
+@font-face {
+    font-family: "Oswald";
+    src: url("/fonts/oswald.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Flex";
+    src: url("/fonts/roboto-flex.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+  --rs-blue-50: #eef8fc;
+  --rs-blue-100: #d3edf8;
+  --rs-blue-200: #a7dbf0;
+  --rs-blue-300: #79c8e9;
+  --rs-blue-400: #5cbae3;
+  --rs-blue-500: #41a9dc;
+  --rs-blue-600: #2b8fc0;
+  --rs-blue-700: #22729b;
+  --rs-blue-800: #1c5b7c;
+  --rs-blue-900: #184b66;
+  --rs-gold-100: #fbeecb;
+  --rs-gold-200: #f7e0a1;
+  --rs-gold-300: #f3d170;
+  --rs-gold-400: #dcb154;
+  --rs-gold-500: #c49a44;
+  --rs-gold-600: #a77d31;
+  --rs-gold-700: #84621f;
+  --rs-gold-900: #5c4415;
+  --rs-white: #ffffff;
+  --rs-neutral-50: #f7fafb;
+  --rs-neutral-100: #eef3f6;
+  --rs-neutral-200: #e1e9ee;
+  --rs-neutral-300: #cbd6de;
+  --rs-neutral-400: #9dabb6;
+  --rs-neutral-500: #6f818e;
+  --rs-neutral-600: #516472;
+  --rs-neutral-700: #3a4b58;
+  --rs-neutral-800: #26333d;
+  --rs-neutral-900: #1a222b;
+  --rs-neutral-950: #101821;
+  --rs-success: #2fa96b;
+  --rs-success-soft: #e4f5ec;
+  --rs-warning: #e0a02a;
+  --rs-warning-soft: #fbf0d6;
+  --rs-danger: #d94b3f;
+  --rs-danger-soft: #fbe6e4;
+  --rs-info: #41a9dc;
+  --rs-info-soft: #e3f2fa;
+  --color-primary: var(--rs-blue-500);
+  --color-primary-hover: var(--rs-blue-600);
+  --color-primary-active: var(--rs-blue-700);
+  --color-primary-subtle: var(--rs-blue-50);
+  --color-accent: var(--rs-gold-600);
+  --color-accent-soft: var(--rs-gold-300);
+  --text-heading: var(--rs-neutral-900);
+  --text-body: var(--rs-neutral-700);
+  --text-muted: var(--rs-neutral-500);
+  --text-subtle: var(--rs-neutral-400);
+  --text-on-primary: var(--rs-white);
+  --text-on-dark: var(--rs-white);
+  --text-link: var(--rs-blue-600);
+  --text-link-hover: var(--rs-blue-700);
+  --surface-page: var(--rs-white);
+  --surface-card: var(--rs-white);
+  --surface-subtle: var(--rs-neutral-50);
+  --surface-muted: var(--rs-neutral-100);
+  --surface-inverse: var(--rs-neutral-900);
+  --surface-inverse-soft: var(--rs-neutral-800);
+  --border-subtle: var(--rs-neutral-200);
+  --border-default: var(--rs-neutral-300);
+  --border-strong: var(--rs-neutral-400);
+  --border-focus: var(--rs-blue-500);
+  --ring-focus: 0 0 0 3px rgba(65,169,220,.38);
+  --shadow-xs: 0 1px 2px rgba(26,34,43,.06);
+  --shadow-sm: 0 1px 3px rgba(26,34,43,.08),0 1px 2px rgba(26,34,43,.06);
+  --shadow-md: 0 4px 12px rgba(26,34,43,.09),0 2px 4px rgba(26,34,43,.05);
+  --shadow-lg: 0 12px 28px rgba(26,34,43,.12),0 4px 10px rgba(26,34,43,.06);
+  --shadow-xl: 0 24px 56px rgba(26,34,43,.16);
+  --shadow-brand: 0 10px 24px rgba(43,143,192,.28);
+}
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --container-sm: 640px;
+  --container-md: 840px;
+  --container-lg: 1080px;
+  --container-xl: 1280px;
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
+  --ease-standard: cubic-bezier(.4,0,.2,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+  --rs-gradient-brand: linear-gradient(100deg,#a77d31 0%,#f3d170 34%,#a7dbf0 66%,#41a9dc 100%);
+  --rs-gradient-blue: linear-gradient(135deg,#5cbae3 0%,#2b8fc0 100%);
+  --rs-gradient-overlay: linear-gradient(180deg,rgba(16,24,33,0) 0%,rgba(16,24,33,.72) 100%);
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.14em;
+  --font-display: "Oswald","Arial Narrow",sans-serif;
+  --font-body: "Roboto Flex","Segoe UI",Roboto,system-ui,sans-serif;
+  --font-mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
