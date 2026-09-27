@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="Sustainability" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="background:var(--rs-success-soft);border-bottom:1px solid #b9ddc9">
+    <div style="{{ heroWrap }}">
+      <div style="display:flex;flex-direction:column;gap:{{ heroGap }}">
+        <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:13px;color:var(--rs-neutral-700)">
+          <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Home</a>
+          <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+          <span style="font-weight:600;color:var(--rs-neutral-900)">Sustainability &amp; Vision</span>
+        </nav>
+        <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:32px;padding:0 12px;border-radius:999px;background:var(--rs-white);border:1px solid #247651;color:#1d6243;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+          <x-import component-from-global-scope="RsIcon" name="leaf" size="15" hint-size="15px,15px"></x-import>
+          Going green
+        </span>
+        <h1 style="{{ h1Style }}">Sustainability here is a manufacturing decision, not a label</h1>
+        <p style="{{ leadStyle }}">Three things determine the environmental cost of a packaging tape: what is in the adhesive, what the backing is made of, and how much of it you were sold. We can speak to all three, because we coat and slit our own film. The fourth — selling you thickness you do not need — is the one most suppliers will not discuss.</p>
+        <div style="{{ heroCtas }}">
+          <a href="#" style="{{ ctaEco }}" style-hover="background:#1d6243" style-active="background:#175137;transform:translateY(1px)">
+            Read the material-efficiency argument
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="19" hint-size="19px,19px"></x-import>
+          </a>
+          <button type="button" onClick="{{ openEnquiry }}" style="{{ ctaOutline }}" style-hover="background:var(--rs-blue-50)">
+            <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+            Ask us to right-size a spec
+          </button>
+        </div>
+      </div>
+
+      <div style="{{ metricCard }}">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Where the savings actually come from</span>
+        <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--border-subtle)">
+            <span style="flex:none;width:40px;height:40px;border-radius:var(--radius-md);background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;display:flex;align-items:center;justify-content:center">
+              <x-import component-from-global-scope="RsIcon" name="{{ m.icon }}" size="19" hint-size="19px,19px"></x-import>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+              <span style="font-family:var(--font-display);font-size:{{ metricSize }};line-height:1;color:var(--rs-neutral-900)">{{ m.n }}</span>
+              <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">{{ m.label }}</span>
+              <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ m.note }}</span>
+            </span>
+          </div>
+        </sc-for>
+        <span style="font-size:12px;line-height:1.5;color:var(--rs-neutral-600)">Figures are our own plant measurements, not certified third-party audits. We will share the method behind any of them on request.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">The adhesive</span>
+          <h2 style="{{ h2Style }}">Water-based acrylic, because the alternative has to be recovered</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">Solvent-based adhesives coat well and cost less per kilo. They also release volatile organic compounds during coating, which then need capture and incineration, and they leave a faint solvent smell inside a sealed carton for days. Our coating line runs water-based acrylic exclusively, so there is no solvent inventory on site and no recovery system to fail.</p>
+        </div>
+      </div>
+      <div style="{{ adhesiveGrid }}">
+        <sc-for list="{{ adhesive }}" as="a" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:10px;padding:22px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:0 1px 2px rgba(26,34,43,.06)">
+            <span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--rs-blue-50);border:1px solid var(--rs-blue-200);color:var(--rs-blue-800)">
+              <x-import component-from-global-scope="RsIcon" name="{{ a.icon }}" size="22" hint-size="22px,22px"></x-import>
+            </span>
+            <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">{{ a.title }}</span>
+            <span style="font-size:14.5px;line-height:1.6;color:var(--rs-neutral-700)">{{ a.body }}</span>
+            <span style="font-size:13px;font-weight:600;color:var(--rs-blue-800)">{{ a.proof }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secEco }}">
+    <div style="{{ inner }}">
+      <div style="{{ efficiencySplit }}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#1d6243">Material efficiency</span>
+          <h2 style="{{ h2Style }}">The greenest roll is the one you did not need</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-800)">Over-specifying micron is the most common waste in this industry, and it is invisible because the carton still arrives sealed. A 50 micron tape on a 3 kg mailer works perfectly — it just uses about 25 per cent more polypropylene than the 38 micron grade that would have held it, at a higher price, for no gain in burst strength at the seam.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-800)">Burst strength is a property of the carton, not the tape. Once the adhesive bond exceeds the fibreboard's own tear resistance, adding film thickness moves the failure point nowhere — the board gives way first. That threshold is what we specify against, which is why our recommendation is sometimes a thinner grade than you asked for.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ efficiencyPoints }}" as="e" hint-placeholder-count="4">
+              <span style="display:flex;gap:11px;align-items:flex-start">
+                <span style="flex:none;width:26px;height:26px;border-radius:50%;background:var(--rs-white);border:1px solid #247651;color:#1d6243;display:flex;align-items:center;justify-content:center;margin-top:1px">
+                  <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                </span>
+                <span style="font-size:14.5px;line-height:1.55;color:var(--rs-neutral-800)"><span style="font-weight:700;color:var(--rs-neutral-900)">{{ e.lead }}</span> {{ e.body }}</span>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="{{ compareCard }}">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Same 3 kg mailer, two specifications</span>
+          <sc-for list="{{ compare }}" as="c" hint-placeholder-count="2">
+            <div style="{{ c.rowStyle }}">
+              <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-family:var(--font-display);font-size:30px;line-height:1;color:var(--rs-neutral-900)">{{ c.micron }}</span>
+                <span style="{{ c.tagStyle }}">{{ c.tag }}</span>
+              </span>
+              <span style="display:flex;flex-direction:column;gap:7px;padding-top:10px">
+                <sc-for list="{{ c.bars }}" as="b" hint-placeholder-count="2">
+                  <span style="display:flex;align-items:center;gap:10px">
+                    <span style="font-size:12.5px;font-weight:600;color:var(--rs-neutral-700);min-width:112px">{{ b.k }}</span>
+                    <span style="flex:1;min-width:0;height:10px;border-radius:999px;background:var(--rs-neutral-200);overflow:hidden">
+                      <span style="{{ b.fill }}"></span>
+                    </span>
+                    <span style="font-size:13px;font-weight:700;color:var(--rs-neutral-900);min-width:52px;text-align:right">{{ b.v }}</span>
+                  </span>
+                </sc-for>
+              </span>
+              <span style="font-size:13px;line-height:1.55;color:var(--rs-neutral-700);padding-top:8px;border-top:1px solid var(--border-subtle)">{{ c.note }}</span>
+            </div>
+          </sc-for>
+          <span style="font-size:12px;line-height:1.5;color:var(--rs-neutral-600)">Both specifications seal the carton. Only one of them charges you for film the load never needed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Strapping</span>
+          <h2 style="{{ h2Style }}">Polypropylene instead of steel, and it goes back into the stream</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">PP strapping is recyclable, roughly a tenth the weight of steel banding for the same pallet, and it will not rust-mark a crate or a fabric bale in monsoon transit. Where a load genuinely exceeds what PET can carry we will tell you to use steel — but on most crated freight it is specified out of habit.</p>
+        </div>
+      </div>
+      <div style="{{ strappingSplit }}">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ strapping }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-md)">
+              <span style="flex:none;width:34px;height:34px;border-radius:50%;background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;display:flex;align-items:center;justify-content:center">
+                <x-import component-from-global-scope="RsIcon" name="{{ s.icon }}" size="17" hint-size="17px,17px"></x-import>
+              </span>
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font-size:15.5px;font-weight:700;color:var(--rs-neutral-900)">{{ s.title }}</span>
+                <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700)">{{ s.body }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div role="img" aria-label="Coils of green polypropylene strapping stacked beside a carton bound with a single strap, photographed against a pale background." style="{{ strapArt }}">
+            <span style="position:absolute;width:210px;height:210px;border-radius:50%;right:-46px;top:-38px;border:30px solid #d6f0e2"></span>
+            <span style="position:absolute;width:130px;height:130px;border-radius:50%;right:64px;top:96px;border:22px solid #b9dcf0"></span>
+            <span style="position:absolute;left:26px;top:74px;width:150px;height:12px;border-radius:2px;background:#247651"></span>
+            <span style="position:absolute;left:26px;top:104px;width:110px;height:12px;border-radius:2px;background:#1d6243"></span>
+            <span style="position:absolute;left:16px;bottom:12px;right:16px;font-size:11.5px;line-height:1.4;color:var(--rs-neutral-600)">Studio: green PP strapping coils beside a single-strapped carton, cool daylight, pale slate ground.</span>
+          </div>
+          <span style="font-size:11.5px;line-height:1.45;color:var(--rs-neutral-600)">alt: Coils of green polypropylene strapping stacked beside a carton bound with a single strap, photographed against a pale background.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">In the plant</span>
+          <h2 style="{{ h2Style }}">Waste reduction that is boring and measurable</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">None of the practices below are novel. They are the ones that actually move tonnage, and they are all things a buyer can verify on a plant visit.</p>
+        </div>
+      </div>
+      <div style="{{ wasteGrid }}">
+        <sc-for list="{{ waste }}" as="w" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:20px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="flex:none;display:flex;color:#1d6243">
+                <x-import component-from-global-scope="RsIcon" name="{{ w.icon }}" size="20" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="font-size:15.5px;font-weight:700;color:var(--rs-neutral-900)">{{ w.title }}</span>
+            </span>
+            <span style="font-size:14px;line-height:1.6;color:var(--rs-neutral-700)">{{ w.body }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secNavy }}">
+    <div style="{{ inner }}">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+        <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-200)">The roadmap</span>
+        <h2 style="{{ h2NavyStyle }}">What we have not done yet</h2>
+        <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-blue-100)">Stating targets is easy; stating what is still unresolved is more useful to a buyer deciding whether to trust us. Each item below has a date we are working to, and we will say plainly if one slips.</p>
+      </div>
+      <div style="{{ roadmapGrid }}">
+        <sc-for list="{{ roadmap }}" as="r" hint-placeholder-count="4">
+          <div style="{{ r.cardStyle }}">
+            <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <span style="{{ r.pillStyle }}">{{ r.status }}</span>
+              <span style="font-family:var(--font-display);font-size:20px;line-height:1;color:var(--rs-blue-200)">{{ r.when }}</span>
+            </span>
+            <span style="font-size:16px;font-weight:700;line-height:1.35;color:#fff">{{ r.title }}</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--rs-blue-100)">{{ r.body }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <dc-import name="CtaBlock" mode="three" variant="{{ variant }}" hint-size="100%,320px"></dc-import>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        Chat on WhatsApp
+      </a>
+      <button type="button" onClick="{{ openEnquiry }}" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;border:0;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer">
+        <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+        Right-size my spec
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ enquiryOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:90;display:flex">
+      <dc-import name="EnquiryModal" state="empty" variant="{{ variant }}" hint-size="100%,100%" style="flex:1 1 auto;min-width:0"></dc-import>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+class Component extends DCLogic {
+  state = { enquiry: false };
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const pad = mobile ? "0 16px" : "0 32px";
+    const secPad = mobile ? "40px 0" : "76px 0";
+
+    const bar = (pct, colour) => ({
+      display: "block", width: pct + "%", height: "100%",
+      borderRadius: 999, background: colour
+    });
+
+    const compare = [
+      {
+        micron: "38µ", tag: "What the load needs", on: true,
+        note: "Seals the mailer with a single centre strip. The fibreboard tears before this bond does, so the seam is as strong as the box allows.",
+        bars: [
+          { k: "Film used", v: "1.0×", fill: bar(62, "#247651") },
+          { k: "Seam strength", v: "Board limit", fill: bar(100, "#247651") },
+          { k: "Cost per carton", v: "1.0×", fill: bar(58, "#247651") }
+        ]
+      },
+      {
+        micron: "50µ", tag: "What often gets sold", on: false,
+        note: "Also seals the mailer. Uses about a quarter more polypropylene and costs more per carton, with the failure point unchanged — the board still gives way first.",
+        bars: [
+          { k: "Film used", v: "1.26×", fill: bar(82, "#a77d31") },
+          { k: "Seam strength", v: "Board limit", fill: bar(100, "#8f9aa3") },
+          { k: "Cost per carton", v: "1.31×", fill: bar(78, "#a77d31") }
+        ]
+      }
+    ].map(c => ({
+      micron: c.micron, tag: c.tag, note: c.note, bars: c.bars,
+      rowStyle: {
+        display: "flex", flexDirection: "column", gap: 4, padding: "16px 18px",
+        borderRadius: "var(--radius-md)",
+        background: c.on ? "var(--rs-success-soft)" : "var(--rs-neutral-50)",
+        border: c.on ? "2px solid #247651" : "1px solid var(--border-subtle)"
+      },
+      tagStyle: {
+        display: "inline-flex", alignItems: "center", minHeight: 26, padding: "0 10px",
+        borderRadius: 999, whiteSpace: "nowrap",
+        background: c.on ? "#247651" : "var(--rs-neutral-200)",
+        color: c.on ? "#fff" : "var(--rs-neutral-800)",
+        fontSize: 11.5, fontWeight: 700, letterSpacing: ".04em", textTransform: "uppercase"
+      }
+    }));
+
+    const roadmap = [
+      { status: "In progress", when: "2026", done: false, title: "Post-industrial recycled content in BOPP film", body: "Trialling 20 per cent post-industrial regrind in the backing film. Holding tensile within spec is the blocker — two of four trial batches failed elongation, so this is not shipping yet." },
+      { status: "In progress", when: "2026", done: false, title: "Core take-back on volume accounts", body: "Returned cardboard cores already go back into the winding line. Extending collection to distributor accounts needs reverse logistics we do not yet run economically." },
+      { status: "Committed", when: "2027", done: false, title: "Solar on the coating-line roof", body: "Sized to cover roughly a third of coating-line draw during daylight hours. Approved and budgeted; installation follows the plant expansion." },
+      { status: "Done", when: "2025", done: true, title: "Solvent eliminated from the coating line", body: "The line runs water-based acrylic exclusively. There is no solvent inventory on site, so there is no recovery system to maintain and no VOC stack to monitor." }
+    ].map(r => ({
+      status: r.status, when: r.when, title: r.title, body: r.body,
+      cardStyle: {
+        display: "flex", flexDirection: "column", gap: 8, padding: mobile ? 18 : 22,
+        borderRadius: "var(--radius-lg)",
+        background: "rgba(255,255,255,.07)",
+        border: r.done ? "1px solid #4a9c76" : "1px solid rgba(255,255,255,.22)"
+      },
+      pillStyle: {
+        display: "inline-flex", alignItems: "center", minHeight: 26, padding: "0 10px",
+        borderRadius: 999, whiteSpace: "nowrap",
+        background: r.done ? "#2fa96b" : "var(--rs-gold-300)",
+        color: r.done ? "#0d2f20" : "var(--rs-neutral-950)",
+        fontSize: 11.5, fontWeight: 700, letterSpacing: ".05em", textTransform: "uppercase"
+      }
+    }));
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      pageStyle: { position: "relative", fontFamily: "var(--font-body)", background: "var(--rs-white)", color: "var(--rs-neutral-900)", width: "100%", minHeight: "100%", display: "flex", flexDirection: "column" },
+      inner: { maxWidth: 1200, margin: "0 auto", padding: pad, width: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: mobile ? 20 : 30 },
+      heroWrap: mobile
+        ? { maxWidth: 1200, margin: "0 auto", padding: "8px 16px 32px", display: "flex", flexDirection: "column", gap: 22, width: "100%", boxSizing: "border-box" }
+        : { maxWidth: 1200, margin: "0 auto", padding: "16px 32px 64px", display: "grid", gridTemplateColumns: "1.08fr .92fr", gap: 48, alignItems: "center", width: "100%", boxSizing: "border-box" },
+      heroGap: mobile ? "12px" : "16px",
+      h1Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 34 : 52, lineHeight: 1.05, letterSpacing: "-.01em", color: "var(--rs-neutral-900)", textWrap: "balance" },
+      leadStyle: { margin: 0, fontSize: mobile ? 16 : 17.5, lineHeight: 1.62, color: "var(--rs-neutral-800)", maxWidth: "58ch" },
+      heroCtas: { display: "flex", flexDirection: mobile ? "column" : "row", gap: 12, paddingTop: 4 },
+      ctaEco: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: mobile ? 52 : 54, padding: "0 22px", borderRadius: "var(--radius-md)",
+        background: "#247651", color: "#fff", fontSize: 16.5, fontWeight: 600, textDecoration: "none"
+      },
+      ctaOutline: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: mobile ? 52 : 54, padding: "0 20px",
+        border: "1px solid var(--rs-blue-700)", borderRadius: "var(--radius-md)",
+        background: "var(--rs-white)", color: "var(--rs-blue-800)",
+        fontFamily: "var(--font-body)", fontSize: 16.5, fontWeight: 600, cursor: "pointer"
+      },
+      metricCard: {
+        display: "flex", flexDirection: "column", gap: 14,
+        padding: mobile ? 18 : 24, background: "var(--rs-white)",
+        border: "1px solid #b9ddc9", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 4px 16px rgba(26,34,43,.08)"
+      },
+      metricSize: mobile ? "28px" : "34px",
+      metrics: [
+        { icon: "droplets", n: "Zero", label: "Solvent in the coating line", note: "Water-based acrylic only, so no VOC capture, no recovery system, no solvent inventory on site." },
+        { icon: "leaf", n: "100%", label: "PP strapping recyclable", note: "Polypropylene goes back into the stream. Steel banding on the same pallet does not, and rust-marks the load." },
+        { icon: "scale", n: "~25%", label: "Film saved by right-sizing", note: "Moving an over-specified 50µ mailer seal to the 38µ grade that holds it. Same seam strength, less polypropylene." },
+        { icon: "package", n: "1 box", label: "Minimum order", note: "A low minimum is a waste measure. Buying a year of printed stock on a volume guess is how packaging gets written off." }
+      ],
+      secWhite: { background: "var(--rs-white)", padding: secPad },
+      secSubtle: { background: "var(--rs-neutral-50)", padding: secPad, borderTop: "1px solid var(--border-subtle)" },
+      secEco: { background: "var(--rs-success-soft)", padding: secPad, borderTop: "1px solid #b9ddc9", borderBottom: "1px solid #b9ddc9" },
+      secNavy: { background: "var(--rs-blue-900)", padding: secPad },
+      secHead: { display: "flex", flexDirection: "column", gap: mobile ? 14 : 18 },
+      h2Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 40, lineHeight: 1.08, color: "var(--rs-neutral-900)", textWrap: "balance" },
+      h2NavyStyle: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 40, lineHeight: 1.08, color: "#fff", textWrap: "balance" },
+      adhesiveGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,1fr)", gap: mobile ? 12 : 20 },
+      adhesive: [
+        { icon: "droplets", title: "No solvent to recover", body: "Solvent coating needs capture and incineration to run cleanly, and that system is only as good as its maintenance. Water-based acrylic removes the failure mode rather than managing it.", proof: "Zero VOC stack on the coating line" },
+        { icon: "package", title: "Nothing left in the carton", body: "Solvent residue carries a faint smell into a sealed box for days, which matters for food and pharma secondary packaging. Acrylic cures without it.", proof: "Suitable for secondary food packaging" },
+        { icon: "thermometer", title: "Consistent across batches", body: "A single adhesive system means peel and tack behave the same from one delivery to the next, so a validated sealing line does not need requalifying.", proof: "Peel and tensile checked per batch" }
+      ],
+      efficiencySplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.02fr .98fr", gap: mobile ? 22 : 44, alignItems: "start" },
+      efficiencyPoints: [
+        { lead: "We quote the thinner grade when it holds.", body: "If 38 micron seals your carton, that is what the quote says — even though the 50 micron line earns us more per box." },
+        { lead: "Burst strength belongs to the board.", body: "Past the point where the bond beats the fibreboard's tear resistance, extra film moves the failure point nowhere." },
+        { lead: "One strip beats three thin ones.", body: "Pattern matters more than thickness on medium cartons. An H-pattern in the right grade outperforms a heavier single strip." },
+        { lead: "Low minimums cut write-offs.", body: "One box means seasonal artwork does not become a year of obsolete stock in a warehouse corner." }
+      ],
+      compareCard: {
+        display: "flex", flexDirection: "column", gap: 12,
+        padding: mobile ? 18 : 22, background: "var(--rs-white)",
+        border: "1px solid #b9ddc9", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 4px 16px rgba(26,34,43,.08)"
+      },
+      compare,
+      strappingSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.05fr .95fr", gap: mobile ? 20 : 40, alignItems: "center" },
+      strapping: [
+        { icon: "leaf", title: "Recyclable, and actually recycled", body: "Polypropylene strapping is accepted by standard recycling streams. Steel banding goes to scrap at best, and to landfill on mixed waste." },
+        { icon: "truck", title: "A tenth of the freight weight", body: "For the same pallet load, PP weighs a fraction of steel. That comes off the shipping weight of every consignment you send." },
+        { icon: "droplets", title: "No rust bleed", body: "Steel marks fabric bales and painted surfaces in humid transit. PP does not stain the goods it is holding." },
+        { icon: "wrench", title: "Safer to cut", body: "Steel banding recoils under tension and causes a large share of warehouse hand injuries. PP releases without snapping back." }
+      ],
+      strapArt: {
+        position: "relative", width: "100%", aspectRatio: "4 / 3",
+        borderRadius: "var(--radius-lg)", overflow: "hidden",
+        background: "linear-gradient(150deg,#e6f4ec 0%,#e8eef2 55%,#d3e9f6 100%)",
+        border: "1px solid var(--border-subtle)"
+      },
+      wasteGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 12 : 18 },
+      waste: [
+        { icon: "package", title: "Cores back into the winding line", body: "Returned cardboard cores are inspected and reused rather than pulped. Outer cartons go back out on local dispatch." },
+        { icon: "scale", title: "Slitting trim reground on site", body: "Edge trim from slitting is collected by width and reground for non-critical extrusion rather than baled as mixed waste." },
+        { icon: "ruler", title: "Proof before cylinder", body: "Every printed run is proofed digitally first. Catching a repeat-length error on screen saves a full box of misprinted film." },
+        { icon: "clock", title: "Batch sizing to order", body: "We coat against confirmed orders rather than building speculative stock that ages out of adhesive spec on the shelf." }
+      ],
+      roadmapGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 12 : 18 },
+      roadmap,
+      openEnquiry: () => this.setState({ enquiry: true }),
+      enquiryOpen: this.state.enquiry
+    };
+  }
+}
+
+</script>
+</body>
+</html>

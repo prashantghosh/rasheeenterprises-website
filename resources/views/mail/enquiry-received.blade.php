@@ -1,22 +1,25 @@
-New {{ $enquiry->type === \App\Models\Enquiry::TYPE_QUOTE ? 'quote request' : 'contact enquiry' }} from the website.
+New website enquiry {{ $enquiry->reference() }}.
 
-Name: {{ $enquiry->fullName() }}
+Name: {{ $enquiry->name ?: '—' }}
 Email: {{ $enquiry->email }}
+Mobile / WhatsApp: {{ $enquiry->phone ?: '—' }}
 Company: {{ $enquiry->company ?: '—' }}
-@if ($enquiry->interest)
-Interest: {{ $enquiry->interest }}
+@if ($enquiry->product)
+Product: {{ $enquiry->product }}
 @endif
-@if ($enquiry->items)
-
-Requested items:
-@foreach ($enquiry->items as $item)
-- {{ $item }}
-@endforeach
+@if ($enquiry->spec)
+Spec: {{ $enquiry->spec }}
+@endif
+@if ($enquiry->quantity)
+Estimated quantity: {{ $enquiry->quantity }}
+@endif
+@if ($enquiry->box_weight)
+Typical box weight: {{ $enquiry->box_weight }}
 @endif
 @if ($enquiry->message)
 
-Message:
+Notes:
 {{ $enquiry->message }}
 @endif
 
-Received {{ $enquiry->created_at->toDayDateTimeString() }}
+Sent from {{ $enquiry->source ?: 'the website' }} on {{ $enquiry->created_at->toDayDateTimeString() }}.

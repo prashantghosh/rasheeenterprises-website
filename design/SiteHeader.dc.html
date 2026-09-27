@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="font-family:var(--font-body);width:100%">
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="width:100%;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-subtle)">
+      <div style="display:flex;align-items:center;gap:8px;height:36px;max-width:1200px;margin:0 auto;padding:0 32px;font-size:12.5px;color:var(--rs-neutral-700);border-bottom:1px solid var(--border-subtle)">
+        <span style="display:flex;align-items:center;gap:6px;color:var(--rs-neutral-700)">
+          <x-import component-from-global-scope="RsIcon" name="map-pin" size="14" hint-size="14px,14px"></x-import>
+          Manufactured in Mumbai · shipped across India
+        </span>
+        <span style="flex:1"></span>
+        <span style="display:flex;align-items:center;gap:6px">
+          <x-import component-from-global-scope="RsIcon" name="phone" size="14" hint-size="14px,14px"></x-import>
+          +91-XXXXXXXXXX
+        </span>
+        <span style="width:1px;height:14px;background:var(--border-default);margin:0 6px"></span>
+        <span>Mon–Sat, 9:30–18:30 IST</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;height:80px;max-width:1200px;margin:0 auto;padding:0 32px">
+        <a href="#" aria-label="Rashee Enterprises — home" style="display:flex;align-items:center;min-height:48px">
+          <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" height="44px" hint-size="150px,44px"></x-import>
+        </a>
+        <div style="display:flex;align-items:center;gap:2px">
+          <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+            <a href="#" style="{{ n.style }}" style-hover="background:var(--rs-neutral-100);color:var(--rs-neutral-900)">
+              {{ n.label }}
+              <sc-if value="{{ n.caret }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="RsIcon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+              </sc-if>
+            </a>
+          </sc-for>
+        </div>
+        <span style="flex:1"></span>
+        <label style="display:flex;align-items:center;gap:8px;height:44px;padding:0 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);min-width:210px;color:var(--rs-neutral-600)" style-focus-within="border-color:var(--rs-blue-700)">
+          <x-import component-from-global-scope="RsIcon" name="search" size="17" hint-size="17px,17px"></x-import>
+          <input type="search" placeholder="Search micron, width, use" aria-label="Search products by micron, width or use" style="border:0;outline:none;background:transparent;font-family:var(--font-body);font-size:14px;color:var(--rs-neutral-900);width:100%">
+        </label>
+        <a href="#" style="display:flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">
+          <x-import component-from-global-scope="RsIcon" name="leaf" size="14" hint-size="14px,14px"></x-import>
+          Going Green
+        </a>
+        <button type="button" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:var(--radius-md);background:var(--rs-blue-700);color:#fff;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(26,34,43,.18)" style-hover="background:var(--rs-blue-800)" style-active="background:var(--rs-blue-900);transform:translateY(1px)">
+          <x-import component-from-global-scope="RsIcon" name="ruler" size="17" hint-size="17px,17px"></x-import>
+          Request a Quote
+        </button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;gap:10px;height:60px;padding:0 12px">
+      <a href="#" aria-label="Rashee Enterprises — home" style="display:flex;align-items:center;min-height:48px;padding:0 4px;margin-left:-4px">
+        <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" height="34px" hint-size="112px,34px"></x-import>
+      </a>
+      <span style="display:flex;align-items:center;gap:5px;height:26px;padding:0 9px;border-radius:999px;background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">
+        <x-import component-from-global-scope="RsIcon" name="leaf" size="12" hint-size="12px,12px"></x-import>
+        Eco
+      </span>
+      <span style="flex:1"></span>
+      <button type="button" aria-label="Search products" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-neutral-800);cursor:pointer" style-hover="background:var(--rs-neutral-100)">
+        <x-import component-from-global-scope="RsIcon" name="search" size="21" hint-size="21px,21px"></x-import>
+      </button>
+      <button type="button" aria-label="Open menu" aria-expanded="false" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-neutral-800);cursor:pointer" style-hover="background:var(--rs-neutral-100)">
+        <x-import component-from-global-scope="RsIcon" name="menu" size="22" hint-size="22px,22px"></x-import>
+      </button>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:140},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.variant || "desktop";
+    const active = this.props.active || "Home";
+    const items = [
+      { label: "Packaging Products", caret: true },
+      { label: "Custom Solutions", caret: true },
+      { label: "Industries", caret: false },
+      { label: "Sustainability", caret: false },
+      { label: "About", caret: false }
+    ];
+    return {
+      isDesktop: v === "desktop",
+      isMobile: v === "mobile",
+      nav: items.map(n => {
+        const on = n.label === active;
+        return Object.assign({}, n, {
+          style: {
+            display: "flex", alignItems: "center", gap: 6, height: 48,
+            padding: "0 13px", borderRadius: "var(--radius-md)",
+            fontSize: 15, fontWeight: on ? 600 : 500,
+            color: on ? "var(--rs-blue-900)" : "var(--rs-neutral-800)",
+            background: on ? "var(--rs-blue-50)" : "transparent",
+            borderBottom: on ? "3px solid var(--rs-blue-700)" : "3px solid transparent",
+            textDecoration: "none"
+          }
+        });
+      })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

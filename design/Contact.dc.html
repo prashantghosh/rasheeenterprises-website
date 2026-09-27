@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="Contact" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="background:var(--rs-neutral-50);border-bottom:1px solid var(--border-subtle)">
+    <div style="{{ heroWrap }}">
+      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:13px;color:var(--rs-neutral-700)">
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Home</a>
+        <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+        <span style="font-weight:600;color:var(--rs-neutral-900)">Contact</span>
+      </nav>
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Talk to a specialist</span>
+      <h1 style="{{ h1Style }}">Tell us what you are sealing</h1>
+      <p style="{{ leadStyle }}">An enquiry reaches someone who knows the coating line, not a form-filler. Send a carton weight and how it travels and you will get a specification back, not a rate card. No obligation, and no automated sales calls afterwards.</p>
+      <div style="{{ channelRow }}">
+        <sc-for list="{{ channels }}" as="c" hint-placeholder-count="3">
+          <a href="#" style="{{ c.style }}" style-hover="{{ c.hover }}">
+            <span style="{{ c.iconWrap }}">
+              <x-import component-from-global-scope="RsIcon" name="{{ c.icon }}" size="20" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:{{ c.labelColor }}">{{ c.label }}</span>
+              <span style="font-size:15.5px;font-weight:700;color:{{ c.valueColor }};overflow-wrap:anywhere">{{ c.value }}</span>
+              <span style="font-size:12.5px;line-height:1.45;color:{{ c.noteColor }}">{{ c.note }}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ formSplit }}">
+
+        <div style="{{ formCard }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Specification enquiry</span>
+            <h2 style="{{ h2Style }}">Send us your spec</h2>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--rs-neutral-700)">Same fields our specialists work from. Anything you leave blank we will ask about — nothing here is a gate.</p>
+          </div>
+
+          <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--rs-danger);border-radius:var(--radius-md);background:var(--rs-danger-soft)">
+              <span style="flex:none;color:#a8322a;display:flex;padding-top:1px">
+                <x-import component-from-global-scope="RsIcon" name="alert-circle" size="18" hint-size="18px,18px"></x-import>
+              </span>
+              <span style="font-family:var(--font-body);font-size:14px;line-height:1.5;color:#8f2b24;font-weight:500">Two fields need attention before we can route this to the right specialist.</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <div style="{{ fieldGrid }}">
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Your name" placeholder="Full name" size="lg" value="{{ vName }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Company" placeholder="Business name" size="lg" value="{{ vCompany }}" hint-size="100%,74px"></x-import>
+              </div>
+              <div style="{{ fieldGrid }}">
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Work email" placeholder="you@company.com" size="lg" value="{{ vEmail }}" error="{{ eEmail }}" hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Mobile / WhatsApp" placeholder="+91 " size="lg" value="{{ vPhone }}" hint-size="100%,74px"></x-import>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                  <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">What do you need?</span>
+                  <span style="font-size:12.5px;color:var(--rs-neutral-600)">Pick the closest — we will refine it with you</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ topics }}" as="t" hint-placeholder-count="4">
+                    <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.on }}" style="{{ t.style }}">
+                      <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                        </span>
+                      </sc-if>
+                      {{ t.label }}
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="{{ fieldGrid }}">
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Estimated quantity" placeholder="e.g. 40 boxes" size="lg" value="{{ vQty }}" error="{{ eQty }}" hint="Boxes, bags or pallets — an estimate is fine." hint-size="100%,74px"></x-import>
+                <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" label="Typical box weight" placeholder="e.g. 12 kg" size="lg" value="{{ vWeight }}" hint="Lets us confirm the micron grade." hint-size="100%,74px"></x-import>
+              </div>
+
+              <label style="display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--rs-neutral-900)">Requirement notes</span>
+                <textarea rows="4" placeholder="Width, adhesion conditions, cold storage, logo colours — anything that affects the spec." style="font-family:var(--font-body);font-size:16px;line-height:1.5;color:var(--rs-neutral-900);padding:12px 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);resize:vertical;min-height:104px;width:100%" style-focus="border-color:var(--rs-blue-700);box-shadow:0 0 0 3px rgba(34,114,155,.55);outline:none" defaultValue="{{ vNotes }}"></textarea>
+                <span style="font-family:var(--font-body);font-size:13px;line-height:1.5;color:var(--rs-neutral-600)">Sealing on a high-speed carton line? Say so — it changes the tack we recommend.</span>
+              </label>
+
+              <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                  <button type="button" onClick="{{ submit }}" style="{{ submitStyle }}" style-hover="background:var(--rs-blue-800)" style-active="background:var(--rs-blue-900);transform:translateY(1px)">
+                    <x-import component-from-global-scope="RsIcon" name="mail" size="18" hint-size="18px,18px"></x-import>
+                    Send enquiry by email
+                  </button>
+                  <a href="#" style="{{ waStyle }}" style-hover="background:#1d6243" style-active="background:#175137;transform:translateY(1px)">
+                    <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+                    Send on WhatsApp
+                  </a>
+                </div>
+                <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-600)">No obligation, no automated sales calls. Your budget, our honest execution.</span>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showSuccess }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:18px;padding:6px 0 2px">
+              <div style="display:flex;align-items:center;gap:14px">
+                <span style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--rs-success-soft);color:#1d6243;display:flex;align-items:center;justify-content:center;border:2px solid #247651">
+                  <x-import component-from-global-scope="RsIcon" name="check" size="26" hint-size="26px,26px"></x-import>
+                </span>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-family:var(--font-display);font-size:26px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Enquiry received</span>
+                  <span style="font-size:14px;color:var(--rs-neutral-700)">Reference RQ-2468 · sent to our tape specialists</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--rs-neutral-50)">
+                <span style="font-size:14px;font-weight:600;color:var(--rs-neutral-900)">What happens next</span>
+                <span style="font-size:14px;line-height:1.6;color:var(--rs-neutral-700)">A specialist confirms micron and adhesive suitability against your carton weight, then sends indicative pricing within one working day. If artwork is ready, attach it to the WhatsApp thread and we will return a print proof with the quote.</span>
+              </div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a href="#" style="{{ waStyle }}" style-hover="background:#1d6243">
+                  <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+                  Continue on WhatsApp
+                </a>
+                <button type="button" onClick="{{ reset }}" style="{{ resetStyle }}" style-hover="background:var(--rs-blue-50)">Send another enquiry</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:{{ asideGap }}">
+          <div style="{{ asideCard }}">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Operational HQ &amp; plant</span>
+            <span style="font-size:15.5px;line-height:1.6;font-weight:600;color:var(--rs-neutral-900)">Rashee Enterprises<br>Unit 4, Industrial Estate<br>Mumbai, Maharashtra</span>
+            <span style="font-size:13.5px;line-height:1.55;color:var(--rs-neutral-700)">Coating, slitting and printing all happen here. Plant visits welcome on weekdays with 48 hours' notice.</span>
+            <div role="img" aria-label="Simplified locator map of the Mumbai industrial estate, with the plant marked at the junction of two arterial roads near the eastern express corridor." style="{{ mapArt }}">
+              <span style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 27px,rgba(24,75,102,.07) 27px 28px),repeating-linear-gradient(90deg,transparent 0 27px,rgba(24,75,102,.07) 27px 28px)"></span>
+              <span style="position:absolute;left:0;right:0;top:38%;height:12px;background:#b9dcf0"></span>
+              <span style="position:absolute;top:0;bottom:0;left:56%;width:16px;background:#8ec8e6"></span>
+              <span style="position:absolute;left:0;right:0;bottom:16%;height:7px;background:#cbd6de"></span>
+              <span style="position:absolute;left:18%;top:56%;width:22%;height:22%;background:rgba(36,118,81,.22);border:1px solid #247651"></span>
+              <span style="{{ pinStyle }}">
+                <x-import component-from-global-scope="RsIcon" name="map-pin" size="20" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="position:absolute;left:12px;bottom:10px;right:12px;font-size:11px;line-height:1.4;color:var(--rs-neutral-700)">Locator diagram — not to scale. Replace with an embedded map at build.</span>
+            </div>
+            <a href="#" style="{{ mapCta }}" style-hover="background:var(--rs-blue-50)">
+              <x-import component-from-global-scope="RsIcon" name="map-pin" size="17" hint-size="17px,17px"></x-import>
+              Open in maps
+            </a>
+          </div>
+
+          <div style="{{ asideCard }}">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Business hours</span>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <sc-for list="{{ hours }}" as="h" hint-placeholder-count="3">
+                <span style="{{ h.rowStyle }}">
+                  <span style="font-size:14px;font-weight:{{ h.weight }};color:var(--rs-neutral-900)">{{ h.day }}</span>
+                  <span style="flex:1"></span>
+                  <span style="font-size:14px;font-weight:{{ h.weight }};color:{{ h.valueColor }}">{{ h.time }}</span>
+                </span>
+              </sc-for>
+            </div>
+            <span style="display:flex;gap:9px;align-items:flex-start;padding:12px 14px;border-radius:var(--radius-md);background:var(--rs-success-soft);border:1px solid #247651">
+              <span style="flex:none;color:#1d6243;display:flex;padding-top:1px">
+                <x-import component-from-global-scope="RsIcon" name="message-circle" size="17" hint-size="17px,17px"></x-import>
+              </span>
+              <span style="font-size:13.5px;line-height:1.55;color:var(--rs-neutral-800)"><span style="font-weight:700;color:var(--rs-neutral-900)">WhatsApp is monitored outside hours.</span> Messages sent overnight are answered first thing; urgent dispatch queries reach the plant directly.</span>
+            </span>
+          </div>
+
+          <div style="{{ asideCard }}">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Who picks this up</span>
+            <sc-for list="{{ routing }}" as="r" hint-placeholder-count="3">
+              <span style="display:flex;gap:12px;align-items:flex-start;padding-bottom:12px;border-bottom:1px solid var(--border-subtle)">
+                <span style="flex:none;width:34px;height:34px;border-radius:var(--radius-md);background:var(--rs-blue-50);border:1px solid var(--rs-blue-200);color:var(--rs-blue-800);display:flex;align-items:center;justify-content:center">
+                  <x-import component-from-global-scope="RsIcon" name="{{ r.icon }}" size="17" hint-size="17px,17px"></x-import>
+                </span>
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:14.5px;font-weight:700;color:var(--rs-neutral-900)">{{ r.title }}</span>
+                  <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ r.body }}</span>
+                </span>
+              </span>
+            </sc-for>
+            <span style="font-size:13px;line-height:1.55;color:var(--rs-neutral-600)">Every enquiry gets a named contact who stays on the thread through to delivery.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <dc-import name="CtaBlock" mode="three" variant="{{ variant }}" hint-size="100%,320px"></dc-import>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        WhatsApp
+      </a>
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600">
+        <x-import component-from-global-scope="RsIcon" name="phone" size="18" hint-size="18px,18px"></x-import>
+        Call the plant
+      </a>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;},&quot;formState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;empty&quot;,&quot;filled&quot;,&quot;error&quot;,&quot;submitted&quot;],&quot;default&quot;:&quot;empty&quot;,&quot;tsType&quot;:&quot;'empty'|'filled'|'error'|'submitted'&quot;}}">
+class Component extends DCLogic {
+  state = { topic: "Bulk / volume pricing", sent: false, error: false };
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const state = this.props.formState || "empty";
+    const pad = mobile ? "0 16px" : "0 32px";
+    const secPad = mobile ? "36px 0" : "68px 0";
+
+    const sent = this.state.sent || state === "submitted";
+    const err = this.state.error || state === "error";
+    const filled = state === "filled" || err;
+
+    const chipBase = {
+      display: "inline-flex", alignItems: "center", gap: 7, minHeight: 48,
+      padding: "0 14px", borderRadius: "var(--radius-md)", background: "var(--rs-white)",
+      border: "1px solid var(--rs-neutral-300)", color: "var(--rs-neutral-800)",
+      fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer"
+    };
+    const chipSel = { background: "var(--rs-blue-50)", border: "2px solid var(--rs-blue-700)", color: "var(--rs-blue-900)", padding: "0 13px" };
+
+    const topics = [
+      "Bulk / volume pricing",
+      "Custom brand printing",
+      "Spec advice",
+      "Samples",
+      "Something else"
+    ].map(label => {
+      const on = this.state.topic === label;
+      return { label, on, onClick: () => this.setState({ topic: label }), style: on ? Object.assign({}, chipBase, chipSel) : chipBase };
+    });
+
+    const channelDefs = [
+      { icon: "message-circle", label: "WhatsApp", value: "+91-XXXXXXXXXX", note: "Fastest route. Send a photo of the carton.", tone: "eco" },
+      { icon: "mail", label: "Email", value: "contact@rasheeenterprises.com", note: "Reply within one working day.", tone: "plain" },
+      { icon: "phone", label: "Phone", value: "+91-XXXXXXXXXX", note: "Mon–Sat, 9:30–18:30 IST.", tone: "plain" }
+    ];
+    const channels = channelDefs.map(c => {
+      const eco = c.tone === "eco";
+      return {
+        icon: c.icon, label: c.label, value: c.value, note: c.note,
+        style: {
+          display: "flex", gap: 12, alignItems: "flex-start", flex: mobile ? "1 1 auto" : "1 1 260px",
+          minWidth: 0, padding: "16px 18px", borderRadius: "var(--radius-lg)",
+          background: eco ? "#247651" : "var(--rs-white)",
+          border: eco ? "1px solid #1d6243" : "1px solid var(--border-subtle)",
+          textDecoration: "none", boxShadow: "0 1px 2px rgba(26,34,43,.06)"
+        },
+        hover: eco ? "background:#1d6243" : "border-color:var(--rs-blue-300);background:var(--rs-blue-50)",
+        iconWrap: {
+          flex: "none", width: 40, height: 40, borderRadius: "var(--radius-md)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          background: eco ? "rgba(255,255,255,.18)" : "var(--rs-blue-50)",
+          border: eco ? "1px solid rgba(255,255,255,.4)" : "1px solid var(--rs-blue-200)",
+          color: eco ? "#fff" : "var(--rs-blue-800)"
+        },
+        labelColor: eco ? "#c9e9d8" : "var(--rs-neutral-600)",
+        valueColor: eco ? "#fff" : "var(--rs-neutral-900)",
+        noteColor: eco ? "#d6f0e2" : "var(--rs-neutral-700)"
+      };
+    });
+
+    const hours = [
+      { day: "Monday – Friday", time: "9:30 – 18:30 IST", open: true },
+      { day: "Saturday", time: "9:30 – 14:00 IST", open: true },
+      { day: "Sunday & public holidays", time: "Closed", open: false }
+    ].map(h => ({
+      day: h.day, time: h.time,
+      weight: h.open ? 600 : 500,
+      valueColor: h.open ? "var(--rs-neutral-900)" : "var(--rs-neutral-600)",
+      rowStyle: {
+        display: "flex", alignItems: "center", gap: 12, minHeight: 44,
+        padding: "0", borderBottom: "1px solid var(--border-subtle)"
+      }
+    }));
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      pageStyle: { position: "relative", fontFamily: "var(--font-body)", background: "var(--rs-white)", color: "var(--rs-neutral-900)", width: "100%", minHeight: "100%", display: "flex", flexDirection: "column" },
+      inner: { maxWidth: 1200, margin: "0 auto", padding: pad, width: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: mobile ? 20 : 28 },
+      heroWrap: { maxWidth: 1200, margin: "0 auto", padding: mobile ? "8px 16px 26px" : "16px 32px 44px", display: "flex", flexDirection: "column", gap: mobile ? 12 : 14, width: "100%", boxSizing: "border-box" },
+      h1Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 36 : 54, lineHeight: 1.04, letterSpacing: "-.01em", color: "var(--rs-neutral-900)", textWrap: "balance" },
+      leadStyle: { margin: 0, fontSize: mobile ? 16 : 17.5, lineHeight: 1.62, color: "var(--rs-neutral-700)", maxWidth: "64ch" },
+      channelRow: { display: "flex", flexWrap: "wrap", gap: 12, paddingTop: 8 },
+      channels,
+
+      secWhite: { background: "var(--rs-white)", padding: secPad },
+      secSubtle: { background: "var(--rs-neutral-50)", padding: secPad, borderTop: "1px solid var(--border-subtle)" },
+      h2Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 36, lineHeight: 1.1, color: "var(--rs-neutral-900)" },
+
+      formSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.15fr .85fr", gap: mobile ? 18 : 32, alignItems: "start" },
+      formCard: {
+        display: "flex", flexDirection: "column", gap: mobile ? 18 : 22,
+        padding: mobile ? 18 : 28, background: "var(--rs-white)",
+        border: "2px solid var(--rs-blue-700)", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 4px 16px rgba(24,75,102,.1)", minWidth: 0
+      },
+      fieldGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: 16 },
+      showForm: !sent,
+      showSuccess: sent,
+      showError: err && !sent,
+      topics,
+      vName: filled ? "Nikhil Iyer" : "",
+      vCompany: filled ? "Vital Pharma Packaging" : "",
+      vEmail: err ? "procurement@" : filled ? "n.iyer@vitalpharma.in" : "",
+      vPhone: filled ? "+91 98200 41125" : "",
+      vQty: err ? "" : filled ? "40 boxes" : "",
+      vWeight: filled ? "12 kg" : "",
+      vNotes: filled ? "Sealing 12 kg cartons on a semi-auto line. Two-colour logo print, artwork ready in PDF. Need recyclable options if available." : "",
+      eEmail: err ? "This email looks incomplete." : undefined,
+      eQty: err ? "Add an estimated quantity so we can price the right slab." : undefined,
+      submit: () => this.setState({ sent: true, error: false }),
+      reset: () => this.setState({ sent: false, error: false }),
+      submitStyle: {
+        flex: "1 1 200px", minHeight: 52, display: "flex", alignItems: "center",
+        justifyContent: "center", gap: 8, padding: "0 20px", border: 0,
+        borderRadius: "var(--radius-md)", background: "var(--rs-blue-700)", color: "#fff",
+        fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 600, cursor: "pointer",
+        boxShadow: "0 1px 2px rgba(26,34,43,.18)"
+      },
+      waStyle: {
+        flex: "1 1 180px", minHeight: 52, display: "flex", alignItems: "center",
+        justifyContent: "center", gap: 8, padding: "0 20px", borderRadius: "var(--radius-md)",
+        background: "#247651", color: "#fff", fontSize: 16, fontWeight: 600, textDecoration: "none"
+      },
+      resetStyle: {
+        flex: "1 1 160px", minHeight: 52, display: "flex", alignItems: "center",
+        justifyContent: "center", padding: "0 20px", border: "1px solid var(--rs-blue-700)",
+        borderRadius: "var(--radius-md)", background: "var(--rs-white)", color: "var(--rs-blue-800)",
+        fontFamily: "var(--font-body)", fontSize: 16, fontWeight: 600, cursor: "pointer"
+      },
+
+      asideGap: mobile ? "14px" : "18px",
+      asideCard: {
+        display: "flex", flexDirection: "column", gap: 12,
+        padding: mobile ? 18 : 22, background: "var(--rs-white)",
+        border: "1px solid var(--border-subtle)", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 1px 2px rgba(26,34,43,.06)"
+      },
+      mapArt: {
+        position: "relative", width: "100%", aspectRatio: "4 / 3",
+        borderRadius: "var(--radius-md)", overflow: "hidden",
+        background: "linear-gradient(150deg,#eef8fc 0%,#e8eef2 100%)",
+        border: "1px solid var(--border-subtle)"
+      },
+      pinStyle: {
+        position: "absolute", left: "56%", top: "38%", transform: "translate(-50%,-100%)",
+        width: 38, height: 38, borderRadius: "50%", background: "var(--rs-blue-800)",
+        color: "#fff", display: "flex", alignItems: "center", justifyContent: "center",
+        border: "3px solid #fff", boxShadow: "0 4px 12px rgba(26,34,43,.28)"
+      },
+      mapCta: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+        minHeight: 48, border: "1px solid var(--rs-blue-700)", borderRadius: "var(--radius-md)",
+        background: "var(--rs-white)", color: "var(--rs-blue-800)", fontSize: 15, fontWeight: 600, textDecoration: "none"
+      },
+      hours,
+      routing: [
+        { icon: "ruler", title: "Spec and technical queries", body: "A packaging specialist who works the coating line, not a sales desk." },
+        { icon: "stamp", title: "Custom print enquiries", body: "Straight to the print team, who set the repeat and return a digital proof." },
+        { icon: "truck", title: "Dispatch and order status", body: "Plant despatch answer directly on stock lines and freight bookings." }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

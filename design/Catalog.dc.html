@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+@keyframes rsPulse{0%,100%{opacity:1}50%{opacity:.55}}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="Packaging Products" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="background:var(--rs-neutral-50);border-bottom:1px solid var(--border-subtle)">
+    <div style="{{ headWrap }}">
+      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:13px;color:var(--rs-neutral-700)">
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Home</a>
+        <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+        <span style="font-weight:600;color:var(--rs-neutral-900)">Packaging Products</span>
+      </nav>
+      <h1 style="{{ h1Style }}">Every tape and strap we make, with the spec stated up front</h1>
+      <p style="{{ leadStyle }}">Nine stock lines across BOPP, masking, filament and polypropylene strapping. Filter by thickness, width or what you are sealing. Every line can be custom printed from one box, whether or not it is listed on a marketplace.</p>
+    </div>
+  </div>
+
+  <div style="{{ bodyWrap }}">
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:8px">
+          <button type="button" onClick="{{ openFilters }}" aria-expanded="{{ filtersOpen }}" aria-controls="rs-filter-drawer" style="flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer">
+            <x-import component-from-global-scope="RsIcon" name="sliders-horizontal" size="18" hint-size="18px,18px"></x-import>
+            Filter
+            <span style="{{ filterCountStyle }}">{{ activeCount }}</span>
+          </button>
+          <button type="button" style="flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-neutral-800);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer">
+            <x-import component-from-global-scope="RsIcon" name="arrow-up-down" size="18" hint-size="18px,18px"></x-import>
+            Most specified
+          </button>
+        </div>
+        <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;gap:7px;overflow-x:auto;padding:2px 16px 4px;margin:0 -16px">
+            <sc-for list="{{ activePills }}" as="p" hint-placeholder-count="2">
+              <button type="button" onClick="{{ p.onClick }}" aria-label="{{ p.aria }}" style="flex:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 11px;border-radius:999px;background:var(--rs-blue-50);border:1px solid var(--rs-blue-300);color:var(--rs-blue-900);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">
+                {{ p.label }}
+                <x-import component-from-global-scope="RsIcon" name="x" size="14" hint-size="14px,14px"></x-import>
+              </button>
+            </sc-for>
+            <button type="button" onClick="{{ clearAll }}" style="flex:none;min-height:36px;padding:0 11px;border-radius:999px;background:transparent;border:1px solid var(--rs-neutral-300);color:var(--rs-blue-800);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Clear all</button>
+          </div>
+        </sc-if>
+        <span aria-live="polite" style="font-size:13.5px;color:var(--rs-neutral-700)">{{ resultLine }}</span>
+      </div>
+    </sc-if>
+
+    <div style="{{ splitStyle }}">
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="{{ railStyle }}">
+          <div style="display:flex;align-items:baseline;gap:10px">
+            <span style="font-family:var(--font-display);font-size:20px;line-height:1;font-weight:600;color:var(--rs-neutral-900)">Filters</span>
+            <span style="flex:1"></span>
+            <button type="button" onClick="{{ clearAll }}" style="min-height:32px;padding:0 4px;background:transparent;border:0;color:var(--rs-blue-800);font-family:var(--font-body);font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px">Clear all</button>
+          </div>
+
+          <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:7px;padding-bottom:4px">
+              <sc-for list="{{ activePills }}" as="p" hint-placeholder-count="2">
+                <button type="button" onClick="{{ p.onClick }}" aria-label="{{ p.aria }}" style="display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 10px;border-radius:999px;background:var(--rs-blue-50);border:1px solid var(--rs-blue-300);color:var(--rs-blue-900);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer" style-hover="background:var(--rs-blue-100)">
+                  {{ p.label }}
+                  <x-import component-from-global-scope="RsIcon" name="x" size="14" hint-size="14px,14px"></x-import>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid var(--border-subtle)">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ g.title }}</span>
+              <span style="font-size:12.5px;line-height:1.45;color:var(--rs-neutral-600)">{{ g.help }}</span>
+              <sc-if value="{{ g.isChips }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-wrap:wrap;gap:7px">
+                  <sc-for list="{{ g.options }}" as="o" hint-placeholder-count="4">
+                    <button type="button" onClick="{{ o.onClick }}" aria-pressed="{{ o.on }}" style="{{ o.chipStyle }}">
+                      <sc-if value="{{ o.swatch }}" hint-placeholder-val="{{ false }}">
+                        <span style="{{ o.swatchStyle }}"></span>
+                      </sc-if>
+                      <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="14" hint-size="14px,14px"></x-import>
+                        </span>
+                      </sc-if>
+                      {{ o.label }}
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ g.isList }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <sc-for list="{{ g.options }}" as="o" hint-placeholder-count="4">
+                    <button type="button" onClick="{{ o.onClick }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:center;gap:10px;min-height:48px;padding:0 6px;margin-left:-6px;border:0;border-radius:var(--radius-md);background:transparent;font-family:var(--font-body);font-size:14.5px;color:var(--rs-neutral-900);cursor:pointer;text-align:left" style-hover="background:var(--rs-neutral-100)">
+                      <span style="{{ o.boxStyle }}">
+                        <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="14" hint-size="14px,14px"></x-import>
+                        </sc-if>
+                      </span>
+                      <span style="{{ o.labelStyle }}">{{ o.label }}</span>
+                      <span style="font-size:12.5px;color:var(--rs-neutral-600)">{{ o.count }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+
+          <div style="display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:var(--radius-md);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200)">
+            <span style="font-family:var(--font-display);font-size:19px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Cannot find your spec?</span>
+            <span style="font-size:13.5px;line-height:1.55;color:#5c4415">We slit to any width between 12 and 72mm and print from one box. Send the carton weight and we will specify it.</span>
+            <button type="button" onClick="{{ openEnquiry }}" style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--radius-md);background:var(--rs-gold-300);color:var(--rs-neutral-950);font-family:var(--font-body);font-size:15px;font-weight:700;cursor:pointer" style-hover="background:var(--rs-gold-400)">
+              <x-import component-from-global-scope="RsIcon" name="ruler" size="17" hint-size="17px,17px"></x-import>
+              Ask for a spec
+            </button>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--border-subtle)">
+            <span aria-live="polite" style="display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--rs-neutral-800)">
+              <sc-if value="{{ updating }}" hint-placeholder-val="{{ false }}">
+                <span style="flex:none;display:flex;color:var(--rs-blue-700);animation:rsPulse 1.1s ease-in-out infinite" aria-hidden="true">
+                  <x-import component-from-global-scope="RsIcon" name="loader-circle" size="17" hint-size="17px,17px"></x-import>
+                </span>
+              </sc-if>
+              {{ resultLine }}
+            </span>
+            <span style="flex:1"></span>
+            <label style="display:flex;align-items:center;gap:9px;font-size:14px;color:var(--rs-neutral-700)">
+              Sort by
+              <select aria-label="Sort products" style="min-height:48px;padding:0 12px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);font-family:var(--font-body);font-size:14.5px;font-weight:500;color:var(--rs-neutral-900);cursor:pointer">
+                <option>Most specified</option>
+                <option>Thickness, low to high</option>
+                <option>Price, low to high</option>
+                <option>Width, narrow to wide</option>
+              </select>
+            </label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ updating }}" hint-placeholder-val="{{ false }}">
+          <div style="{{ gridStyle }}" aria-hidden="true">
+            <sc-for list="{{ skeletons }}" as="k" hint-placeholder-count="6">
+              <div style="{{ k.card }}">
+                <span style="{{ k.art }}"></span>
+                <span style="display:flex;flex-direction:column;gap:9px;padding:18px">
+                  <span style="display:block;height:22px;width:78%;border-radius:5px;background:var(--rs-blue-100)"></span>
+                  <span style="display:block;height:13px;width:94%;border-radius:4px;background:var(--rs-neutral-200)"></span>
+                  <span style="display:block;height:13px;width:62%;border-radius:4px;background:var(--rs-neutral-200)"></span>
+                  <span style="display:flex;gap:6px;padding-top:4px">
+                    <span style="display:block;height:24px;width:74px;border-radius:999px;background:var(--rs-neutral-100);border:1px solid var(--rs-neutral-200)"></span>
+                    <span style="display:block;height:24px;width:56px;border-radius:999px;background:var(--rs-neutral-100);border:1px solid var(--rs-neutral-200)"></span>
+                  </span>
+                  <span style="display:block;height:28px;width:52%;border-radius:5px;background:var(--rs-gold-100);border:1px solid var(--rs-gold-200)"></span>
+                  <span style="display:block;height:20px;width:46%;border-radius:5px;background:var(--rs-neutral-200)"></span>
+                  <span style="display:block;height:44px;border-radius:var(--radius-md);background:var(--rs-blue-50);border:1px solid var(--rs-blue-200)"></span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showResults }}" hint-placeholder-val="{{ true }}">
+          <div style="{{ gridStyle }}">
+            <sc-for list="{{ shown }}" as="p" hint-placeholder-count="6">
+              <dc-import name="ProductCard" variant="{{ variant }}" title="{{ p.name }}" blurb="{{ p.blurb }}" badges="{{ p.badges }}" meta-label="{{ p.metaLabel }}" meta-value="{{ p.metaValue }}" moq="{{ p.moq }}" price="{{ p.price }}" price-note="{{ p.priceNote }}" alt="{{ p.alt }}" shot="{{ p.shot }}" eco="{{ p.eco }}" artwork="{{ p.artwork }}" hint-size="100%,540px"></dc-import>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding:32px;border:1px dashed var(--rs-neutral-400);border-radius:var(--radius-lg);background:var(--rs-neutral-50)">
+            <span style="width:48px;height:48px;border-radius:var(--radius-md);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200);display:flex;align-items:center;justify-content:center;color:#6d5019">
+              <x-import component-from-global-scope="RsIcon" name="factory" size="24" hint-size="24px,24px"></x-import>
+            </span>
+            <span style="font-family:var(--font-display);font-size:28px;line-height:1.12;font-weight:600;color:var(--rs-neutral-900);text-wrap:balance">Can't find your spec? We manufacture to order</span>
+            <span style="font-size:14.5px;line-height:1.6;color:var(--rs-neutral-700);max-width:56ch">Nothing is stocked in that exact combination, which is not the same as unavailable. Narrow slits and unusual thickness and width pairs are produced per order rather than held on the shelf. Send the combination you need and we will confirm feasibility, lead time and price.</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <button type="button" onClick="{{ openEnquiry }}" style="min-height:52px;padding:0 20px;display:flex;align-items:center;gap:8px;border:0;border-radius:var(--radius-md);background:var(--rs-blue-700);color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:var(--rs-blue-800)">
+                <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+                Enquire for this spec
+              </button>
+              <a href="#" style="min-height:52px;padding:0 20px;display:flex;align-items:center;gap:8px;border:0;border-radius:var(--radius-md);background:#247651;color:#fff;font-size:16px;font-weight:600" style-hover="background:#1d6243">
+                <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+                WhatsApp a specialist
+              </a>
+              <button type="button" onClick="{{ clearAll }}" style="min-height:52px;padding:0 20px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:var(--rs-blue-50)">Clear filters</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid var(--border-subtle)">
+          <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Choosing thickness by carton weight</span>
+          <div style="{{ guideGrid }}">
+            <sc-for list="{{ guide }}" as="g" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:5px;padding:14px 16px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--rs-white)">
+                <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rs-blue-800)">{{ g.band }}</span>
+                <span style="font-family:var(--font-display);font-size:26px;line-height:1;color:var(--rs-neutral-900)">{{ g.micron }}</span>
+                <span style="font-size:13.5px;line-height:1.55;color:var(--rs-neutral-700)">{{ g.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ ctaSection }}">
+    <div style="{{ inner }}">
+      <dc-import name="CtaBlock" mode="three" variant="{{ variant }}" hint-size="100%,320px"></dc-import>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        Chat on WhatsApp
+      </a>
+      <button type="button" onClick="{{ openEnquiry }}" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;border:0;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer">
+        <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+        Instant Spec Quote
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;z-index:80;background:rgba(16,24,33,.56);display:flex;align-items:flex-end">
+      <div id="rs-filter-drawer" role="dialog" aria-modal="true" aria-label="Filter products" style="width:100%;max-height:88%;display:flex;flex-direction:column;background:var(--rs-white);border-top-left-radius:20px;border-top-right-radius:20px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--border-subtle)">
+          <span style="font-family:var(--font-display);font-size:24px;line-height:1;font-weight:600;color:var(--rs-neutral-900)">Filters</span>
+          <span style="{{ filterCountStyle }}">{{ activeCount }}</span>
+          <span style="flex:1"></span>
+          <button type="button" onClick="{{ closeFilters }}" aria-label="Close filters" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-neutral-800);cursor:pointer">
+            <x-import component-from-global-scope="RsIcon" name="x" size="20" hint-size="20px,20px"></x-import>
+          </button>
+        </div>
+        <div style="flex:1 1 auto;min-height:0;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:18px">
+          <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ activePills }}" as="p" hint-placeholder-count="2">
+                <button type="button" onClick="{{ p.onClick }}" aria-label="{{ p.aria }}" style="display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 11px;border-radius:999px;background:var(--rs-blue-50);border:1px solid var(--rs-blue-300);color:var(--rs-blue-900);font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer">
+                  {{ p.label }}
+                  <x-import component-from-global-scope="RsIcon" name="x" size="14" hint-size="14px,14px"></x-import>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid var(--border-subtle)">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ g.title }}</span>
+              <span style="font-size:12.5px;line-height:1.45;color:var(--rs-neutral-600)">{{ g.help }}</span>
+              <sc-if value="{{ g.isChips }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ g.options }}" as="o" hint-placeholder-count="4">
+                    <button type="button" onClick="{{ o.onClick }}" aria-pressed="{{ o.on }}" style="{{ o.chipStyleMobile }}">
+                      <sc-if value="{{ o.swatch }}" hint-placeholder-val="{{ false }}">
+                        <span style="{{ o.swatchStyle }}"></span>
+                      </sc-if>
+                      <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                        </span>
+                      </sc-if>
+                      {{ o.label }}
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ g.isList }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <sc-for list="{{ g.options }}" as="o" hint-placeholder-count="4">
+                    <button type="button" onClick="{{ o.onClick }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:center;gap:11px;min-height:52px;padding:0 8px;margin-left:-8px;border:0;border-radius:var(--radius-md);background:transparent;font-family:var(--font-body);font-size:16px;color:var(--rs-neutral-900);cursor:pointer;text-align:left">
+                      <span style="{{ o.boxStyle }}">
+                        <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                        </sc-if>
+                      </span>
+                      <span style="{{ o.labelStyle }}">{{ o.label }}</span>
+                      <span style="font-size:13px;color:var(--rs-neutral-600)">{{ o.count }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--border-subtle);background:var(--rs-neutral-50)">
+          <button type="button" onClick="{{ clearAll }}" style="flex:none;min-height:52px;padding:0 18px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer">Clear all</button>
+          <button type="button" onClick="{{ closeFilters }}" style="flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;border:0;border-radius:var(--radius-md);background:var(--rs-blue-700);color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer">{{ drawerApply }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ enquiryOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:90;display:flex">
+      <dc-import name="EnquiryModal" state="empty" variant="{{ variant }}" hint-size="100%,100%" style="flex:1 1 auto;min-width:0"></dc-import>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+const SWATCH = {
+  Tan: "#c99a63", Clear: "#eef3f6", "Milky white": "#f7fafb",
+  Cream: "#e8dcc0", Green: "#2fa96b", Black: "#26333d", Printed: "var(--rs-gradient-brand)"
+};
+
+const CATALOG = [
+  { name: "BOPP Clear Carton Tape", category: "Self-adhesive tapes", artwork: "bopp", eco: true,
+    micron: [40, 45], width: [48], colours: ["Clear"], application: "Cartons & e-commerce",
+    blurb: "Transparent seal for printed cartons where the box design should stay visible.",
+    badges: ["40µ / 45µ", "48mm", "65m / 100m"], metaLabel: "Adhesive", metaValue: "Water-based acrylic",
+    moq: "Custom print from 1 box", price: "From ₹385 per box",
+    shot: "Studio: clear BOPP roll on end, light raking across the film edge.",
+    alt: "A roll of clear BOPP packaging tape standing on end on a pale grey surface." },
+  { name: "BOPP Tan Carton Tape", category: "Self-adhesive tapes", artwork: "bopp", eco: true,
+    micron: [45, 50], width: [48, 72], colours: ["Tan"], application: "Cartons & e-commerce",
+    blurb: "The default warehouse seal. Higher tack on recycled fibreboard than clear film.",
+    badges: ["45µ / 50µ", "48mm / 72mm", "65m"], metaLabel: "Adhesive", metaValue: "Water-based acrylic",
+    moq: "Custom print from 1 box", price: "From ₹395 per box",
+    shot: "Studio: stacked tan BOPP rolls, 45° isometric, soft top light.",
+    alt: "Four rolls of tan BOPP packaging tape stacked in a pyramid on a pale grey surface." },
+  { name: "Customized Printed Logo Tape", category: "Custom printed", artwork: "printed", eco: false,
+    micron: [45, 50], width: [48, 72], colours: ["Printed", "Tan", "Milky white"], application: "Cartons & e-commerce",
+    blurb: "Your logo in up to three colours, on the adhesive we ship to pharma clients.",
+    badges: ["45µ / 50µ", "48mm / 72mm", "2–3 colour"], metaLabel: "Print process", metaValue: "Flexographic, water-based ink",
+    moq: "Minimum 1 box · industry norm 10–25", price: "Priced to spec",
+    priceNote: "Made to order. Quoted on artwork, width and quantity.",
+    shot: "Studio: printed logo tape mid-application along a carton seam, shallow depth.",
+    alt: "A hand applying custom-printed tape carrying a repeated logo along a cardboard carton seam." },
+  { name: "Low-Noise BOPP Tape", category: "Self-adhesive tapes", artwork: "bopp", eco: true,
+    micron: [40, 45], width: [48], colours: ["Tan", "Clear"], application: "Cartons & e-commerce",
+    blurb: "Quieter unwind for packing benches staffed all shift. Same hold as standard tan.",
+    badges: ["40µ / 45µ", "48mm", "65m"], metaLabel: "Unwind noise", metaValue: "Approx. 12 dB below standard",
+    moq: "Custom print from 1 box", price: "From ₹430 per box",
+    shot: "Studio: single roll unwinding a short tail, motion held still.",
+    alt: "A tan tape roll with a short unwound tail curling away from the roll face." },
+  { name: "Cold-Storage BOPP Tape", category: "Self-adhesive tapes", artwork: "bopp", eco: false,
+    micron: [50, 55], width: [48, 72], colours: ["Tan"], application: "Cold storage & frozen",
+    blurb: "Holds at −18°C on damp fibreboard, where standard acrylic releases at the flap.",
+    badges: ["50µ / 55µ", "48mm / 72mm", "−18°C rated"], metaLabel: "Adhesive", metaValue: "Low-temperature acrylic",
+    moq: "Custom print from 1 box", price: "From ₹520 per box",
+    shot: "Studio: tape roll beside a frost-dusted carton corner, cool blue light.",
+    alt: "A tape roll resting beside the corner of a carton with a light frost surface." },
+  { name: "Paper Masking Tape", category: "Self-adhesive tapes", artwork: "masking", eco: false,
+    micron: [38], width: [24, 48], colours: ["Cream"], application: "Masking & finishing",
+    blurb: "Clean-peel crepe paper for finishing and paint lines. Removes without ghosting.",
+    badges: ["38µ", "24mm / 48mm", "Clean peel"], metaLabel: "Adhesive", metaValue: "Rubber-resin, clean removal",
+    moq: "Sold from 1 box", price: "From ₹460 per box",
+    shot: "Studio: cream crepe masking roll, edge lit to show the paper texture.",
+    alt: "A cream crepe paper masking tape roll photographed from a low angle." },
+  { name: "Glass Filament Tape", category: "Self-adhesive tapes", artwork: "masking", eco: false,
+    micron: [55, 60], width: [12, 24], colours: ["Milky white"], application: "Pallet & heavy bundling",
+    blurb: "Glass-reinforced strands for bundling pipe, timber and heavy cases without a strap.",
+    badges: ["55µ / 60µ", "12mm / 24mm", "High tensile"], metaLabel: "Break strength", metaValue: "Up to 300 N per 25mm",
+    moq: "Sold from 1 box", price: "From ₹690 per box",
+    shot: "Studio: filament tape roll with strand pattern raked by side light.",
+    alt: "A roll of glass filament reinforced tape showing longitudinal strands through the film." },
+  { name: "PP Strapping Patty — Manual", category: "Strapping", artwork: "strapping", eco: true,
+    micron: [], width: [12, 15], colours: ["Green", "Black"], application: "Pallet & heavy bundling",
+    blurb: "Hand-tensioned bundling for pallets and bales. Recyclable polypropylene.",
+    badges: ["12mm / 15mm", "0.5–0.7mm gauge", "Manual"], metaLabel: "Break strength", metaValue: "Up to 1,250 N per 25mm",
+    moq: "Custom print from 1 bag (5 boxes)", price: "From ₹1,240 per bag",
+    priceNote: "1 bag = 5 boxes. D2C pricing. For bulk and custom orders, please enquire.",
+    shot: "Studio: two coils of green strapping stacked flat, raking side light.",
+    alt: "Two coils of green polypropylene strapping laid flat, one resting on the other." },
+  { name: "PP Strapping Patty — Machine", category: "Strapping", artwork: "strapping", eco: true,
+    micron: [], width: [12], colours: ["Green"], application: "Pallet & heavy bundling",
+    blurb: "Tight core tolerance for automatic strapping heads on continuous lines.",
+    badges: ["12mm", "0.5mm gauge", "Machine grade"], metaLabel: "Core", metaValue: "200mm, tolerance ±1mm",
+    moq: "Custom print from 1 bag (5 boxes)", price: "From ₹1,180 per bag",
+    priceNote: "1 bag = 5 boxes. D2C pricing. For bulk and custom orders, please enquire.",
+    shot: "Studio: machine-grade strapping coil upright on its core, cool daylight.",
+    alt: "An upright coil of green machine-grade polypropylene strapping on a plastic core." }
+];
+
+class Component extends DCLogic {
+  state = { category: [], thickness: [], width: [], colour: [], application: [], drawer: false, updating: false, enquiry: false };
+
+  componentWillUnmount() { if (this._t) clearTimeout(this._t); }
+
+  bump() {
+    if (this._t) clearTimeout(this._t);
+    this.setState({ updating: true });
+    this._t = setTimeout(() => this.setState({ updating: false }), 620);
+  }
+
+  toggle(key, val) {
+    this.setState(s => {
+      const list = s[key].slice();
+      const i = list.indexOf(val);
+      if (i === -1) list.push(val); else list.splice(i, 1);
+      return { [key]: list };
+    });
+    this.bump();
+  }
+
+  matches(p) {
+    const s = this.state;
+    if (s.category.length && s.category.indexOf(p.category) === -1) return false;
+    if (s.application.length && s.application.indexOf(p.application) === -1) return false;
+    if (s.colour.length && !s.colour.some(c => p.colours.indexOf(c) !== -1)) return false;
+    if (s.thickness.length) {
+      const hit = s.thickness.some(band => p.micron.some(m => {
+        if (band === "38–42µ") return m >= 38 && m <= 42;
+        if (band === "45–50µ") return m >= 45 && m <= 50;
+        if (band === "50µ and above") return m >= 50;
+        return false;
+      }));
+      if (!hit) return false;
+    }
+    if (s.width.length && !s.width.some(w => p.width.indexOf(parseInt(w, 10)) !== -1)) return false;
+    return true;
+  }
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const s = this.state;
+    const shown = CATALOG.filter(p => this.matches(p));
+
+    const chipBase = {
+      display: "inline-flex", alignItems: "center", gap: 6, minHeight: 44,
+      padding: "0 13px", borderRadius: "var(--radius-md)", background: "var(--rs-white)",
+      border: "1px solid var(--rs-neutral-300)", color: "var(--rs-neutral-800)",
+      fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, cursor: "pointer"
+    };
+    const chipSel = { background: "var(--rs-blue-50)", border: "2px solid var(--rs-blue-700)", color: "var(--rs-blue-900)", padding: "0 12px" };
+    const chipBaseM = Object.assign({}, chipBase, { minHeight: 48, fontSize: 15, padding: "0 14px" });
+    const chipSelM = Object.assign({}, chipSel, { padding: "0 13px" });
+
+    const counts = {};
+    CATALOG.forEach(p => {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+      counts[p.application] = (counts[p.application] || 0) + 1;
+    });
+
+    const listOpt = (key, label) => {
+      const on = s[key].indexOf(label) !== -1;
+      return {
+        label, count: counts[label] || 0, on,
+        onClick: () => this.toggle(key, label),
+        boxStyle: {
+          flex: "none", width: mobile ? 24 : 22, height: mobile ? 24 : 22, borderRadius: 5,
+          border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-400)",
+          background: on ? "var(--rs-blue-50)" : "var(--rs-white)",
+          color: "var(--rs-blue-800)", display: "flex", alignItems: "center", justifyContent: "center"
+        },
+        labelStyle: { flex: 1, fontWeight: on ? 700 : 500, color: on ? "var(--rs-blue-900)" : "var(--rs-neutral-900)" }
+      };
+    };
+    const chipOpt = (key, label, withSwatch) => {
+      const on = s[key].indexOf(label) !== -1;
+      return {
+        label, on, swatch: !!withSwatch,
+        swatchStyle: withSwatch ? { width: 18, height: 18, borderRadius: 4, flex: "none", background: SWATCH[label], border: "1px solid var(--rs-neutral-400)" } : null,
+        onClick: () => this.toggle(key, label),
+        chipStyle: on ? Object.assign({}, chipBase, chipSel) : chipBase,
+        chipStyleMobile: on ? Object.assign({}, chipBaseM, chipSelM) : chipBaseM
+      };
+    };
+
+    const groups = [
+      { title: "Category", help: "Tapes and strapping are quoted on different sheets.", isList: true, isChips: false,
+        options: ["Self-adhesive tapes", "Strapping", "Custom printed"].map(f => listOpt("category", f)) },
+      { title: "Thickness", help: "Film micron. Match it to carton weight, not to habit.", isList: false, isChips: true,
+        options: ["38–42µ", "45–50µ", "50µ and above"].map(m => chipOpt("thickness", m)) },
+      { title: "Width", help: "48mm is the standard carton seal; 12–24mm for bundling.", isList: false, isChips: true,
+        options: ["12mm", "15mm", "24mm", "48mm", "72mm"].map(w => chipOpt("width", w)) },
+      { title: "Colour", help: "Swatch and name together — never colour alone.", isList: false, isChips: true,
+        options: ["Tan", "Clear", "Milky white", "Cream", "Green", "Black", "Printed"].map(c => chipOpt("colour", c, true)) },
+      { title: "Application", help: "What the load is, and how far it travels.", isList: true, isChips: false,
+        options: ["Cartons & e-commerce", "Cold storage & frozen", "Pallet & heavy bundling", "Masking & finishing"].map(a => listOpt("application", a)) }
+    ];
+
+    const activePills = [];
+    [["category", "category"], ["thickness", "thickness"], ["width", "width"], ["colour", "colour"], ["application", "application"]]
+      .forEach(([key]) => s[key].forEach(v => activePills.push({
+        label: v, aria: "Remove filter " + v, onClick: () => this.toggle(key, v)
+      })));
+
+    const pad = mobile ? "0 16px" : "0 32px";
+    const skeletons = [];
+    for (let i = 0; i < (mobile ? 2 : 6); i++) {
+      skeletons.push({
+        card: {
+          display: "flex", flexDirection: "column", background: "var(--rs-white)",
+          border: "1px solid var(--border-subtle)", borderRadius: "var(--radius-lg)",
+          overflow: "hidden", animation: "rsPulse 1.1s ease-in-out infinite",
+          animationDelay: (i * 90) + "ms"
+        },
+        art: {
+          display: "block", width: "100%", aspectRatio: mobile ? "16 / 9" : "4 / 3",
+          background: "linear-gradient(140deg,#eef8fc 0%,#e8eef2 60%,#d3e9f6 100%)"
+        }
+      });
+    }
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      pageStyle: { position: "relative", fontFamily: "var(--font-body)", background: "var(--rs-white)", color: "var(--rs-neutral-900)", width: "100%", minHeight: "100%", display: "flex", flexDirection: "column" },
+      inner: { maxWidth: 1200, margin: "0 auto", padding: pad, width: "100%", boxSizing: "border-box" },
+      headWrap: { maxWidth: 1200, margin: "0 auto", padding: mobile ? "20px 16px 26px" : "34px 32px 42px", display: "flex", flexDirection: "column", gap: mobile ? 10 : 14, width: "100%", boxSizing: "border-box" },
+      h1Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 32 : 48, lineHeight: 1.06, letterSpacing: "-.01em", color: "var(--rs-neutral-900)", textWrap: "balance", maxWidth: "24ch" },
+      leadStyle: { margin: 0, fontSize: mobile ? 15.5 : 17, lineHeight: 1.6, color: "var(--rs-neutral-700)", maxWidth: "68ch" },
+      bodyWrap: { maxWidth: 1200, margin: "0 auto", padding: mobile ? "20px 16px 36px" : "40px 32px 72px", display: "flex", flexDirection: "column", gap: mobile ? 16 : 0, width: "100%", boxSizing: "border-box" },
+      splitStyle: mobile
+        ? { display: "flex", flexDirection: "column", gap: 20 }
+        : { display: "grid", gridTemplateColumns: "25% minmax(0,1fr)", gap: 34, alignItems: "start" },
+      railStyle: {
+        display: "flex", flexDirection: "column", gap: 16, padding: 20,
+        background: "var(--rs-neutral-50)", border: "1px solid var(--border-subtle)",
+        borderRadius: "var(--radius-lg)", position: "sticky", top: 130
+      },
+      groups, activePills,
+      hasActive: activePills.length > 0,
+      activeCount: activePills.length,
+      filterCountStyle: {
+        display: activePills.length ? "inline-flex" : "none",
+        alignItems: "center", justifyContent: "center", minWidth: 24, height: 24,
+        padding: "0 7px", borderRadius: 999, background: "var(--rs-blue-700)",
+        color: "#fff", fontSize: 12.5, fontWeight: 700
+      },
+      filtersOpen: s.drawer,
+      drawerOpen: s.drawer && mobile,
+      openFilters: () => this.setState({ drawer: true }),
+      closeFilters: () => this.setState({ drawer: false }),
+      drawerApply: "Show " + shown.length + " line" + (shown.length === 1 ? "" : "s"),
+      clearAll: () => { this.setState({ category: [], thickness: [], width: [], colour: [], application: [] }); this.bump(); },
+      openEnquiry: () => this.setState({ enquiry: true, drawer: false }),
+      enquiryOpen: s.enquiry,
+      updating: s.updating,
+      showResults: !s.updating && shown.length > 0,
+      isEmpty: !s.updating && shown.length === 0,
+      skeletons,
+      shown,
+      resultLine: s.updating
+        ? "Updating results…"
+        : shown.length + " of " + CATALOG.length + " stock lines" + (activePills.length ? " · " + activePills.length + " filter" + (activePills.length > 1 ? "s" : "") + " applied" : " · every line printable from 1 box"),
+      gridStyle: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,minmax(0,1fr))", gap: mobile ? 14 : 20, alignItems: "stretch" },
+      guideGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,1fr)", gap: 12 },
+      guide: [
+        { band: "Light duty · under 5 kg", micron: "38–40µ", note: "Light e-commerce parcels and mailer boxes. Thicker film here is money spent on nothing." },
+        { band: "Medium duty · 5–18 kg", micron: "42–45µ", note: "Standard FMCG and pharma cartons, single strip or H-pattern along the centre seam." },
+        { band: "Heavy duty · over 18 kg", micron: "50µ and above", note: "Heavy or cold-chain loads on recycled fibreboard, where the flap wants to lift." }
+      ],
+      ctaSection: { background: "var(--rs-neutral-50)", borderTop: "1px solid var(--border-subtle)", padding: mobile ? "32px 0" : "56px 0" }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

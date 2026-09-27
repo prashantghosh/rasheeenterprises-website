@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="Packaging Products" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="{{ topWrap }}">
+    <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:13px;color:var(--rs-neutral-700)">
+      <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Home</a>
+      <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+      <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Packaging Products</a>
+      <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+      <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">{{ family }}</a>
+      <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+      <span style="font-weight:600;color:var(--rs-neutral-900)">{{ title }}</span>
+    </nav>
+
+    <div style="{{ heroSplit }}">
+
+      <div style="{{ galleryCol }}">
+        <div role="img" aria-label="{{ mainAlt }}" style="{{ mainArt }}">
+          <span style="{{ artA }}"></span>
+          <span style="{{ artB }}"></span>
+          <span style="{{ artC }}"></span>
+          <sc-if value="{{ eco }}" hint-placeholder-val="{{ true }}">
+            <span style="position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;background:var(--rs-white);color:#1d6243;border:1px solid #247651;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <x-import component-from-global-scope="RsIcon" name="leaf" size="14" hint-size="14px,14px"></x-import>
+              Solvent-free adhesive
+            </span>
+          </sc-if>
+          <span style="position:absolute;left:16px;bottom:12px;right:16px;font-size:11.5px;line-height:1.4;color:var(--rs-neutral-600)">{{ mainShot }}</span>
+        </div>
+        <div style="display:flex;gap:10px">
+          <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4">
+            <button type="button" onClick="{{ t.onClick }}" aria-label="{{ t.aria }}" aria-pressed="{{ t.on }}" style="{{ t.style }}">
+              <span style="{{ t.inner }}"></span>
+            </button>
+          </sc-for>
+        </div>
+        <span style="font-size:11.5px;line-height:1.5;color:var(--rs-neutral-600)">alt: {{ mainAlt }}</span>
+      </div>
+
+      <div style="{{ buyCol }}">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">{{ family }}</span>
+          <h1 style="{{ h1Style }}">{{ title }}</h1>
+          <p style="{{ leadStyle }}">{{ lead }}</p>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;padding:14px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+          <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="3">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:var(--rs-neutral-800)">
+              <span style="flex:none;display:flex;color:var(--rs-blue-800)">
+                <x-import component-from-global-scope="RsIcon" name="{{ h.icon }}" size="16" hint-size="16px,16px"></x-import>
+              </span>
+              {{ h.label }}
+            </span>
+          </sc-for>
+        </div>
+
+        <sc-for list="{{ axes }}" as="row" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">{{ row.label }}</span>
+              <span style="font-size:12.5px;color:var(--rs-neutral-600)">{{ row.help }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ row.chips }}" as="c" hint-placeholder-count="4">
+                <button type="button" onClick="{{ c.onClick }}" aria-pressed="{{ c.sel }}" style="{{ c.style }}">
+                  <sc-if value="{{ c.swatch }}" hint-placeholder-val="{{ false }}">
+                    <span style="{{ c.swatchStyle }}"></span>
+                  </sc-if>
+                  <span style="display:flex;align-items:center;gap:5px">
+                    <sc-if value="{{ c.sel }}" hint-placeholder-val="{{ false }}">
+                      <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                        <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                      </span>
+                    </sc-if>
+                    {{ c.label }}
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:var(--radius-md);background:var(--rs-neutral-50);border:1px dashed var(--rs-neutral-300)">
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">Pack size</span>
+            <span style="font-size:12.5px;color:var(--rs-neutral-600)">How it ships. Separate from the spec above.</span>
+          </div>
+          <div style="{{ packGrid }}">
+            <sc-for list="{{ packs }}" as="p" hint-placeholder-count="4">
+              <button type="button" onClick="{{ p.onClick }}" aria-pressed="{{ p.sel }}" style="{{ p.style }}">
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="{{ p.radio }}"></span>
+                  <span style="font-size:15px;font-weight:600;text-align:left;color:var(--rs-neutral-900)">{{ p.label }}</span>
+                </span>
+                <span style="font-size:12px;line-height:1.4;color:var(--rs-neutral-600);text-align:left">{{ p.note }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="{{ summaryStyle }}">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Your selection</span>
+            <span style="font-size:19px;font-weight:700;line-height:1.35;color:var(--rs-neutral-900)">{{ sku }}</span>
+            <span style="font-size:12.5px;color:var(--rs-neutral-600)">SKU {{ skuCode }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:26px;font-weight:700;color:var(--rs-neutral-900)">{{ price }}</span>
+            <span style="font-size:12.5px;line-height:1.45;color:var(--rs-neutral-600)">{{ priceNote }}</span>
+          </div>
+          <div style="{{ availStyle }}">
+            <span style="{{ availIconStyle }}" aria-hidden="true">
+              <x-import component-from-global-scope="RsIcon" name="{{ availIcon }}" size="18" hint-size="18px,18px"></x-import>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:3px">
+              <span style="font-size:15px;font-weight:700;color:var(--rs-neutral-900)">{{ availTitle }}</span>
+              <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ availBody }}</span>
+            </span>
+          </div>
+        </div>
+
+        <dc-import name="CtaBlock" mode="{{ marketplace }}" variant="{{ variant }}" hint-size="100%,320px"></dc-import>
+
+        <button type="button" onClick="{{ openEnquiry }}" style="{{ specQuoteStyle }}" style-hover="background:var(--rs-blue-50)">
+          <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+          Get an exact quote for this spec
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="{{ specSplit }}">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <h2 style="{{ h2Style }}">Technical specification</h2>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:62ch">Figures below are for the selected variant. Tensile and peel are checked per production batch; the certificate ships with volume orders on request.</p>
+          <div style="overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background:var(--rs-white)">
+            <table style="width:100%;border-collapse:collapse;font-family:var(--font-body);font-size:14px;min-width:420px">
+              <caption style="text-align:left;padding:14px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600);border-bottom:1px solid var(--border-subtle)">{{ specCaption }}</caption>
+              <tbody>
+                <sc-for list="{{ specs }}" as="r" hint-placeholder-count="9">
+                  <tr style="{{ r.rowStyle }}">
+                    <th scope="row" style="text-align:left;padding:11px 16px;font-weight:600;color:var(--rs-neutral-700);width:46%;vertical-align:top">{{ r.k }}</th>
+                    <td style="padding:11px 16px;font-weight:600;color:var(--rs-neutral-900);vertical-align:top">{{ r.v }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="2">
+              <a href="#" style="display:inline-flex;align-items:center;gap:9px;min-height:48px;padding:0 16px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:14.5px;font-weight:600" style-hover="background:var(--rs-blue-50);color:var(--rs-blue-900)">
+                <x-import component-from-global-scope="RsIcon" name="file-text" size="17" hint-size="17px,17px"></x-import>
+                {{ d.label }}
+                <span style="font-size:12px;font-weight:500;color:var(--rs-neutral-600)">{{ d.meta }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <h2 style="{{ h2Style }}">Duty and thickness</h2>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700)">Weigh a full carton, then read across. The row matching your current selection is marked.</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ matrix }}" as="m" hint-placeholder-count="3">
+              <div style="{{ m.rowStyle }}">
+                <span style="display:flex;align-items:center;gap:10px">
+                  <span style="{{ m.dotStyle }}" aria-hidden="true"></span>
+                  <span style="display:flex;flex-direction:column;gap:1px">
+                    <span style="font-size:14.5px;font-weight:700;color:var(--rs-neutral-900)">{{ m.duty }}</span>
+                    <span style="font-size:13px;color:var(--rs-neutral-700)">{{ m.weight }}</span>
+                  </span>
+                  <span style="flex:1"></span>
+                  <span style="font-family:var(--font-display);font-size:26px;line-height:1;color:var(--rs-neutral-900);white-space:nowrap">{{ m.micron }}</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border-subtle)">
+                  <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ m.pattern }}</span>
+                  <span style="flex:1"></span>
+                  <span style="{{ m.tagStyle }}">{{ m.tag }}</span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+          <h2 style="{{ h2Style }}">How to choose</h2>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ guidance }}" as="g" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:5px;padding:16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-md)">
+                <span style="display:flex;align-items:center;gap:9px">
+                  <span style="flex:none;display:flex;color:var(--rs-blue-800)">
+                    <x-import component-from-global-scope="RsIcon" name="{{ g.icon }}" size="18" hint-size="18px,18px"></x-import>
+                  </span>
+                  <span style="font-size:15px;font-weight:700;color:var(--rs-neutral-900)">{{ g.title }}</span>
+                </span>
+                <span style="font-size:13.5px;line-height:1.6;color:var(--rs-neutral-700)">{{ g.body }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:var(--radius-lg);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200)">
+            <span style="font-family:var(--font-display);font-size:21px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Print this line with your logo, from one box</span>
+            <span style="font-size:13.5px;line-height:1.6;color:#5c4415">Up to three spot colours on tan or milky white film. Send artwork as PDF, AI or CDR with fonts outlined and we return a digital proof before mounting a cylinder.</span>
+            <button type="button" onClick="{{ openEnquiry }}" style="min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--radius-md);background:var(--rs-gold-300);color:var(--rs-neutral-950);font-family:var(--font-body);font-size:15.5px;font-weight:700;cursor:pointer" style-hover="background:var(--rs-gold-400)">
+              <x-import component-from-global-scope="RsIcon" name="stamp" size="18" hint-size="18px,18px"></x-import>
+              Start a custom print enquiry
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2 style="{{ h2Style }}">Questions we get on this line</h2>
+        <div style="{{ faqGrid }}">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--rs-white)">
+              <span style="font-size:15.5px;font-weight:700;line-height:1.35;color:var(--rs-neutral-900)">{{ f.q }}</span>
+              <span style="font-size:14px;line-height:1.6;color:var(--rs-neutral-700)">{{ f.a }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Also specified for this load</span>
+          <h2 style="{{ h2Style }}">Related lines</h2>
+        </div>
+        <div style="{{ relGrid }}">
+          <sc-for list="{{ related }}" as="p" hint-placeholder-count="3">
+            <dc-import name="ProductCard" variant="{{ variant }}" title="{{ p.name }}" blurb="{{ p.blurb }}" badges="{{ p.badges }}" meta-label="{{ p.metaLabel }}" meta-value="{{ p.metaValue }}" moq="{{ p.moq }}" price="{{ p.price }}" price-note="{{ p.priceNote }}" alt="{{ p.alt }}" shot="{{ p.shot }}" eco="{{ p.eco }}" artwork="{{ p.artwork }}" hint-size="100%,520px"></dc-import>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;flex-direction:column;background:var(--rs-white);border-top:1px solid var(--rs-neutral-300)">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 14px 6px">
+        <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+          <span style="font-size:15px;font-weight:700;color:var(--rs-neutral-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ price }}</span>
+          <span style="font-size:11.5px;color:var(--rs-neutral-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ stickySku }}</span>
+        </span>
+      </div>
+      <div style="display:flex;gap:1px;background:var(--rs-neutral-300)">
+        <a href="#" style="flex:1;min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+          <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+          WhatsApp
+        </a>
+        <button type="button" onClick="{{ openEnquiry }}" style="flex:1.4;min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;border:0;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer">
+          <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+          Enquire for this spec
+        </button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ enquiryOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:90;display:flex">
+      <dc-import name="EnquiryModal" state="empty" variant="{{ variant }}" hint-size="100%,100%" style="flex:1 1 auto;min-width:0"></dc-import>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;},&quot;marketplace&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;three&quot;,&quot;one&quot;,&quot;zero&quot;],&quot;default&quot;:&quot;three&quot;,&quot;tsType&quot;:&quot;'three'|'one'|'zero'&quot;}}">
+const CHIP = {
+  base: {
+    display: "inline-flex", alignItems: "center", gap: 8, minHeight: 48,
+    padding: "0 14px", borderRadius: "var(--radius-md)", background: "var(--rs-white)",
+    border: "1px solid var(--rs-neutral-300)", color: "var(--rs-neutral-800)",
+    fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer"
+  },
+  sel: { background: "var(--rs-blue-50)", border: "2px solid var(--rs-blue-700)", color: "var(--rs-blue-900)", padding: "0 13px" }
+};
+
+const RELATED = [
+  { name: "Cold-Storage BOPP Tape", artwork: "bopp", eco: false,
+    blurb: "Holds at −18°C on damp fibreboard, where standard acrylic releases at the flap.",
+    badges: ["50µ / 55µ", "48mm / 72mm", "−18°C rated"], metaLabel: "Adhesive", metaValue: "Low-temperature acrylic",
+    moq: "Custom print from 1 box", price: "From ₹520 per box",
+    shot: "Studio: tape roll beside a frost-dusted carton corner, cool blue light.",
+    alt: "A tape roll resting beside the corner of a carton with a light frost surface." },
+  { name: "PP Strapping Patty — Manual", artwork: "strapping", eco: true,
+    blurb: "Hand-tensioned bundling for pallets and bales. Recyclable polypropylene.",
+    badges: ["12mm / 15mm", "0.5–0.7mm gauge", "Manual"], metaLabel: "Break strength", metaValue: "Up to 1,250 N per 25mm",
+    moq: "Custom print from 1 bag (5 boxes)", price: "From ₹1,240 per bag",
+    priceNote: "1 bag = 5 boxes. D2C pricing. For bulk and custom orders, please enquire.",
+    shot: "Studio: two coils of green strapping stacked flat, raking side light.",
+    alt: "Two coils of green polypropylene strapping laid flat, one resting on the other." },
+  { name: "Glass Filament Tape", artwork: "masking", eco: false,
+    blurb: "Glass-reinforced strands for bundling pipe, timber and heavy cases without a strap.",
+    badges: ["55µ / 60µ", "12mm / 24mm", "High tensile"], metaLabel: "Break strength", metaValue: "Up to 300 N per 25mm",
+    moq: "Sold from 1 box", price: "From ₹690 per box",
+    shot: "Studio: filament tape roll with strand pattern raked by side light.",
+    alt: "A roll of glass filament reinforced tape showing longitudinal strands through the film." }
+];
+
+const ART = [
+  { bg: "linear-gradient(140deg,#eef8fc 0%,#e8eef2 58%,#d3e9f6 100%)",
+    a: { position: "absolute", width: 250, height: 250, borderRadius: "50%", right: -56, top: -50, border: "34px solid #b9dcf0" },
+    b: { position: "absolute", width: 140, height: 140, borderRadius: "50%", right: 70, top: 116, border: "26px solid #f7e3ab" },
+    c: { position: "absolute", width: 190, height: 26, left: 34, bottom: 66, borderRadius: 4, background: "#c99a63" },
+    shot: "Studio: stacked tan BOPP rolls, 45° isometric, soft top light on a pale slate ground.",
+    alt: "Four rolls of tan BOPP packaging tape stacked in a pyramid on a pale grey surface." },
+  { bg: "linear-gradient(140deg,#e8eef2 0%,#eef8fc 100%)",
+    a: { position: "absolute", width: 220, height: 220, borderRadius: "50%", left: "52%", top: -44, transform: "translateX(-50%)", border: "40px solid #b9dcf0" },
+    b: { position: "absolute", width: 130, height: 130, borderRadius: "50%", left: "24%", top: 130, border: "24px solid #f7e3ab" },
+    c: { position: "absolute", width: 150, height: 18, left: 40, bottom: 70, borderRadius: 3, background: "#8ec8e6" },
+    shot: "Studio: single roll on end, film edge lit to show the 45 micron section.",
+    alt: "A single roll of tan packaging tape standing on end, lit to reveal the thin film edge." },
+  { bg: "linear-gradient(140deg,#fdf6e4 0%,#e8eef2 100%)",
+    a: { position: "absolute", width: 340, height: 66, right: -40, top: 84, background: "#f3d170", transform: "rotate(-13deg)" },
+    b: { position: "absolute", width: 340, height: 26, right: -30, top: 172, background: "#b9dcf0", transform: "rotate(-13deg)" },
+    c: { position: "absolute", width: 110, height: 110, borderRadius: "50%", left: 32, bottom: 54, border: "22px solid #ffffff" },
+    shot: "Studio: tape applied along a carton centre seam, hand in frame, shallow depth.",
+    alt: "A hand pressing packaging tape along the centre seam of a sealed cardboard carton." },
+  { bg: "linear-gradient(140deg,#e6f4ec 0%,#e8eef2 60%,#d3e9f6 100%)",
+    a: { position: "absolute", width: 230, height: 230, borderRadius: "50%", right: -50, top: -40, border: "34px solid #d6f0e2" },
+    b: { position: "absolute", width: 150, height: 150, borderRadius: "50%", right: 74, top: 122, border: "26px solid #b9dcf0" },
+    c: { position: "absolute", width: 170, height: 14, left: 34, bottom: 74, borderRadius: 3, background: "#247651" },
+    shot: "Studio: sealed carton on a pallet corner, strapping band and taped seam both visible.",
+    alt: "A sealed carton at the corner of a pallet, showing a taped centre seam and a green strapping band." }
+];
+
+class Component extends DCLogic {
+  state = { micron: "45µ", width: "48mm", length: "65m", colour: "Tan", pack: "Pack of 6", shot: 0, enquiry: false };
+
+  chip(axis, label, extra) {
+    const sel = this.state[axis] === label;
+    return Object.assign({
+      label, sel, swatch: false,
+      style: sel ? Object.assign({}, CHIP.base, CHIP.sel) : CHIP.base,
+      onClick: () => this.setState({ [axis]: label })
+    }, extra || {});
+  }
+
+  colourChip(label, hex) {
+    const c = this.chip("colour", label);
+    c.swatch = true;
+    c.swatchStyle = { width: 20, height: 20, borderRadius: 4, flex: "none", background: hex, border: "1px solid var(--rs-neutral-400)" };
+    return c;
+  }
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const mode = this.props.marketplace || "three";
+    const s = this.state;
+    const custom = mode === "zero";
+    const pad = mobile ? "0 16px" : "0 32px";
+    const secPad = mobile ? "36px 0" : "64px 0";
+
+    const title = custom ? "Customized Printed Logo Tape" : "BOPP Self-Adhesive Carton Tape";
+    const family = custom ? "Custom printed tapes" : "Self-adhesive tapes";
+    const lead = custom
+      ? "Your logo repeated along the film, printed in up to three spot colours on the same water-based acrylic tape we ship to pharma clients. Produced per order from a single box, so a first run can carry your brand."
+      : "The workhorse carton seal, coated with water-based acrylic and slit to your width. Pick the micron from the carton weight; we will tell you if a thinner grade would hold just as well.";
+
+    const packDefs = custom
+      ? [["1 Box (36 rolls)", "Minimum order · industry norm is 10–25"],
+         ["3 Boxes", "Common first branded run"],
+         ["10 Boxes", "Slab pricing begins here"],
+         ["Bulk Pallet", "Priced to spec — enquiry only"]]
+      : [["Pack of 6", "Small buyers, marketplace listed"],
+         ["Pack of 12", "Most common D2C size"],
+         ["1 Box (36 rolls)", "Best per-roll rate, printable"],
+         ["Bulk Pallet", "Priced to spec — enquiry only"]];
+
+    const packs = packDefs.map(([label, note]) => {
+      const sel = s.pack === label;
+      return {
+        label, note, sel,
+        onClick: () => this.setState({ pack: label }),
+        style: {
+          display: "flex", flexDirection: "column", gap: 5, minHeight: 74, padding: "12px 14px",
+          borderRadius: "var(--radius-md)", cursor: "pointer", textAlign: "left", background: "var(--rs-white)",
+          border: sel ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+          boxShadow: sel ? "0 2px 8px rgba(26,34,43,.1)" : "none", fontFamily: "var(--font-body)"
+        },
+        radio: {
+          flex: "none", width: 18, height: 18, borderRadius: "50%",
+          border: sel ? "6px solid var(--rs-blue-700)" : "2px solid var(--rs-neutral-400)",
+          background: "var(--rs-white)"
+        }
+      };
+    });
+
+    const axes = [
+      { label: "Micron", help: "Film thickness — pick by carton weight", chips: ["38µ", "40µ", "45µ", "50µ"].map(l => this.chip("micron", l)) },
+      { label: "Width", help: "48mm is the standard carton seal", chips: ["12mm", "24mm", "48mm", "72mm"].map(l => this.chip("width", l)) },
+      { label: "Roll length", help: "Longer rolls mean fewer line stops", chips: ["40m", "65m", "100m"].map(l => this.chip("length", l)) },
+      { label: "Colour", help: "Swatch and name — never colour alone", chips: [this.colourChip("Tan", "#c99a63"), this.colourChip("Clear", "#eef3f6"), this.colourChip("Milky white", "#f7fafb"), this.colourChip("Printed", "var(--rs-gradient-brand)")] }
+    ];
+
+    const inStock = !custom && s.pack !== "Bulk Pallet" && s.width !== "12mm" && s.micron !== "38µ";
+    const avail = inStock
+      ? { title: "In stock — dispatches in 24 hours", body: "Held at the Mumbai plant. The marketplace links below carry this exact variant.", icon: "check", bg: "var(--rs-success-soft)", bd: "1px solid #247651", ic: "#1d6243", icbg: "#ffffff" }
+      : { title: "Available to order — made to your spec", body: custom
+            ? "Every printed run is produced for your artwork, so this is made to order. Typical lead time is 5–7 working days after proof approval."
+            : "This combination is not held in stock, so we produce it for you. Enquire for lead time and pricing — typically 5–7 working days.",
+          icon: "factory", bg: "var(--rs-gold-100)", bd: "1px solid var(--rs-gold-200)", ic: "#6d5019", icbg: "var(--rs-gold-200)" };
+
+    const sku = (custom ? "Printed BOPP " : "BOPP ") + s.micron + " · " + s.width + " · " + s.length + " · " + s.colour + " · " + s.pack;
+    const skuCode = "RS-" + (custom ? "PRT" : "BOP") + "-" + s.micron.replace("µ", "") + s.width.replace("mm", "") + "-" + s.length.replace("m", "") + "-" + s.colour.slice(0, 2).toUpperCase();
+
+    const price = custom || s.pack === "Bulk Pallet" || !inStock ? "Priced to spec" : "From ₹385 per box";
+    const priceNote = price === "Priced to spec"
+      ? "Made to order. Quoted on spec, artwork and quantity — usually within one working day."
+      : "D2C pricing. For bulk and custom orders, please enquire.";
+
+    const thumbs = ART.map((a, i) => {
+      const on = s.shot === i;
+      return {
+        on, onClick: () => this.setState({ shot: i }),
+        aria: "Show view " + (i + 1) + ": " + a.alt,
+        style: {
+          flex: "1 1 0", minWidth: 0, aspectRatio: "1 / 1", padding: 0, cursor: "pointer",
+          borderRadius: "var(--radius-md)", overflow: "hidden",
+          border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+          background: "var(--rs-white)", display: "block"
+        },
+        inner: { display: "block", width: "100%", height: "100%", background: a.bg }
+      };
+    });
+    const art = ART[s.shot];
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      marketplace: mode,
+      pageStyle: { fontFamily: "var(--font-body)", background: "var(--rs-white)", color: "var(--rs-neutral-900)", width: "100%", minHeight: "100%", display: "flex", flexDirection: "column" },
+      inner: { maxWidth: 1200, margin: "0 auto", padding: pad, width: "100%", boxSizing: "border-box" },
+      topWrap: { maxWidth: 1200, margin: "0 auto", padding: mobile ? "16px 16px 32px" : "22px 32px 60px", display: "flex", flexDirection: "column", gap: mobile ? 18 : 26, width: "100%", boxSizing: "border-box" },
+      heroSplit: mobile ? { display: "flex", flexDirection: "column", gap: 24 } : { display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,520px)", gap: 48, alignItems: "start" },
+      galleryCol: { display: "flex", flexDirection: "column", gap: 10, position: mobile ? "static" : "sticky", top: mobile ? "auto" : 132 },
+      buyCol: { display: "flex", flexDirection: "column", gap: mobile ? 18 : 20, minWidth: 0 },
+      mainArt: { position: "relative", width: "100%", aspectRatio: "4 / 3", borderRadius: "var(--radius-lg)", overflow: "hidden", background: art.bg, border: "1px solid var(--border-subtle)" },
+      artA: art.a, artB: art.b, artC: art.c,
+      mainShot: art.shot, mainAlt: art.alt, thumbs,
+      eco: !custom,
+      title, family, lead,
+      h1Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 32 : 44, lineHeight: 1.06, letterSpacing: "-.01em", color: "var(--rs-neutral-900)", textWrap: "balance" },
+      leadStyle: { margin: 0, fontSize: mobile ? 15.5 : 16.5, lineHeight: 1.6, color: "var(--rs-neutral-700)" },
+      highlights: custom
+        ? [{ icon: "stamp", label: "From 1 box" }, { icon: "palette", label: "Up to 3 spot colours" }, { icon: "clock", label: "5–7 day lead time" }]
+        : [{ icon: "droplets", label: "Water-based adhesive" }, { icon: "ruler", label: "Micron tested per batch" }, { icon: "truck", label: "Dispatch in 24 hours" }],
+      axes, packs,
+      packGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: 10 },
+      summaryStyle: {
+        display: "flex", flexDirection: "column", gap: 14, padding: mobile ? 16 : 20,
+        background: "var(--rs-white)", border: "2px solid var(--rs-blue-700)",
+        borderRadius: "var(--radius-lg)", boxShadow: "0 4px 16px rgba(24,75,102,.1)"
+      },
+      sku, skuCode, price, priceNote,
+      stickySku: sku,
+      availTitle: avail.title, availBody: avail.body, availIcon: avail.icon,
+      availStyle: { display: "flex", gap: 12, alignItems: "flex-start", padding: "14px 16px", borderRadius: "var(--radius-md)", background: avail.bg, border: avail.bd },
+      availIconStyle: { flex: "none", width: 32, height: 32, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: avail.icbg, color: avail.ic },
+      specQuoteStyle: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: mobile ? 52 : 50, border: "1px solid var(--rs-blue-700)",
+        borderRadius: "var(--radius-md)", background: "var(--rs-white)",
+        color: "var(--rs-blue-800)", fontFamily: "var(--font-body)",
+        fontSize: 16, fontWeight: 600, cursor: "pointer"
+      },
+      openEnquiry: () => this.setState({ enquiry: true }),
+      enquiryOpen: s.enquiry,
+      secWhite: { background: "var(--rs-white)", padding: secPad },
+      secSubtle: { background: "var(--rs-neutral-50)", padding: secPad, borderTop: "1px solid var(--border-subtle)" },
+      h2Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 36, lineHeight: 1.1, color: "var(--rs-neutral-900)" },
+      specSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.15fr .85fr", gap: mobile ? 24 : 40, alignItems: "start" },
+      specCaption: "Selected variant — " + s.micron + " · " + s.width + " · " + s.length,
+      specs: [
+        ["Backing film", "Biaxially oriented polypropylene"],
+        ["Total thickness", s.micron + " (±2µ per batch)"],
+        ["Adhesive system", custom ? "Water-based acrylic, flexo-printed" : "Water-based acrylic, solvent-free"],
+        ["Width", s.width + " (slit tolerance ±0.5mm)"],
+        ["Roll length", s.length],
+        ["Peel adhesion, steel", "38 N per 100mm"],
+        ["Tensile strength", "Approx. 105 N per 25mm"],
+        ["Elongation at break", "140–180%"],
+        ["Service temperature", custom ? "0°C to 50°C" : "5°C to 50°C"],
+        ["Core diameter", "76mm (3 inch)"],
+        ["Rolls per box", s.width === "24mm" ? "72" : "36"]
+      ].map(([k, v], i) => ({ k, v, rowStyle: { borderBottom: "1px solid var(--border-subtle)", background: i % 2 ? "var(--rs-neutral-50)" : "var(--rs-white)" } })),
+      downloads: [
+        { label: "Technical data sheet", meta: "PDF · 240 KB" },
+        { label: "Adhesive compliance statement", meta: "PDF · 180 KB" }
+      ],
+      matrix: [
+        { duty: "Light duty", weight: "Under 5 kg", micron: "38–40µ", pattern: "Single centre strip", tag: "Mailers, apparel, light e-commerce", bands: ["38µ", "40µ"] },
+        { duty: "Medium duty", weight: "5–18 kg", micron: "42–45µ", pattern: "Centre strip, or H-pattern if stacked", tag: "FMCG, pharma, general cartons", bands: ["45µ"] },
+        { duty: "Heavy duty", weight: "Over 18 kg", micron: "50µ and above", pattern: "H-pattern, add strapping over 25 kg", tag: "Cold chain, machinery, bulk", bands: ["50µ"] }
+      ].map(m => {
+        const on = m.bands.indexOf(s.micron) !== -1;
+        return {
+          duty: m.duty, weight: m.weight, micron: m.micron, pattern: m.pattern,
+          tag: on ? "Your selection" : m.tag,
+          rowStyle: {
+            display: "flex", flexDirection: "column", gap: 8, padding: "14px 16px",
+            borderRadius: "var(--radius-md)", background: on ? "var(--rs-blue-50)" : "var(--rs-white)",
+            border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--border-subtle)"
+          },
+          dotStyle: {
+            flex: "none", width: 10, height: 10, borderRadius: "50%",
+            background: on ? "var(--rs-blue-700)" : "var(--rs-neutral-300)"
+          },
+          tagStyle: {
+            display: "inline-flex", alignItems: "center", height: 24, padding: "0 9px",
+            borderRadius: 999, whiteSpace: "nowrap",
+            background: on ? "var(--rs-blue-700)" : "var(--rs-neutral-100)",
+            border: on ? "0" : "1px solid var(--rs-neutral-300)",
+            color: on ? "#fff" : "var(--rs-neutral-700)",
+            fontSize: 11.5, fontWeight: 700, letterSpacing: ".04em"
+          }
+        };
+      }),
+      guidance: [
+        { icon: "scale", title: "Weigh a full carton first", body: "Under 5 kg, 38–40µ holds. Between 5 and 18 kg, 42–45µ. Above 18 kg or on damp recycled board, go to 50µ and above." },
+        { icon: "layers", title: "One strip or three", body: "A single centre strip is enough for light parcels. Heavier cartons want an H-pattern, which changes how many rolls a box of tape covers." },
+        { icon: "thermometer", title: "Check the coldest point", body: "Adhesive is specified for the lowest temperature the carton will see, not the warehouse average. Cold-chain loads need the low-temperature grade." }
+      ],
+      faqGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 12 : 16 },
+      faqs: [
+        { q: "Can I order a single box?", a: "Yes. One box is a real order here, printed or plain. Industry minimums for printed tape run 10 to 25 boxes; ours is one." },
+        { q: "How many cartons will a box seal?", a: "A box of 36 rolls at 65m seals roughly 2,300 medium cartons with a single centre strip, or about 780 with a full H-pattern." },
+        { q: "Is the adhesive food-safe?", a: "The acrylic is water-based and solvent-free, suitable for secondary food packaging. It is not intended for direct food contact." },
+        { q: "What if the width I need is not listed?", a: "We slit anything between 12 and 72mm. Non-standard widths are made to order — send the width and quantity and we will confirm lead time." }
+      ],
+      relGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,minmax(0,1fr))", gap: mobile ? 14 : 20, alignItems: "stretch" },
+      related: RELATED
+    };
+  }
+}
+
+</script>
+</body>
+</html>

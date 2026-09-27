@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="About" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="background:var(--rs-neutral-50);border-bottom:1px solid var(--border-subtle)">
+    <div style="{{ heroWrap }}">
+      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font-size:13px;color:var(--rs-neutral-700)">
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;">Home</a>
+        <span aria-hidden="true" style="color:var(--rs-neutral-500)">/</span>
+        <span style="font-weight:600;color:var(--rs-neutral-900)">About Us &amp; Quality Promise</span>
+      </nav>
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">About Rashee Enterprises</span>
+      <h1 style="{{ h1Style }}">Wherever there are boxes, there is Rashee</h1>
+      <p style="{{ leadStyle }}">We manufacture self-adhesive tapes and polypropylene strapping in Mumbai, and we sell them to anyone who needs them correctly specified — a two-person studio shipping forty parcels a month, and a distributor moving pallets. The company was built on a straightforward observation: most packaging is bought on price per roll, and most packaging failures are caused by that.</p>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ founderSplit }}">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div role="img" aria-label="A packaging specialist at a workbench weighing a sealed carton on a bench scale, rolls of tape and a micrometer beside it." style="{{ founderArt }}">
+            <span style="position:absolute;width:200px;height:200px;border-radius:50%;right:-44px;top:-36px;border:30px solid #b9dcf0"></span>
+            <span style="position:absolute;width:120px;height:120px;border-radius:50%;right:56px;top:104px;border:20px solid #f7e3ab"></span>
+            <span style="position:absolute;left:28px;bottom:70px;width:160px;height:22px;border-radius:4px;background:#c99a63"></span>
+            <span style="position:absolute;left:28px;bottom:104px;width:104px;height:14px;border-radius:3px;background:#8ec8e6"></span>
+            <span style="position:absolute;left:16px;bottom:12px;right:16px;font-size:11.5px;line-height:1.4;color:var(--rs-neutral-600)">Documentary: specialist at a workbench weighing a sealed carton, tape rolls and a micrometer in frame.</span>
+          </div>
+          <span style="font-size:11.5px;line-height:1.45;color:var(--rs-neutral-600)">alt: A packaging specialist at a workbench weighing a sealed carton on a bench scale, rolls of tape and a micrometer beside it.</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Founder's philosophy</span>
+          <h2 style="{{ h2Style }}">We would rather lose a sale than sell the wrong micron</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">The packaging trade runs on a small dishonesty: a buyer asks for a price, gets quoted a grade, and never learns whether that grade was chosen for their carton or for the supplier's margin. Fifty micron sells better than thirty-eight. It also costs the buyer more and, on a light parcel, holds no better.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">So we built the company the other way round. Tell us the carton weight and how it travels, and we will tell you what will hold it — including when that is cheaper than what you asked for. If a competitor's grade suits you better, we will say that too. It costs us the occasional order and it is the reason our accounts stay.</p>
+          <div style="{{ quoteWrap }}">
+            <span style="{{ quoteMark }}">“</span>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <p style="{{ quoteText }}">Your budget, our honest execution. Your spec, exact delivery.</p>
+              <span style="font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--rs-neutral-700)">The promise the company was started on</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">The ethos</span>
+          <h2 style="{{ h2Style }}">Three commitments, stated plainly enough to be held to</h2>
+        </div>
+      </div>
+      <div style="{{ ethosGrid }}">
+        <sc-for list="{{ ethos }}" as="e" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:24px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:0 1px 2px rgba(26,34,43,.06)">
+            <span style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--rs-blue-50);border:1px solid var(--rs-blue-200);color:var(--rs-blue-800)">
+              <x-import component-from-global-scope="RsIcon" name="{{ e.icon }}" size="23" hint-size="23px,23px"></x-import>
+            </span>
+            <span style="font-family:var(--font-display);font-size:24px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">{{ e.title }}</span>
+            <span style="font-size:14.5px;line-height:1.6;color:var(--rs-neutral-700)">{{ e.body }}</span>
+            <span style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid var(--border-subtle)">
+              <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">What that means concretely</span>
+              <span style="font-size:13.5px;line-height:1.55;color:var(--rs-neutral-800);font-weight:500">{{ e.concrete }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Quality control</span>
+          <h2 style="{{ h2Style }}">Five checks between resin and dispatch</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">Every stage below is logged against a batch number. If a roll from a delivery six months ago behaves differently to the one before it, we can tell you why rather than guess.</p>
+        </div>
+      </div>
+      <div style="{{ qcGrid }}">
+        <sc-for list="{{ qc }}" as="q" hint-placeholder-count="5">
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-md)">
+            <span style="flex:none;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--rs-blue-700);color:#fff;font-family:var(--font-display);font-size:20px;line-height:1;font-weight:600">{{ q.n }}</span>
+            <span style="display:flex;flex-direction:column;gap:5px;min-width:0">
+              <span style="font-size:15.5px;font-weight:700;color:var(--rs-neutral-900)">{{ q.title }}</span>
+              <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700)">{{ q.body }}</span>
+              <span style="font-size:12.5px;font-weight:600;letter-spacing:.03em;color:var(--rs-blue-800)">{{ q.measure }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="2">
+          <a href="#" style="display:inline-flex;align-items:center;gap:9px;min-height:48px;padding:0 16px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:14.5px;font-weight:600" style-hover="background:var(--rs-blue-50);color:var(--rs-blue-900)">
+            <x-import component-from-global-scope="RsIcon" name="file-text" size="17" hint-size="17px,17px"></x-import>
+            {{ d.label }}
+            <span style="font-size:12px;font-weight:500;color:var(--rs-neutral-600)">{{ d.meta }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secNavy }}">
+    <div style="{{ inner }}">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:62ch">
+        <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-200)">Manufacturing capability</span>
+        <h2 style="{{ h2NavyStyle }}">What the plant can actually do</h2>
+        <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-blue-100)">Stated as ranges rather than maximums, because a capability you can only hit on a good day is not a capability a buyer can plan around.</p>
+      </div>
+      <div style="{{ capGrid }}">
+        <sc-for list="{{ capability }}" as="c" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;gap:5px;padding:18px 20px;border-radius:var(--radius-md);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2)">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-blue-200)">{{ c.k }}</span>
+            <span style="font-family:var(--font-display);font-size:{{ capSize }};line-height:1;color:#fff">{{ c.v }}</span>
+            <span style="font-size:13px;line-height:1.5;color:var(--rs-blue-100)">{{ c.note }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="{{ plantSplit }}">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Plant &amp; compliance</span>
+          <h2 style="{{ h2Style }}">Where it is made, and what we can document</h2>
+          <p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--rs-neutral-700)">One plant, one coating line, one adhesive system. Buyers are welcome to visit — most procurement teams who do end up specifying against what they saw on the slitting floor rather than a data sheet.</p>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <sc-for list="{{ compliance }}" as="c" hint-placeholder-count="5">
+              <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border-subtle)">
+                <span style="flex:none;width:26px;height:26px;border-radius:50%;background:var(--rs-white);border:1px solid var(--rs-blue-300);color:var(--rs-blue-800);display:flex;align-items:center;justify-content:center;margin-top:1px">
+                  <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                </span>
+                <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <span style="font-size:14.5px;font-weight:700;color:var(--rs-neutral-900)">{{ c.title }}</span>
+                  <span style="font-size:13.5px;line-height:1.55;color:var(--rs-neutral-700)">{{ c.body }}</span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="{{ plantCard }}">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Operational HQ &amp; plant</span>
+            <span style="font-size:15.5px;line-height:1.6;font-weight:600;color:var(--rs-neutral-900)">Rashee Enterprises<br>Unit 4, Industrial Estate<br>Mumbai, Maharashtra</span>
+            <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--border-subtle)">
+              <sc-for list="{{ plantFacts }}" as="p" hint-placeholder-count="3">
+                <span style="display:flex;align-items:baseline;gap:8px">
+                  <span style="font-size:13px;font-weight:700;color:var(--rs-neutral-900);min-width:104px">{{ p.k }}</span>
+                  <span style="font-size:13.5px;line-height:1.5;color:var(--rs-neutral-700)">{{ p.v }}</span>
+                </span>
+              </sc-for>
+            </div>
+            <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:15px;font-weight:600" style-hover="background:var(--rs-blue-50)">
+              <x-import component-from-global-scope="RsIcon" name="map-pin" size="17" hint-size="17px,17px"></x-import>
+              Arrange a plant visit
+            </a>
+          </div>
+          <div role="img" aria-label="Rolls of finished tape on a slitting-machine outfeed inside a manufacturing plant, cool overhead lighting." style="{{ plantArt }}">
+            <span style="position:absolute;width:150px;height:150px;border-radius:50%;left:-30px;bottom:-34px;border:26px solid #b9dcf0"></span>
+            <span style="position:absolute;right:24px;top:26px;width:88px;height:88px;border-radius:50%;border:18px solid #f7e3ab"></span>
+            <span style="position:absolute;left:16px;bottom:12px;right:16px;font-size:11.5px;line-height:1.4;color:var(--rs-neutral-600)">Documentary: finished rolls on the slitting-machine outfeed, cool overhead light.</span>
+          </div>
+          <span style="font-size:11.5px;line-height:1.45;color:var(--rs-neutral-600)">alt: Rolls of finished tape on a slitting-machine outfeed inside a manufacturing plant, cool overhead lighting.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <dc-import name="CtaBlock" mode="three" variant="{{ variant }}" hint-size="100%,320px"></dc-import>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        Chat on WhatsApp
+      </a>
+      <button type="button" onClick="{{ openEnquiry }}" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;border:0;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer">
+        <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+        Instant Spec Quote
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ enquiryOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:90;display:flex">
+      <dc-import name="EnquiryModal" state="empty" variant="{{ variant }}" hint-size="100%,100%" style="flex:1 1 auto;min-width:0"></dc-import>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+class Component extends DCLogic {
+  state = { enquiry: false };
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const pad = mobile ? "0 16px" : "0 32px";
+    const secPad = mobile ? "40px 0" : "76px 0";
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      pageStyle: { position: "relative", fontFamily: "var(--font-body)", background: "var(--rs-white)", color: "var(--rs-neutral-900)", width: "100%", minHeight: "100%", display: "flex", flexDirection: "column" },
+      inner: { maxWidth: 1200, margin: "0 auto", padding: pad, width: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: mobile ? 20 : 30 },
+      heroWrap: { maxWidth: 1200, margin: "0 auto", padding: mobile ? "8px 16px 30px" : "16px 32px 56px", display: "flex", flexDirection: "column", gap: mobile ? 12 : 14, width: "100%", boxSizing: "border-box" },
+      h1Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 36 : 56, lineHeight: 1.04, letterSpacing: "-.01em", color: "var(--rs-neutral-900)", textWrap: "balance" },
+      leadStyle: { margin: 0, fontSize: mobile ? 16 : 17.5, lineHeight: 1.62, color: "var(--rs-neutral-700)", maxWidth: "70ch" },
+
+      secWhite: { background: "var(--rs-white)", padding: secPad },
+      secSubtle: { background: "var(--rs-neutral-50)", padding: secPad, borderTop: "1px solid var(--border-subtle)" },
+      secNavy: { background: "var(--rs-blue-900)", padding: secPad },
+      secHead: { display: "flex", flexDirection: "column", gap: mobile ? 14 : 18 },
+      h2Style: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 40, lineHeight: 1.08, color: "var(--rs-neutral-900)", textWrap: "balance" },
+      h2NavyStyle: { margin: 0, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: mobile ? 28 : 40, lineHeight: 1.08, color: "#fff", textWrap: "balance" },
+
+      founderSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : ".92fr 1.08fr", gap: mobile ? 20 : 44, alignItems: "center" },
+      founderArt: {
+        position: "relative", width: "100%", aspectRatio: "4 / 3",
+        borderRadius: "var(--radius-lg)", overflow: "hidden",
+        background: "linear-gradient(150deg,#eef8fc 0%,#e8eef2 58%,#d3e9f6 100%)",
+        border: "1px solid var(--border-subtle)"
+      },
+      quoteWrap: {
+        display: "flex", gap: mobile ? 12 : 18, alignItems: "flex-start",
+        padding: mobile ? "16px" : "22px 26px", background: "var(--rs-blue-50)",
+        border: "1px solid var(--rs-blue-200)", borderLeft: "5px solid var(--rs-blue-700)",
+        borderRadius: "var(--radius-lg)", marginTop: 4
+      },
+      quoteMark: { fontFamily: "var(--font-display)", fontSize: mobile ? 44 : 58, lineHeight: .72, color: "var(--rs-blue-700)", flex: "none" },
+      quoteText: {
+        margin: 0, fontFamily: "var(--font-display)", fontWeight: 500,
+        fontSize: mobile ? 23 : 30, lineHeight: 1.18, color: "var(--rs-neutral-900)",
+        textWrap: "pretty", maxWidth: "34ch"
+      },
+
+      ethosGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,1fr)", gap: mobile ? 12 : 20 },
+      ethos: [
+        { icon: "indian-rupee", title: "Transparent pricing", body: "Slab pricing with freight stated separately, not buried in the unit rate. You see where the number comes from, and what changes if the quantity moves.",
+          concrete: "Freight quoted as a line item · no minimum-order surcharge · same rate card for a first order and a repeat" },
+        { icon: "ruler", title: "Zero compromise on technical honesty", body: "If a thinner grade holds your load, the quote says so — even though the heavier line earns us more. If a competitor suits you better, we will tell you that as well.",
+          concrete: "Micron recommended against carton weight · we will quote down · batch test data shared on request" },
+        { icon: "message-circle", title: "Consultative problem solving", body: "An enquiry reaches a specialist who has stood on the slitting floor, not a form-filler. The first question is what you are sealing, not how many boxes you want.",
+          concrete: "Named contact per account · reply within one working day · sample rolls before a volume commitment" }
+      ],
+
+      qcGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 10 : 16 },
+      qc: [
+        { n: "1", title: "Incoming resin and film", body: "Every polypropylene consignment is checked for gauge consistency and haze before it reaches the coating line. Off-spec film is rejected at the gate, not blended in.", measure: "Gauge ±2µ · supplier COA on file" },
+        { n: "2", title: "Adhesive mix and coat weight", body: "Coat weight is sampled at the start, middle and end of every run. Drift outside the band stops the line rather than producing a batch that peels differently at one end.", measure: "Coat weight sampled 3× per run" },
+        { n: "3", title: "Peel adhesion on steel", body: "Tested against a standard steel panel at fixed temperature and humidity, because peel figures quoted without those conditions mean nothing.", measure: "38 N per 100mm, 23°C / 50% RH" },
+        { n: "4", title: "Tensile and elongation", body: "Pulled to break on a bench tester per batch. This is the figure that tells you whether a roll will snap on an automatic taping head.", measure: "≈105 N per 25mm · 140–180% elongation" },
+        { n: "5", title: "Slit width and core tolerance", body: "Width measured at three points along the roll, core roundness gauged before boxing. A millimetre out of round is what jams a machine head.", measure: "Width ±0.5mm · core ±1mm" }
+      ],
+      downloads: [
+        { label: "Quality policy", meta: "PDF · 210 KB" },
+        { label: "Adhesive compliance statement", meta: "PDF · 180 KB" },
+        { label: "Sample batch test report", meta: "PDF · 340 KB" }
+      ],
+
+      capGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr 1fr" : "repeat(3,1fr)", gap: mobile ? 10 : 16 },
+      capSize: mobile ? "26px" : "32px",
+      capability: [
+        { k: "Coating", v: "Water-based", note: "One acrylic system across every line, so behaviour does not drift between grades." },
+        { k: "Thickness range", v: "38–60µ", note: "Standard grades in 2µ steps. Below 38 and above 60 on enquiry." },
+        { k: "Slitting width", v: "12–72mm", note: "Any width in the range, ±0.5mm. Non-standard widths made to order." },
+        { k: "Roll lengths", v: "40–100m", note: "Stock lengths 40, 65 and 100m. Custom winds on volume orders." },
+        { k: "Print", v: "3 colours", note: "Flexographic, water-based ink, on tan or milky white film." },
+        { k: "Strapping", v: "8–19mm", note: "PP in 0.5–1.0mm gauge, manual and machine grade. PET on enquiry." }
+      ],
+
+      plantSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.05fr .95fr", gap: mobile ? 22 : 40, alignItems: "start" },
+      compliance: [
+        { title: "Batch traceability end to end", body: "Every box carries a batch number that resolves to resin lot, coating run, slitting shift and test results. Six months later we can still tell you what changed." },
+        { title: "Water-based adhesive declaration", body: "Written statement of solvent-free coating, suitable for secondary food and pharmaceutical packaging. Not intended for direct food contact." },
+        { title: "Test certificates on request", body: "Peel, tensile and elongation figures for your specific batch ship with volume orders, or on request for any delivery." },
+        { title: "Open to plant audit", body: "Procurement teams and pharma quality auditors are welcome on the floor with reasonable notice. We do not stage the visit." },
+        { title: "GST registered, invoiced in full", body: "Every order invoiced with GST and HSN codes stated. No cash pricing, no parallel rate card." }
+      ],
+      plantCard: {
+        display: "flex", flexDirection: "column", gap: 12,
+        padding: mobile ? 18 : 22, background: "var(--rs-white)",
+        border: "1px solid var(--border-subtle)", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 1px 2px rgba(26,34,43,.06)"
+      },
+      plantFacts: [
+        { k: "Established", v: "Manufacturing and trading since 2016" },
+        { k: "Coating line", v: "Single water-based acrylic line" },
+        { k: "Dispatch", v: "24 hours on stock lines, pan-India freight" },
+        { k: "Visits", v: "Weekdays with 48 hours' notice" }
+      ],
+      plantArt: {
+        position: "relative", width: "100%", aspectRatio: "16 / 9",
+        borderRadius: "var(--radius-lg)", overflow: "hidden",
+        background: "linear-gradient(140deg,#e8eef2 0%,#eef8fc 60%,#d3e9f6 100%)",
+        border: "1px solid var(--border-subtle)"
+      },
+
+      openEnquiry: () => this.setState({ enquiry: true }),
+      enquiryOpen: this.state.enquiry
+    };
+  }
+}
+
+</script>
+</body>
+</html>

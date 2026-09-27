@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+a{text-decoration:none;}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-300);outline-offset:2px;}
+</style>
+</helmet>
+<div style="width:100%;background:var(--rs-neutral-900);font-family:var(--font-body)">
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1200px;margin:0 auto;padding:52px 32px 26px;display:flex;flex-direction:column;gap:34px">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:36px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" tone="white" height="46px" hint-size="150px,46px"></x-import>
+          <span style="font-family:var(--font-display);font-size:24px;line-height:1.18;color:#fff">Adding care to product</span>
+          <span style="font-size:13.5px;line-height:1.65;color:var(--rs-neutral-300)">Wherever there are boxes, there is Rashee. We price flexibly because a small buyer and a national distributor both deserve the correct micron — your budget, our honest execution; your spec, exact delivery.</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:4px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="3">
+              <a href="#" aria-label="{{ s.label }}" style="display:inline-flex;align-items:center;gap:7px;min-height:48px;padding:0 13px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-md);color:#fff;font-size:14px;font-weight:600" style-hover="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)">
+                {{ s.name }}
+                <x-import component-from-global-scope="RsIcon" name="{{ s.icon }}" size="15" hint-size="15px,15px"></x-import>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+        <sc-for list="{{ cols }}" as="c" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-200)">{{ c.title }}</span>
+            <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="5">
+              <a href="#" style="font-size:14px;line-height:1.5;color:var(--rs-neutral-300);min-height:48px;display:flex;align-items:center" style-hover="color:#fff">{{ i }}</a>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-200)">Direct contact</span>
+          <span style="font-size:14px;line-height:1.65;color:var(--rs-neutral-300)">Operational HQ &amp; plant<br>Rashee Enterprises, Unit 4, Industrial Estate<br>Mumbai, Maharashtra</span>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:48px;font-size:14px;line-height:1.6;color:var(--rs-neutral-300)" style-hover="color:#fff">contact@rasheeenterprises.com</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:48px;font-size:14px;line-height:1.6;color:var(--rs-neutral-300)" style-hover="color:#fff">+91-XXXXXXXXXX</a>
+          <a href="#" style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:48px;padding:0 14px;border-radius:var(--radius-md);background:#247651;color:#fff;font-size:15px;font-weight:600" style-hover="background:#1d6243">
+            <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+            WhatsApp business line
+          </a>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)">
+        <span style="font-size:13px;color:var(--rs-neutral-300)">© 2026 Rashee Enterprises. All rights reserved.</span>
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;font-size:13px;color:var(--rs-neutral-300)" style-hover="color:#fff">Terms of supply</a>
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;font-size:13px;color:var(--rs-neutral-300)" style-hover="color:#fff">Privacy</a>
+        <span style="flex:1"></span>
+        <span style="font-size:13px;color:var(--rs-neutral-300)">Built to WCAG 2.1 AA · accessibility feedback welcome</span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:26px 16px 22px;display:flex;flex-direction:column;gap:16px">
+      <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" tone="white" height="40px" hint-size="130px,40px"></x-import>
+      <span style="font-family:var(--font-display);font-size:22px;line-height:1.18;color:#fff">Adding care to product</span>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ accordion }}" as="a" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;border-bottom:1px solid rgba(255,255,255,.14)">
+            <button type="button" aria-expanded="{{ a.open }}" style="min-height:52px;display:flex;align-items:center;gap:10px;background:transparent;border:0;padding:0;color:#fff;font-family:var(--font-body);font-size:15.5px;font-weight:600;text-align:left;cursor:pointer">
+              <span style="flex:1">{{ a.title }}</span>
+              <x-import component-from-global-scope="RsIcon" name="{{ a.icon }}" size="20" hint-size="20px,20px"></x-import>
+            </button>
+            <sc-if value="{{ a.open }}" hint-placeholder-val="{{ false }}">
+              <span style="display:block;padding:0 0 14px;font-size:14px;line-height:1.6;color:var(--rs-neutral-300)">{{ a.body }}</span>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:var(--radius-md);background:#247651;color:#fff;font-size:16px;font-weight:600" style-hover="background:#1d6243">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        WhatsApp a specialist
+      </a>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="3">
+          <a href="#" aria-label="{{ s.label }}" style="display:inline-flex;align-items:center;gap:7px;min-height:48px;padding:0 14px;border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-md);color:#fff;font-size:15px;font-weight:600">
+            {{ s.name }}
+            <x-import component-from-global-scope="RsIcon" name="{{ s.icon }}" size="16" hint-size="16px,16px"></x-import>
+          </a>
+        </sc-for>
+      </div>
+      <span style="font-size:12.5px;line-height:1.55;color:var(--rs-neutral-400)">© 2026 Rashee Enterprises · Mumbai, Maharashtra · WCAG 2.1 AA</span>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:420},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.variant || "desktop";
+    return {
+      isDesktop: v === "desktop",
+      isMobile: v === "mobile",
+      socials: [
+        { name: "LinkedIn", label: "Rashee Enterprises on LinkedIn", icon: "external-link" },
+        { name: "Instagram", label: "Rashee Enterprises on Instagram", icon: "external-link" },
+        { name: "Email", label: "Email Rashee Enterprises", icon: "mail" }
+      ],
+      cols: [
+        { title: "Catalog", items: ["BOPP tapes", "Masking tapes", "Filament tapes", "PP strapping patty", "Printed logo tapes"] },
+        { title: "Low MOQ & quality", items: ["Custom print from 1 box", "1 bag = 5 boxes, strapping", "Micron & tensile testing", "Water-based adhesives", "Recyclable PP strapping"] }
+      ],
+      accordion: [
+        { title: "Brand mission", open: true, icon: "chevron-up", body: "Wherever there are boxes, there is Rashee. We match the micron to your carton and quote it honestly — your budget, our honest execution." },
+        { title: "Catalog", open: false, icon: "chevron-down", body: "" },
+        { title: "Custom MOQ printing", open: false, icon: "chevron-down", body: "" },
+        { title: "Plant & compliance", open: false, icon: "chevron-down", body: "" },
+        { title: "Direct contact", open: false, icon: "chevron-down", body: "" }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

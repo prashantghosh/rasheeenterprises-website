@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:var(--rs-neutral-100);}
+a{color:var(--rs-blue-800);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<section id="turn1" style="font-family:var(--font-body);padding:40px;display:flex;flex-direction:column;gap:24px;background:var(--rs-neutral-100)">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px;justify-content:space-between;max-width:1400px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:70ch">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Batch 1 · Homepage</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-size:44px;line-height:1.05;font-weight:600;color:var(--rs-neutral-900)">Homepage — desktop and mobile</h1>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:var(--rs-neutral-700)">Both columns render the same component, switched on one prop. Interactive: the featured-lines filter tabs, industry hover reveals on desktop, and the mobile carousel scroll. Header and footer are the shared chrome components; cards are the shared product card.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);min-width:220px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Sections</span>
+      <span style="font-size:13.5px;line-height:1.7;color:var(--rs-neutral-800)">1 Hero · 2 Packaging promise · 3 Featured lines · 4 Low-MOQ printing · 5 Industries · 6 Going green</span>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:32px;align-items:flex-start">
+    <div id="1a" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--rs-blue-800);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em">1a</span>
+        <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop — 1440px</span>
+      </div>
+      <div style="width:1440px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);overflow:hidden;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.14);display:flex">
+        <dc-import name="Homepage" variant="desktop" hint-size="1440px,3200px" style="flex:1 1 auto;min-width:0"></dc-import>
+      </div>
+    </div>
+
+    <div id="1b" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--rs-blue-800);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em">1b</span>
+        <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile — 390px</span>
+      </div>
+      <div style="width:390px;border:8px solid var(--rs-neutral-900);border-radius:30px;overflow:hidden;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.2);display:flex">
+        <dc-import name="Homepage" variant="mobile" hint-size="374px,4200px" style="flex:1 1 auto;min-width:0"></dc-import>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

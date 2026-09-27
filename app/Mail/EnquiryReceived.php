@@ -20,11 +20,11 @@ class EnquiryReceived extends Mailable
 
     public function envelope(): Envelope
     {
-        $label = $this->enquiry->type === Enquiry::TYPE_QUOTE ? 'Quote request' : 'Contact enquiry';
+        $about = $this->enquiry->product ?: 'a general enquiry';
 
         return new Envelope(
-            subject: "{$label} from {$this->enquiry->fullName()}",
-            replyTo: [new Address($this->enquiry->email, $this->enquiry->fullName())],
+            subject: "{$this->enquiry->reference()} · Enquiry about {$about}",
+            replyTo: [new Address($this->enquiry->email, $this->enquiry->name)],
         );
     }
 

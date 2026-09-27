@@ -1,0 +1,35 @@
+/* ============================================================
+   EFFECTS — radius, shadow, borders, motion — Rashee Enterprises
+   Corporate/B2B: soft rounded corners, restrained cool-tinted shadows.
+   Radius echoes the brand's rounded logo tiles.
+   ============================================================ */
+:root{
+  /* Corner radii */
+  --radius-xs:4px;
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:14px;
+  --radius-xl:20px;
+  --radius-2xl:28px;
+  --radius-pill:999px;
+
+  /* Border widths */
+  --border-width:1px;
+  --border-width-thick:2px;
+
+  /* Shadows — cool slate tint (never neutral black) */
+  --shadow-xs:0 1px 2px rgba(26,34,43,.06);
+  --shadow-sm:0 1px 3px rgba(26,34,43,.08),0 1px 2px rgba(26,34,43,.06);
+  --shadow-md:0 4px 12px rgba(26,34,43,.09),0 2px 4px rgba(26,34,43,.05);
+  --shadow-lg:0 12px 28px rgba(26,34,43,.12),0 4px 10px rgba(26,34,43,.06);
+  --shadow-xl:0 24px 56px rgba(26,34,43,.16);
+  /* Blue-tinted lift for primary/brand surfaces */
+  --shadow-brand:0 10px 24px rgba(43,143,192,.28);
+
+  /* Motion — professional, quick, no bounce */
+  --ease-standard:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(.16,1,.3,1); /* @kind other */
+  --duration-fast:120ms; /* @kind other */
+  --duration-normal:200ms; /* @kind other */
+  --duration-slow:320ms; /* @kind other */
+}

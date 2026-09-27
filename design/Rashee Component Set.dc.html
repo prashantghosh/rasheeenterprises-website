@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+:root{
+  --color-primary:var(--rs-blue-700);
+  --color-primary-hover:var(--rs-blue-800);
+  --color-primary-active:var(--rs-blue-900);
+  --text-link:var(--rs-blue-800);
+  --text-link-hover:var(--rs-blue-900);
+  --text-muted:var(--rs-neutral-600);
+  --text-subtle:var(--rs-neutral-600);
+  --rs-eco:#247651;
+  --ring-focus:0 0 0 3px rgba(34,114,155,.55);
+}
+body{margin:0;background:var(--rs-neutral-100);}
+a{color:var(--rs-blue-800);text-decoration:underline;text-underline-offset:2px;}
+a:hover{color:var(--rs-blue-900);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+
+<div style="font-family:var(--font-body);background:var(--rs-neutral-100);padding:40px 32px 96px;display:flex;flex-direction:column;gap:56px;color:var(--rs-neutral-900)">
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:720px">
+        <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Rashee Enterprises · UI component set</span>
+        <h1 style="margin:0;font-family:var(--font-display);font-size:52px;line-height:1.03;font-weight:600;letter-spacing:-.01em;color:var(--rs-neutral-900);text-wrap:balance">The reusable parts, before the pages</h1>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:var(--rs-neutral-700);max-width:64ch">Every component below is built from the Rashee design system tokens and shown at desktop and mobile widths, with the focus-visible state drawn explicitly. Pages assemble these — nothing gets restyled per screen.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid var(--rs-blue-200);border-radius:var(--radius-lg);background:var(--rs-white);min-width:260px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-800)">Load-bearing primary</span>
+        <span style="font-family:var(--font-display);font-size:30px;line-height:1;color:var(--rs-blue-800)">--rs-blue-700</span>
+        <span style="font-size:14px;line-height:1.5;color:var(--rs-neutral-700)">#22729b — 5.32:1 with white text, 5.32:1 as text on white. Hover steps to 800, press to 900.</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+      <div style="display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Blue ramp assignment</span>
+        <sc-for list="{{ ramp }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="{{ r.swatch }}"></span>
+            <span style="display:flex;flex-direction:column;gap:1px">
+              <span style="font-size:13px;font-weight:600;color:var(--rs-neutral-900)">{{ r.name }}</span>
+              <span style="font-size:12px;line-height:1.4;color:var(--rs-neutral-700)">{{ r.use }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Type roles</span>
+        <span style="font-family:var(--font-display);font-size:28px;line-height:1.1;color:var(--rs-neutral-900)">Oswald — display only</span>
+        <span style="font-size:13px;line-height:1.55;color:var(--rs-neutral-700)">H1–H3, section titles, large numerals, section eyebrows at 18px. Never below 18px.</span>
+        <span style="height:1px;background:var(--border-subtle)"></span>
+        <span style="font-size:15px;font-weight:600;color:var(--rs-neutral-900)">Roboto Flex — everything else</span>
+        <span style="font-size:13px;line-height:1.55;color:var(--rs-neutral-700)">Body, spec tables, micron values, badges, form labels, buttons, small print. 45µ · 1,250 N/25mm · ₹385.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Trade-offs made</span>
+        <sc-for list="{{ tradeoffs }}" as="t" hint-placeholder-count="4">
+          <span style="display:flex;gap:8px;font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">
+            <span style="flex:none;width:5px;height:5px;margin-top:7px;border-radius:50%;background:var(--rs-gold-600)"></span>
+            <span>{{ t }}</span>
+          </span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">01 · Buttons</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Five variants, five states</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">Desktop height 42px, mobile 52px. Focus-visible is a 3px blue-700 outline with 2px offset — never the browser default. Disabled is used only for form submission, never for a product combination.</p>
+    </div>
+    <div style="background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:22px;overflow:auto">
+      <div style="display:grid;grid-template-columns:180px repeat(5,minmax(150px,1fr));gap:12px;align-items:center">
+        <span></span>
+        <sc-for list="{{ btnStates }}" as="s" hint-placeholder-count="5">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ s }}</span>
+        </sc-for>
+      </div>
+      <sc-for list="{{ btnRows }}" as="row" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:180px repeat(5,minmax(150px,1fr));gap:12px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--border-subtle)">
+          <span style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">{{ row.name }}</span>
+            <span style="font-size:12px;line-height:1.4;color:var(--rs-neutral-600)">{{ row.note }}</span>
+          </span>
+          <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="5">
+            <span style="{{ c.style }}">{{ row.label }}</span>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Live, tab to focus</span>
+        <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Button" hint-size="auto,42px">Request a Quote</x-import>
+        <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Button" variant="outline" hint-size="auto,42px">View Details</x-import>
+        <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Button" variant="ghost" hint-size="auto,42px">Compare specs</x-import>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile — 52px, full width, 16px type</span>
+      <div style="width:390px;max-width:100%;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:18px;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ mobileButtons }}" as="b" hint-placeholder-count="4">
+          <span style="{{ b.style }}">{{ b.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">02 · Catalog product card</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">One action: View Details</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">The grid is for scanning and filtering. No purchase buttons and no marketplace logos here — commerce decisions live on the PDP. Image regions are finished placeholders at a fixed 4:3 ratio with the shot brief and alt text stated.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 1px 2px rgba(26,34,43,.06)" style-hover="box-shadow:0 10px 26px rgba(26,34,43,.13);border-color:var(--rs-blue-300)">
+          <div role="img" aria-label="{{ p.alt }}" style="{{ p.imgStyle }}">
+            <span style="{{ p.blobA }}"></span>
+            <span style="{{ p.blobB }}"></span>
+            <span style="position:absolute;left:12px;bottom:10px;right:12px;font-size:11px;line-height:1.35;color:var(--rs-neutral-600);letter-spacing:.01em">{{ p.shot }}</span>
+            <sc-if value="{{ p.eco }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;background:var(--rs-success-soft);color:#1d6243;border:1px solid #247651;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+                <x-import component-from-global-scope="RsIcon" name="leaf" size="13" hint-size="13px,13px"></x-import>
+                Recyclable
+              </span>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:18px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">{{ p.name }}</span>
+              <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ p.blurb }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ p.badges }}" as="b" hint-placeholder-count="2">
+                <span style="display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--rs-neutral-100);border:1px solid var(--rs-neutral-300);font-size:12px;font-weight:600;color:var(--rs-neutral-800)">{{ b }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;padding-top:2px;border-top:1px solid var(--border-subtle)">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rs-neutral-600);padding-top:10px">Adhesive</span>
+              <span style="font-size:14px;font-weight:500;color:var(--rs-neutral-900)">{{ p.adhesive }}</span>
+            </div>
+            <sc-if value="{{ p.moq }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:var(--radius-md);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200);font-size:12px;font-weight:700;color:#6d5019">
+                <x-import component-from-global-scope="RsIcon" name="stamp" size="14" hint-size="14px,14px"></x-import>
+                {{ p.moq }}
+              </span>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-family:var(--font-body);font-size:20px;font-weight:700;color:var(--rs-neutral-900)">{{ p.price }}</span>
+              <span style="font-size:12px;line-height:1.45;color:var(--rs-neutral-600)">D2C pricing. For bulk and custom orders, please enquire.</span>
+            </div>
+            <span style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--rs-blue-50);border-color:var(--rs-blue-800);color:var(--rs-blue-900)">
+              View Details
+              <x-import component-from-global-scope="RsIcon" name="arrow-right" size="17" hint-size="17px,17px"></x-import>
+            </span>
+            <span style="font-size:11px;line-height:1.4;color:var(--rs-neutral-600)">alt: {{ p.alt }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile card — 358px, single column</span>
+        <div style="width:358px;display:flex;flex-direction:column;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+          <div role="img" aria-label="Roll of tan BOPP packaging tape standing on end beside a sealed carton." style="position:relative;aspect-ratio:16/9;background:linear-gradient(140deg,var(--rs-blue-50) 0%,var(--rs-neutral-100) 100%);overflow:hidden">
+            <span style="position:absolute;width:130px;height:130px;border-radius:50%;right:-24px;top:-22px;background:var(--rs-blue-200);opacity:.85"></span>
+            <span style="position:absolute;width:78px;height:78px;border-radius:50%;right:14px;top:34px;background:var(--rs-gold-200)"></span>
+            <span style="position:absolute;left:12px;bottom:10px;right:12px;font-size:11px;line-height:1.35;color:var(--rs-neutral-600)">Studio: single tan BOPP roll on end, soft top light, 45° isometric.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:16px">
+            <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600">BOPP Self-Adhesive Tapes</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <span style="display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--rs-neutral-100);border:1px solid var(--rs-neutral-300);font-size:12px;font-weight:600;color:var(--rs-neutral-800)">38–60 micron</span>
+              <span style="display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--rs-neutral-100);border:1px solid var(--rs-neutral-300);font-size:12px;font-weight:600;color:var(--rs-neutral-800)">12–72mm</span>
+            </div>
+            <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:7px;height:30px;padding:0 11px;border-radius:var(--radius-md);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200);font-size:12px;font-weight:700;color:#6d5019">Custom print from 1 box</span>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:20px;font-weight:700">From ₹385 per box</span>
+              <span style="font-size:12px;line-height:1.45;color:var(--rs-neutral-600)">D2C pricing. For bulk and custom orders, please enquire.</span>
+            </div>
+            <span style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);color:var(--rs-blue-800);font-size:16px;font-weight:600">View Details</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Card focus-visible (keyboard on the whole card)</span>
+        <div style="width:358px;display:flex;flex-direction:column;background:var(--rs-white);border:1px solid var(--rs-blue-300);border-radius:var(--radius-lg);overflow:hidden;outline:3px solid var(--rs-blue-700);outline-offset:2px;box-shadow:0 10px 26px rgba(26,34,43,.13)">
+          <div role="img" aria-label="Coils of green PP strapping patty stacked flat." style="position:relative;aspect-ratio:16/9;background:linear-gradient(140deg,var(--rs-neutral-100) 0%,var(--rs-blue-50) 100%);overflow:hidden">
+            <span style="position:absolute;width:120px;height:120px;border-radius:50%;left:50%;top:-30px;transform:translateX(-50%);border:14px solid var(--rs-success-soft)"></span>
+            <span style="position:absolute;left:12px;bottom:10px;right:12px;font-size:11px;line-height:1.35;color:var(--rs-neutral-600)">Studio: two strapping coils stacked flat, raking light.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding:16px">
+            <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600">PP Strapping Patty</span>
+            <span style="font-size:20px;font-weight:700">From ₹1,240 per bag</span>
+            <span style="font-size:12px;line-height:1.45;color:var(--rs-neutral-600)">1 bag = 5 boxes. D2C pricing. For bulk and custom orders, please enquire.</span>
+            <span style="display:flex;align-items:center;justify-content:center;min-height:48px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);color:var(--rs-blue-800);font-size:16px;font-weight:600">View Details</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">03 · Variant selector</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Chip rows that stay balanced at two axes or four</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">Each axis is a labelled row of chips, never a dropdown. Selection is carried by a 2px border and a check mark, not colour alone. Rows are full-width blocks, so a two-axis family reads as deliberate rather than short. Click the chips.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+      <sc-for list="{{ families }}" as="f" hint-placeholder-count="2">
+        <div style="display:flex;flex-direction:column;gap:16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:22px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ f.axisNote }}</span>
+            <span style="font-family:var(--font-display);font-size:24px;line-height:1.15;font-weight:600">{{ f.name }}</span>
+          </div>
+          <sc-for list="{{ f.rows }}" as="row" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                <span style="font-size:14px;font-weight:700;color:var(--rs-neutral-900)">{{ row.label }}</span>
+                <span style="font-size:12.5px;color:var(--rs-neutral-600)">{{ row.help }}</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ row.chips }}" as="c" hint-placeholder-count="4">
+                  <button type="button" onClick="{{ c.onClick }}" aria-pressed="{{ c.sel }}" style="{{ c.style }}">
+                    <sc-if value="{{ c.swatch }}" hint-placeholder-val="{{ false }}">
+                      <span style="{{ c.swatchStyle }}"></span>
+                    </sc-if>
+                    <span style="display:flex;align-items:center;gap:5px">
+                      <sc-if value="{{ c.sel }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                          <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                        </span>
+                      </sc-if>
+                      {{ c.label }}
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+          <span style="font-size:12.5px;line-height:1.5;color:var(--rs-neutral-600);padding-top:2px;border-top:1px solid var(--border-subtle);padding-top:12px">{{ f.footnote }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:16px 18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Chip states</span>
+      <sc-for list="{{ chipStates }}" as="c" hint-placeholder-count="4">
+        <span style="display:flex;align-items:center;gap:8px">
+          <span style="{{ c.style }}">{{ c.label }}</span>
+          <span style="font-size:12px;color:var(--rs-neutral-600)">{{ c.note }}</span>
+        </span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">04 · Pack size &amp; live summary</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Pack sits apart from spec, and nothing is ever disabled</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">Pack size uses bordered option cards on a tinted band, so it reads as a different kind of decision from the spec chips above it. The summary panel resolves the SKU live. Toggle the switch to see the made-to-order state — confident, not apologetic.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:22px">
+        <div style="display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:var(--radius-md);background:var(--rs-neutral-50);border:1px dashed var(--rs-neutral-300)">
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-size:14px;font-weight:700">Pack size</span>
+            <span style="font-size:12.5px;color:var(--rs-neutral-600)">How it ships. Separate from the spec above.</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <sc-for list="{{ packs }}" as="p" hint-placeholder-count="4">
+              <button type="button" onClick="{{ p.onClick }}" aria-pressed="{{ p.sel }}" style="{{ p.style }}">
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="{{ p.radio }}"></span>
+                  <span style="font-size:15px;font-weight:600;text-align:left">{{ p.label }}</span>
+                </span>
+                <span style="font-size:12px;color:var(--rs-neutral-600);text-align:left">{{ p.note }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--rs-blue-200);border-radius:var(--radius-md);background:var(--rs-blue-50)">
+          <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Switch" checked="{{ madeToOrder }}" on-change="{{ toggleStock }}" label="Preview: combination not held in stock" hint-size="auto,28px"></x-import>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:22px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Your selection</span>
+          <span style="font-family:var(--font-body);font-size:20px;font-weight:700;line-height:1.35;color:var(--rs-neutral-900)">{{ sku }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <span style="font-family:var(--font-body);font-size:26px;font-weight:700;color:var(--rs-neutral-900)">{{ price }}</span>
+          <span style="font-size:12.5px;line-height:1.45;color:var(--rs-neutral-600)">D2C pricing. For bulk and custom orders, please enquire.</span>
+        </div>
+        <div style="{{ availStyle }}">
+          <span style="{{ availIconStyle }}" aria-hidden="true">
+            <x-import component-from-global-scope="RsIcon" name="{{ availIcon }}" size="18" hint-size="18px,18px"></x-import>
+          </span>
+          <span style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:15px;font-weight:700;color:var(--rs-neutral-900)">{{ availTitle }}</span>
+            <span style="font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">{{ availBody }}</span>
+          </span>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:var(--rs-neutral-600)">Availability is stated as a label and an icon, never colour alone. No combination is ever greyed out — we manufacture, so anything on this panel can be produced.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">05 · Audience-split CTA block</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Three link states, all of them complete</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">Block A is variant-aware and only shows links that exist. With zero links it becomes a Made to Order statement in brand gold and Block B widens to carry the page. No empty slots, no "unavailable" language.</p>
+    </div>
+    <sc-for list="{{ ctaStates }}" as="s" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ s.caption }}</span>
+        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+          <div style="flex:1 1 640px;min-width:520px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px">
+            <dc-import name="CtaBlock" mode="{{ s.mode }}" variant="desktop" hint-size="100%,300px"></dc-import>
+          </div>
+          <div style="flex:none;width:390px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:16px">
+            <dc-import name="CtaBlock" mode="{{ s.mode }}" variant="mobile" hint-size="100%,520px"></dc-import>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">06 · Enquiry &amp; specification modal</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Pre-loaded SKU first, blank form never</h2>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:var(--rs-neutral-700);max-width:70ch">Desktop is a 640px centred overlay; mobile is a full-screen drawer with the same content and step rail. The close button is the focus-trap entry point and is 48×48 on both. Empty, filled, error and submitted shown below.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <sc-for list="{{ modalStates }}" as="m" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ m.caption }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+            <div style="flex:1 1 700px;min-width:520px;height:820px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--rs-neutral-300);display:flex">
+              <dc-import name="EnquiryModal" state="{{ m.state }}" variant="desktop" hint-size="100%,100%" style="flex:1 1 auto;min-width:0;height:100%"></dc-import>
+            </div>
+            <div style="flex:none;width:390px;height:820px;border-radius:26px;overflow:hidden;border:8px solid var(--rs-neutral-900);box-shadow:0 12px 30px rgba(16,24,33,.24);display:flex">
+              <dc-import name="EnquiryModal" state="{{ m.state }}" variant="mobile" hint-size="100%,100%" style="flex:1 1 auto;min-width:0;height:100%"></dc-import>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">07 · Global chrome</span>
+      <h2 style="margin:0;font-family:var(--font-display);font-size:34px;line-height:1.1;font-weight:600">Header, footer, quick actions</h2>
+    </div>
+
+    <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop header — 80px sticky, mega-menu open</span>
+    <div style="background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+      <div style="height:80px;display:flex;align-items:center;gap:24px;padding:0 28px;border-bottom:1px solid var(--border-subtle);background:rgba(255,255,255,.92)">
+        <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" height="44px" hint-size="150px,44px"></x-import>
+        <div style="display:flex;align-items:center;gap:4px;margin-left:8px">
+          <span style="display:flex;align-items:center;gap:6px;height:48px;padding:0 14px;border-radius:var(--radius-md);font-size:15px;font-weight:600;color:var(--rs-blue-900);background:var(--rs-blue-50);border-bottom:3px solid var(--rs-blue-700)">
+            Packaging Products
+            <x-import component-from-global-scope="RsIcon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+          </span>
+          <span style="display:flex;align-items:center;gap:6px;height:48px;padding:0 14px;border-radius:var(--radius-md);font-size:15px;font-weight:500;color:var(--rs-neutral-800)" style-hover="background:var(--rs-neutral-100)">
+            Custom Solutions
+            <x-import component-from-global-scope="RsIcon" name="chevron-down" size="16" hint-size="16px,16px"></x-import>
+          </span>
+          <span style="display:flex;align-items:center;height:48px;padding:0 14px;border-radius:var(--radius-md);font-size:15px;font-weight:500;color:var(--rs-neutral-800)" style-hover="background:var(--rs-neutral-100)">Industries</span>
+          <span style="display:flex;align-items:center;height:48px;padding:0 14px;border-radius:var(--radius-md);font-size:15px;font-weight:500;color:var(--rs-neutral-800);outline:3px solid var(--rs-blue-700);outline-offset:2px">Sustainability</span>
+          <span style="display:flex;align-items:center;height:48px;padding:0 14px;border-radius:var(--radius-md);font-size:15px;font-weight:500;color:var(--rs-neutral-800)" style-hover="background:var(--rs-neutral-100)">About</span>
+        </div>
+        <div style="flex:1"></div>
+        <span style="display:flex;align-items:center;gap:8px;height:44px;padding:0 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--rs-neutral-600);font-size:14px;min-width:190px">
+          <x-import component-from-global-scope="RsIcon" name="search" size="17" hint-size="17px,17px"></x-import>
+          Search micron, width, use
+        </span>
+        <span style="display:flex;align-items:center;gap:7px;height:32px;padding:0 11px;border-radius:999px;background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">
+          <x-import component-from-global-scope="RsIcon" name="leaf" size="14" hint-size="14px,14px"></x-import>
+          Going Green
+        </span>
+        <span style="display:flex;align-items:center;height:48px;padding:0 20px;border-radius:var(--radius-md);background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600;box-shadow:0 1px 2px rgba(26,34,43,.18)" style-hover="background:var(--rs-blue-800)">Request a Quote</span>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 2fr 2fr 3fr;gap:28px;padding:26px 28px 30px;background:var(--rs-neutral-50);border-bottom:1px solid var(--border-subtle)">
+        <sc-for list="{{ megaCols }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">{{ c.title }}</span>
+            <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="4">
+              <span style="display:flex;flex-direction:column;gap:1px;padding:6px 8px;margin-left:-8px;border-radius:6px" style-hover="background:var(--rs-blue-50)">
+                <span style="font-size:14.5px;font-weight:600;color:var(--rs-neutral-900)">{{ i.name }}</span>
+                <span style="font-size:12.5px;color:var(--rs-neutral-700)">{{ i.spec }}</span>
+              </span>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:var(--radius-md);background:var(--rs-gold-100);border:1px solid var(--rs-gold-200)">
+          <span style="font-family:var(--font-display);font-size:22px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Custom brand packaging made accessible — starting from just one box.</span>
+          <span style="font-size:13px;line-height:1.55;color:#5c4415">Industry minimums run 10–25 boxes. Ours is one box for tapes, one bag for strapping patty.</span>
+          <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:var(--radius-md);background:var(--rs-gold-300);color:var(--rs-neutral-950);font-size:15px;font-weight:700">
+            Explore custom printing
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="17" hint-size="17px,17px"></x-import>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile header — 60px sticky + floating bar</span>
+        <div style="width:390px;height:300px;position:relative;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);overflow:hidden;background:var(--rs-white)">
+          <div style="height:60px;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--border-subtle)">
+            <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" height="34px" hint-size="115px,34px"></x-import>
+            <span style="display:flex;align-items:center;gap:5px;height:26px;padding:0 9px;border-radius:999px;background:var(--rs-success-soft);border:1px solid #247651;color:#1d6243;font-size:11px;font-weight:700">
+              <x-import component-from-global-scope="RsIcon" name="leaf" size="12" hint-size="12px,12px"></x-import>
+              Eco
+            </span>
+            <span style="flex:1"></span>
+            <span aria-label="Open menu" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--rs-neutral-800)">
+              <x-import component-from-global-scope="RsIcon" name="menu" size="22" hint-size="22px,22px"></x-import>
+            </span>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:var(--font-display);font-size:26px;line-height:1.12;font-weight:600">Adding care to product</span>
+            <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700)">Page content keeps 96px of bottom padding so the quick-action bar never covers a CTA.</span>
+          </div>
+          <div style="position:absolute;left:0;right:0;bottom:0;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+            <span style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600">
+              <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+              Chat on WhatsApp
+            </span>
+            <span style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600">
+              <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+              Instant Spec Quote
+            </span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile drawer — full screen, 48px rows</span>
+        <div style="width:390px;height:300px;overflow:hidden;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);background:var(--rs-neutral-900);display:flex;flex-direction:column">
+          <div style="height:60px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid rgba(255,255,255,.16)">
+            <span style="flex:1;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-200)">Menu</span>
+            <span aria-label="Close menu" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-md);color:#fff;outline:3px solid var(--rs-blue-300);outline-offset:2px">
+              <x-import component-from-global-scope="RsIcon" name="x" size="20" hint-size="20px,20px"></x-import>
+            </span>
+          </div>
+          <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+            <sc-for list="{{ drawerNav }}" as="d" hint-placeholder-count="6">
+              <span style="min-height:48px;display:flex;align-items:center;padding:0 16px;color:#fff;font-size:16px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.1)">{{ d }}</span>
+            </sc-for>
+          </div>
+          <div style="padding:12px;display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(255,255,255,.16)">
+            <span style="min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-md);background:#247651;color:#fff;font-size:16px;font-weight:600">WhatsApp a Specialist</span>
+            <span style="font-size:14px;color:var(--rs-blue-200);text-align:center">+91-XXXXXXXXXX</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop quick-action pill</span>
+        <div style="width:340px;height:300px;position:relative;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);background:var(--rs-neutral-50);overflow:hidden">
+          <span style="position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:8px;padding:8px;border-radius:999px;background:var(--rs-white);border:1px solid var(--border-default);box-shadow:0 10px 26px rgba(26,34,43,.16)">
+            <span style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#247651;color:#fff">
+              <x-import component-from-global-scope="RsIcon" name="message-circle" size="20" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600">
+              <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+              Instant Spec Quote
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop footer — 4 columns</span>
+    <div style="background:var(--rs-neutral-900);border-radius:var(--radius-lg);padding:36px 28px 24px;display:flex;flex-direction:column;gap:26px">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" tone="white" height="46px" hint-size="150px,46px"></x-import>
+          <span style="font-family:var(--font-display);font-size:22px;line-height:1.2;color:#fff">Adding care to product</span>
+          <span style="font-size:13.5px;line-height:1.6;color:var(--rs-neutral-300)">Wherever there are boxes, there is Rashee. We price flexibly because a small buyer and a national distributor both deserve the correct micron — your budget, our honest execution; your spec, exact delivery.</span>
+        </div>
+        <sc-for list="{{ footerCols }}" as="c" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-200)">{{ c.title }}</span>
+            <sc-for list="{{ c.items }}" as="i" hint-placeholder-count="5">
+              <span style="font-size:14px;line-height:1.5;color:var(--rs-neutral-300);min-height:24px" style-hover="color:#fff">{{ i }}</span>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-200)">Direct contact</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--rs-neutral-300)">Operational HQ &amp; plant<br>Rashee Enterprises, Unit 4, Industrial Estate<br>Mumbai, Maharashtra</span>
+          <span style="font-size:14px;color:var(--rs-neutral-300)">contact@rasheeenterprises.com<br>+91-XXXXXXXXXX</span>
+          <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:var(--radius-md);background:#247651;color:#fff;font-size:15px;font-weight:600">
+            <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+            WhatsApp business line
+          </span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px 24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16)">
+        <span style="font-size:13px;color:var(--rs-neutral-300)">© 2026 Rashee Enterprises. All rights reserved.</span>
+        <span style="font-size:13px;color:var(--rs-neutral-300)">Built to WCAG 2.1 AA. Accessibility feedback: contact@rasheeenterprises.com</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile footer — accordion, first panel open</span>
+      <div style="width:390px;background:var(--rs-neutral-900);border-radius:var(--radius-lg);overflow:hidden;padding:20px 16px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Logo" tone="white" height="40px" hint-size="130px,40px"></x-import>
+          <sc-for list="{{ footerAccordion }}" as="a" hint-placeholder-count="5">
+            <div style="{{ a.style }}">
+              <span style="min-height:52px;display:flex;align-items:center;gap:10px;color:#fff;font-size:15.5px;font-weight:600">
+                <span style="flex:1">{{ a.title }}</span>
+                <x-import component-from-global-scope="RsIcon" name="{{ a.icon }}" size="20" hint-size="20px,20px"></x-import>
+              </span>
+              <sc-if value="{{ a.open }}" hint-placeholder-val="{{ false }}">
+                <span style="display:block;padding:0 0 14px;font-size:14px;line-height:1.6;color:var(--rs-neutral-300)">{{ a.body }}</span>
+              </sc-if>
+            </div>
+          </sc-for>
+          <span style="font-size:12.5px;line-height:1.5;color:var(--rs-neutral-400);padding-top:6px">© 2026 Rashee Enterprises · WCAG 2.1 AA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const CHIP = {
+  base: {
+    display: "inline-flex", alignItems: "center", gap: 8, minHeight: 48,
+    padding: "0 14px", borderRadius: "var(--radius-md)", background: "var(--rs-white)",
+    border: "1px solid var(--rs-neutral-300)", color: "var(--rs-neutral-800)",
+    fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer",
+    transition: "background 160ms cubic-bezier(.4,0,.2,1), border-color 160ms cubic-bezier(.4,0,.2,1)"
+  },
+  sel: {
+    background: "var(--rs-blue-50)", border: "2px solid var(--rs-blue-700)",
+    color: "var(--rs-blue-900)", padding: "0 13px"
+  }
+};
+
+class Component extends DCLogic {
+  state = {
+    bopp: { micron: "45µ", width: "48mm", colour: "Tan", length: "65m" },
+    patty: { colour: "Green", width: "12mm" },
+    pack: "Pack of 6",
+    mto: false
+  };
+
+  chip(fam, axis, label, extra) {
+    const sel = this.state[fam][axis] === label;
+    return Object.assign({
+      label, sel,
+      style: sel ? Object.assign({}, CHIP.base, CHIP.sel) : CHIP.base,
+      onClick: () => this.setState(s => ({ [fam]: Object.assign({}, s[fam], { [axis]: label }) })),
+      swatch: false
+    }, extra || {});
+  }
+
+  colourChip(fam, label, hex) {
+    const c = this.chip(fam, "colour", label);
+    c.swatch = true;
+    c.swatchStyle = {
+      width: 20, height: 20, borderRadius: 4, flex: "none",
+      background: hex, border: "1px solid var(--rs-neutral-400)"
+    };
+    return c;
+  }
+
+  renderVals() {
+    const b = this.state.bopp, p = this.state.patty, mto = this.state.mto;
+
+    const ramp = [
+      ["--rs-blue-500", "#41a9dc", "Illustration fills, dividers, chart tints, selected-chip background with dark text. Never behind white text."],
+      ["--rs-blue-600", "#2b8fc0", "Hover tint on light surfaces and icon strokes 24px and up. 3.6:1 — not for small text."],
+      ["--rs-blue-700", "#22729b", "Load-bearing primary. Buttons, links, focus outlines, brand-coloured text. 5.32:1."],
+      ["--rs-blue-800", "#1c5b7c", "Hover on primary, dark CTA panels, small brand text. 7.4:1."],
+      ["--rs-blue-900", "#184b66", "Pressed state and the deep 'navy' surfaces. 9.4:1."]
+    ].map(([name, hex, use]) => ({
+      name: name + "  " + hex, use,
+      swatch: { flex: "none", width: 34, height: 34, borderRadius: 8, background: hex, border: "1px solid rgba(16,24,33,.15)" }
+    }));
+
+    const tradeoffs = [
+      "Brand blue #41A9DC is demoted from primary to a surface and accent role — it fails 4.5:1 on light backgrounds.",
+      "Ochre CTAs use gold-300 with near-black text (12:1) rather than white on gold-600 (3.7:1); gold-700 carries ochre text.",
+      "Eco green is one derived step, #247651 — the system's --rs-success at 4.5:1 would fail (3.1:1) for WhatsApp buttons.",
+      "--text-muted is re-aliased from neutral-500 (4.0:1) to neutral-600 (6.2:1). Small labels use Roboto, not Oswald."
+    ];
+
+    const btnStates = ["Default", "Hover", "Focus-visible", "Active", "Disabled"];
+    const variants = [
+      { name: "Primary", label: "Request a Quote", note: "blue-700 · main action", bg: "var(--rs-blue-700)", fg: "#fff", hover: "var(--rs-blue-800)", active: "var(--rs-blue-900)", bd: "0" },
+      { name: "Accent (ochre)", label: "Custom from 1 Box", note: "gold-300 · low-MOQ moments", bg: "var(--rs-gold-300)", fg: "var(--rs-neutral-950)", hover: "var(--rs-gold-400)", active: "var(--rs-gold-500)", bd: "0" },
+      { name: "Outline", label: "View Details", note: "card + catalog actions", bg: "var(--rs-white)", fg: "var(--rs-blue-800)", hover: "var(--rs-blue-50)", active: "var(--rs-blue-100)", bd: "1px solid var(--rs-blue-700)" },
+      { name: "Ghost", label: "Compare specs", note: "tertiary, in-page", bg: "transparent", fg: "var(--rs-blue-800)", hover: "var(--rs-neutral-100)", active: "var(--rs-neutral-200)", bd: "1px solid transparent" },
+      { name: "Eco (WhatsApp)", label: "WhatsApp a Specialist", note: "#247651 · derived step", bg: "#247651", fg: "#fff", hover: "#1d6243", active: "#175137", bd: "0" }
+    ];
+    const cellBase = {
+      display: "inline-flex", alignItems: "center", justifyContent: "center",
+      minHeight: 42, padding: "0 18px", borderRadius: "var(--radius-md)",
+      fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, textAlign: "center", cursor: "pointer"
+    };
+    const btnRows = variants.map(v => ({
+      name: v.name, note: v.note, label: v.label,
+      cells: [
+        { style: Object.assign({}, cellBase, { background: v.bg, color: v.fg, border: v.bd, boxShadow: v.bd === "0" ? "0 1px 2px rgba(26,34,43,.18)" : "none" }) },
+        { style: Object.assign({}, cellBase, { background: v.hover, color: v.fg === "#fff" ? "#fff" : v.fg, border: v.bd, boxShadow: "0 3px 10px rgba(26,34,43,.16)" }) },
+        { style: Object.assign({}, cellBase, { background: v.bg, color: v.fg, border: v.bd, outline: "3px solid var(--rs-blue-700)", outlineOffset: 2 }) },
+        { style: Object.assign({}, cellBase, { background: v.active, color: v.fg === "#fff" ? "#fff" : v.fg, border: v.bd, transform: "translateY(1px)" }) },
+        { style: Object.assign({}, cellBase, { background: "var(--rs-neutral-100)", color: "var(--rs-neutral-500)", border: "1px solid var(--rs-neutral-300)", cursor: "not-allowed" }) }
+      ]
+    }));
+
+    const mobileBase = {
+      display: "flex", alignItems: "center", justifyContent: "center",
+      minHeight: 52, borderRadius: "var(--radius-md)", fontFamily: "var(--font-body)",
+      fontSize: 16, fontWeight: 600
+    };
+    const mobileButtons = [
+      { label: "Explore Catalog", style: Object.assign({}, mobileBase, { background: "var(--rs-blue-700)", color: "#fff" }) },
+      { label: "Custom Printed Tapes — From 1 Box", style: Object.assign({}, mobileBase, { background: "var(--rs-gold-300)", color: "var(--rs-neutral-950)", fontWeight: 700 }) },
+      { label: "View Details", style: Object.assign({}, mobileBase, { background: "var(--rs-white)", color: "var(--rs-blue-800)", border: "1px solid var(--rs-blue-700)" }) },
+      { label: "Focus-visible (52px, 3px ring)", style: Object.assign({}, mobileBase, { background: "var(--rs-blue-700)", color: "#fff", outline: "3px solid var(--rs-blue-700)", outlineOffset: 2 }) }
+    ];
+
+    const imgBase = { position: "relative", aspectRatio: "4 / 3", overflow: "hidden" };
+    const products = [
+      {
+        name: "BOPP Self-Adhesive Tapes", blurb: "The workhorse carton seal. Choose micron by box weight, not by habit.",
+        badges: ["38–60 micron", "12–72mm", "40m / 65m / 100m"], adhesive: "Water-based acrylic",
+        moq: "Custom print from 1 box", price: "From ₹385 per box", eco: true,
+        shot: "Studio: stacked tan BOPP rolls, 45° isometric, soft top light.",
+        alt: "Four rolls of tan BOPP packaging tape stacked in a pyramid on a pale grey surface.",
+        imgStyle: Object.assign({}, imgBase, { background: "linear-gradient(140deg,var(--rs-blue-50) 0%,var(--rs-neutral-100) 60%,var(--rs-blue-100) 100%)" }),
+        blobA: { position: "absolute", width: 170, height: 170, borderRadius: "50%", right: -40, top: -34, border: "24px solid var(--rs-blue-200)" },
+        blobB: { position: "absolute", width: 96, height: 96, borderRadius: "50%", right: 46, top: 78, border: "18px solid var(--rs-gold-200)" }
+      },
+      {
+        name: "Customized Printed Logo Tapes", blurb: "Your logo, two or three colours, on the same adhesive we ship to pharma.",
+        badges: ["40–50 micron", "48mm / 72mm", "2–3 colour print"], adhesive: "Water-based acrylic",
+        moq: "Minimum 1 box · industry norm 10–25", price: "Priced to spec", eco: false,
+        shot: "Studio: printed logo tape mid-application on a sealed carton, shallow depth.",
+        alt: "A hand applying custom-printed tape carrying a repeated logo along a cardboard carton seam.",
+        imgStyle: Object.assign({}, imgBase, { background: "linear-gradient(140deg,var(--rs-gold-100) 0%,var(--rs-neutral-100) 100%)" }),
+        blobA: { position: "absolute", width: 200, height: 60, right: -20, top: 44, background: "var(--rs-gold-300)", transform: "rotate(-14deg)" },
+        blobB: { position: "absolute", width: 200, height: 26, right: -10, top: 116, background: "var(--rs-blue-200)", transform: "rotate(-14deg)" }
+      },
+      {
+        name: "PP Strapping Patty", blurb: "High-tensile bundling for pallets and heavy cases. Recyclable polypropylene.",
+        badges: ["8–19mm width", "0.5–1.0mm gauge", "Machine / manual"], adhesive: "Not applicable — heat-seal",
+        moq: "Custom print from 1 bag (5 boxes)", price: "From ₹1,240 per bag", eco: true,
+        shot: "Studio: two coils of green strapping stacked flat, raking side light.",
+        alt: "Two coils of green polypropylene strapping laid flat, one resting on the other.",
+        imgStyle: Object.assign({}, imgBase, { background: "linear-gradient(140deg,var(--rs-neutral-100) 0%,var(--rs-blue-50) 100%)" }),
+        blobA: { position: "absolute", width: 160, height: 160, borderRadius: "50%", left: "50%", top: -30, transform: "translateX(-50%)", border: "26px solid var(--rs-success-soft)" },
+        blobB: { position: "absolute", width: 110, height: 110, borderRadius: "50%", left: "62%", top: 70, border: "20px solid var(--rs-blue-200)" }
+      }
+    ];
+
+    const families = [
+      {
+        name: "BOPP Self-Adhesive Tape", axisNote: "Four axes",
+        footnote: "Four rows, each full width. Micron leads because it is the decision that follows box weight.",
+        rows: [
+          { label: "Micron", help: "Thickness — pick by carton weight", chips: ["38µ", "40µ", "45µ", "50µ+"].map(l => this.chip("bopp", "micron", l)) },
+          { label: "Width", help: "Standard carton seal is 48mm", chips: ["12mm", "24mm", "48mm", "72mm"].map(l => this.chip("bopp", "width", l)) },
+          { label: "Roll length", help: "Longer rolls mean fewer line stops", chips: ["40m", "65m", "100m"].map(l => this.chip("bopp", "length", l)) },
+          { label: "Colour", help: "Swatch plus name — never colour alone", chips: [this.colourChip("bopp", "Tan", "#c99a63"), this.colourChip("bopp", "Clear", "#eef3f6"), this.colourChip("bopp", "Milky white", "#f7fafb"), this.colourChip("bopp", "Printed", "var(--rs-gradient-brand)")] }
+        ]
+      },
+      {
+        name: "PP Strapping Patty", axisNote: "Two axes — no micron, no adhesive",
+        footnote: "Strapping has no micron and no adhesive grade, so the block runs two rows with wider chips. Balanced by row weight, not by filling slots.",
+        rows: [
+          { label: "Colour", help: "Green and black are stocked; others to order", chips: [this.colourChip("patty", "Green", "#2fa96b"), this.colourChip("patty", "Black", "#26333d"), this.colourChip("patty", "White", "#f7fafb"), this.colourChip("patty", "Printed", "var(--rs-gradient-brand)")] },
+          { label: "Width", help: "Wider strap carries more pallet load", chips: ["8mm", "12mm", "15mm", "19mm"].map(l => this.chip("patty", "width", l)) }
+        ]
+      }
+    ];
+
+    const chipStates = [
+      { label: "Unselected", note: "1px neutral-300", style: CHIP.base },
+      { label: "Hover", note: "blue-50 fill", style: Object.assign({}, CHIP.base, { background: "var(--rs-blue-50)", borderColor: "var(--rs-blue-500)" }) },
+      { label: "Selected", note: "2px + check", style: Object.assign({}, CHIP.base, CHIP.sel) },
+      { label: "Focus-visible", note: "3px outline", style: Object.assign({}, CHIP.base, { outline: "3px solid var(--rs-blue-700)", outlineOffset: 2 }) }
+    ];
+
+    const packDefs = [
+      ["Pack of 6", "Small buyers, marketplace listed"],
+      ["Pack of 12", "Most common D2C size"],
+      ["1 Bag (5 Boxes)", "Strapping patty entry, custom print eligible"],
+      ["Bulk Pallet", "Priced to spec — enquiry only"]
+    ];
+    const packs = packDefs.map(([label, note]) => {
+      const sel = this.state.pack === label;
+      return {
+        label, note, sel,
+        onClick: () => this.setState({ pack: label }),
+        style: {
+          display: "flex", flexDirection: "column", gap: 5, minHeight: 72, padding: "12px 14px",
+          borderRadius: "var(--radius-md)", cursor: "pointer", textAlign: "left",
+          background: sel ? "var(--rs-white)" : "var(--rs-white)",
+          border: sel ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+          boxShadow: sel ? "0 2px 8px rgba(26,34,43,.1)" : "none",
+          fontFamily: "var(--font-body)", color: "var(--rs-neutral-900)"
+        },
+        radio: {
+          flex: "none", width: 18, height: 18, borderRadius: "50%",
+          border: sel ? "6px solid var(--rs-blue-700)" : "2px solid var(--rs-neutral-400)",
+          background: "var(--rs-white)"
+        }
+      };
+    });
+
+    const sku = "BOPP " + b.micron + " · " + b.width + " · " + b.length + " · " + b.colour + " · " + this.state.pack;
+
+    const avail = mto
+      ? {
+          title: "Available to order — made to your spec",
+          body: "This combination is not held in stock, so we produce it for you. Enquire for lead time and pricing — typically 5–7 working days.",
+          icon: "factory",
+          bg: "var(--rs-gold-100)", bd: "1px solid var(--rs-gold-200)", ic: "#6d5019", icbg: "var(--rs-gold-200)"
+        }
+      : {
+          title: "In stock — dispatches in 24 hours",
+          body: "Held at the Mumbai plant. Marketplace links below carry this exact variant.",
+          icon: "check",
+          bg: "var(--rs-success-soft)", bd: "1px solid #247651", ic: "#1d6243", icbg: "#ffffff"
+        };
+
+    return {
+      ramp, tradeoffs, btnStates, btnRows, mobileButtons, products, families, chipStates, packs,
+      madeToOrder: mto,
+      toggleStock: () => this.setState(s => ({ mto: !s.mto })),
+      sku,
+      price: this.state.pack === "Bulk Pallet" ? "Priced to spec" : mto ? "Priced to spec" : "From ₹385 per box",
+      availTitle: avail.title,
+      availBody: avail.body,
+      availIcon: avail.icon,
+      availStyle: {
+        display: "flex", gap: 12, alignItems: "flex-start", padding: "14px 16px",
+        borderRadius: "var(--radius-md)", background: avail.bg, border: avail.bd
+      },
+      availIconStyle: {
+        flex: "none", width: 32, height: 32, borderRadius: "50%", display: "flex",
+        alignItems: "center", justifyContent: "center", background: avail.icbg, color: avail.ic
+      },
+      ctaStates: [
+        { mode: "three", caption: "State A — three marketplace links" },
+        { mode: "one", caption: "State B — one marketplace link" },
+        { mode: "zero", caption: "State C — zero links, made to order" }
+      ],
+      modalStates: [
+        { state: "empty", caption: "Empty — SKU pre-loaded, nothing typed" },
+        { state: "filled", caption: "Filled — ready to submit" },
+        { state: "error", caption: "Error — inline validation, alert above the fields" },
+        { state: "submitted", caption: "Submitted — confirmation with reference and next step" }
+      ],
+      megaCols: [
+        { title: "Self-adhesive tapes", items: [
+          { name: "BOPP clear & tan", spec: "38–60µ · 12–72mm" },
+          { name: "Masking tape", spec: "Paper · low-tack" },
+          { name: "Filament tape", spec: "High tensile · reinforced" },
+          { name: "Custom printed", spec: "From 1 box" }
+        ] },
+        { title: "Strapping", items: [
+          { name: "PP strapping patty", spec: "8–19mm · manual & machine" },
+          { name: "PET strapping", spec: "Heavy pallet loads" },
+          { name: "Printed strapping", spec: "From 1 bag" }
+        ] },
+        { title: "By duty", items: [
+          { name: "Light duty", spec: "Under 5kg · 38–40µ" },
+          { name: "Medium duty", spec: "5–18kg · 42–45µ" },
+          { name: "Heavy / cold storage", spec: "Over 18kg · 50µ+" }
+        ] }
+      ],
+      drawerNav: ["Products", "Custom Brand Printing", "Industries Served", "Sustainability & Vision", "About", "Contact"],
+      footerCols: [
+        { title: "Catalog", items: ["BOPP tapes", "Masking tapes", "Filament tapes", "PP strapping patty", "PET patty"] },
+        { title: "Low-MOQ & quality", items: ["Custom print from 1 box", "1 bag (5 boxes) for strapping", "Micron & tensile testing", "Water-based adhesives", "Recyclable PP strapping"] }
+      ],
+      footerAccordion: [
+        { title: "Brand mission", open: true, body: "Wherever there are boxes, there is Rashee. We match the micron to your carton and quote it honestly — your budget, our honest execution.", icon: "chevron-up" },
+        { title: "Product quick links", open: false, body: "", icon: "chevron-down" },
+        { title: "Custom MOQ printing", open: false, body: "", icon: "chevron-down" },
+        { title: "Plant & compliance", open: false, body: "", icon: "chevron-down" },
+        { title: "Direct contact", open: false, body: "", icon: "chevron-down" }
+      ].map(a => Object.assign({}, a, {
+        style: { display: "flex", flexDirection: "column", borderBottom: "1px solid rgba(255,255,255,.14)" }
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

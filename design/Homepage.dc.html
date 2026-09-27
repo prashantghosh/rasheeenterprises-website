@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+a{color:var(--rs-blue-800);text-decoration:none;}
+a:hover{color:var(--rs-blue-900);}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ pageStyle }}">
+
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="SiteHeader" variant="{{ variant }}" active="Home" hint-size="100%,116px"></dc-import>
+  </div>
+
+  <div style="background:var(--rs-white);border-bottom:1px solid var(--border-subtle)">
+    <div style="{{ heroWrap }}">
+      <div style="{{ heroCopy }}">
+        <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Industrial tapes &amp; strapping · Made in Mumbai</span>
+        <h1 style="{{ h1Style }}">The right micron for your carton, at a price that fits your order.</h1>
+        <p style="{{ heroSub }}">Rashee Enterprises manufactures BOPP tapes, masking and filament tapes, and PP strapping patty — with custom brand printing from a single box. Buy a few packs online, or send us a spec and we will quote it honestly.</p>
+        <div style="{{ heroCtas }}">
+          <a href="#" style="{{ ctaPrimary }}" style-hover="background:var(--rs-blue-800)" style-active="background:var(--rs-blue-900);transform:translateY(1px)">
+            Explore the Catalog
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="19" hint-size="19px,19px"></x-import>
+          </a>
+          <a href="#" style="{{ ctaAccent }}" style-hover="background:var(--rs-gold-400)" style-active="background:var(--rs-gold-500);transform:translateY(1px)">
+            <x-import component-from-global-scope="RsIcon" name="stamp" size="19" hint-size="19px,19px"></x-import>
+            Custom Print from 1 Box
+          </a>
+        </div>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;gap:10px 28px;padding-top:26px;margin-top:6px;border-top:1px solid var(--border-subtle)">
+            <sc-for list="{{ trust }}" as="t" hint-placeholder-count="4">
+              <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--rs-neutral-800)">
+                <span style="flex:none;display:flex;color:var(--rs-blue-800)">
+                  <x-import component-from-global-scope="RsIcon" name="{{ t.icon }}" size="17" hint-size="17px,17px"></x-import>
+                </span>
+                {{ t.label }}
+              </span>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid var(--border-subtle)">
+            <sc-for list="{{ trustShort }}" as="t" hint-placeholder-count="3">
+              <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--rs-neutral-800)">
+                <span style="flex:none;display:flex;color:var(--rs-blue-800)">
+                  <x-import component-from-global-scope="RsIcon" name="{{ t.icon }}" size="17" hint-size="17px,17px"></x-import>
+                </span>
+                {{ t.label }}
+              </span>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="{{ heroArtWrap }}">
+        <svg viewBox="0 0 640 540" role="img" aria-labelledby="heroTitle heroDesc" style="width:100%;height:auto;display:block">
+          <title id="heroTitle">A sealed carton with a printed tape seam and a green strapping band, beside a roll of tape</title>
+          <desc id="heroDesc">Geometric illustration: an isometric cardboard carton in brand blues, sealed along its centre seam with a gold printed tape strip, bound by a green polypropylene strap, with a tape roll resting to its right.</desc>
+          <defs>
+            <linearGradient id="rsSky" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eef8fc"/>
+              <stop offset="1" stop-color="#d3e9f6"/>
+            </linearGradient>
+            <linearGradient id="rsTape" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3d170"/>
+              <stop offset="1" stop-color="#d8a94a"/>
+            </linearGradient>
+            <linearGradient id="rsRoll" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#41a9dc"/>
+              <stop offset="1" stop-color="#22729b"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="330" cy="250" r="228" fill="url(#rsSky)"/>
+          <path d="M40 470 H600" stroke="#b9dcf0" stroke-width="2" stroke-linecap="round"/>
+
+          <g>
+            <polygon points="320,110 500,200 320,290 140,200" fill="#e2f1fa"/>
+            <polygon points="140,200 320,290 320,430 140,340" fill="#b9dcf0"/>
+            <polygon points="320,290 500,200 500,340 320,430" fill="#8ec8e6"/>
+            <polygon points="295,97.5 345,122.5 345,302.5 295,277.5" fill="url(#rsTape)"/>
+            <polygon points="295,277.5 345,302.5 345,372 295,347" fill="#c8a54c"/>
+            <g fill="#184b66" opacity=".62">
+              <circle cx="320" cy="150" r="7"/>
+              <circle cx="320" cy="196" r="7"/>
+              <circle cx="320" cy="242" r="7"/>
+            </g>
+            <polygon points="140,262 320,352 320,374 140,284" fill="#247651"/>
+            <polygon points="320,352 500,262 500,284 320,374" fill="#1d6243"/>
+            <polygon points="140,200 320,290 320,300 140,210" fill="#8ec8e6" opacity=".55"/>
+          </g>
+
+          <g>
+            <ellipse cx="512" cy="424" rx="92" ry="46" fill="#22729b"/>
+            <ellipse cx="512" cy="410" rx="92" ry="46" fill="url(#rsRoll)"/>
+            <ellipse cx="512" cy="410" rx="34" ry="17" fill="#e2f1fa"/>
+            <path d="M420 410 A92 46 0 0 0 604 410 L604 424 A92 46 0 0 1 420 424 Z" fill="#1c5b7c"/>
+          </g>
+
+          <ellipse cx="300" cy="470" rx="196" ry="22" fill="#8ec8e6" opacity=".45"/>
+        </svg>
+        <span style="{{ artCaption }}">Illustration — not a photograph. Hero composition drawn in SVG: carton, printed seam, strapping band, tape roll.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ quoteWrap }}">
+        <span style="{{ quoteMark }}">“</span>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p style="{{ quoteText }}">Wherever there are boxes, there is Rashee. A small buyer and a national distributor both deserve the correct micron.</p>
+          <span style="font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--rs-neutral-700)">The universal packaging promise — how we quote, every time</span>
+        </div>
+      </div>
+      <div style="{{ promiseGrid }}">
+        <sc-for list="{{ promises }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:0 1px 2px rgba(26,34,43,.06)" style-hover="box-shadow:0 10px 26px rgba(26,34,43,.12);border-color:var(--rs-blue-300)">
+            <span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--rs-blue-50);border:1px solid var(--rs-blue-200);color:var(--rs-blue-800)">
+              <x-import component-from-global-scope="RsIcon" name="{{ p.icon }}" size="22" hint-size="22px,22px"></x-import>
+            </span>
+            <span style="font-family:var(--font-display);font-size:23px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">{{ p.title }}</span>
+            <span style="font-size:14.5px;line-height:1.6;color:var(--rs-neutral-700)">{{ p.body }}</span>
+            <span style="font-size:13px;font-weight:600;color:var(--rs-blue-800)">{{ p.proof }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secSubtle }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:60ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Featured product lines</span>
+          <h2 style="{{ h2Style }}">Four families, one adhesive standard</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--rs-neutral-700);margin:0">Every line is made on the same water-based acrylic system we ship to pharma clients. Filter by what you are sealing, or open a line to pick micron and width.</p>
+        </div>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:15px;font-weight:600;flex:none" style-hover="background:var(--rs-blue-50);color:var(--rs-blue-900)">
+            Full catalog
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="17" hint-size="17px,17px"></x-import>
+          </a>
+        </sc-if>
+      </div>
+
+      <div style="{{ tabRow }}">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.on }}" style="{{ t.style }}">
+            <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+              </span>
+            </sc-if>
+            {{ t.label }}
+            <span style="{{ t.countStyle }}">{{ t.count }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch">
+          <sc-for list="{{ shownProducts }}" as="p" hint-placeholder-count="4">
+            <dc-import name="ProductCard" variant="desktop" title="{{ p.name }}" blurb="{{ p.blurb }}" badges="{{ p.badges }}" meta-label="{{ p.metaLabel }}" meta-value="{{ p.metaValue }}" moq="{{ p.moq }}" price="{{ p.price }}" price-note="{{ p.priceNote }}" alt="{{ p.alt }}" shot="{{ p.shot }}" eco="{{ p.eco }}" artwork="{{ p.artwork }}" hint-size="100%,540px"></dc-import>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 16px 10px;margin:0 -16px;-webkit-overflow-scrolling:touch">
+            <sc-for list="{{ shownProducts }}" as="p" hint-placeholder-count="4">
+              <div style="flex:none;width:290px;scroll-snap-align:start;display:flex">
+                <dc-import name="ProductCard" variant="mobile" title="{{ p.name }}" blurb="{{ p.blurb }}" badges="{{ p.badges }}" meta-label="{{ p.metaLabel }}" meta-value="{{ p.metaValue }}" moq="{{ p.moq }}" price="{{ p.price }}" price-note="{{ p.priceNote }}" alt="{{ p.alt }}" shot="{{ p.shot }}" eco="{{ p.eco }}" artwork="{{ p.artwork }}" hint-size="290px,470px"></dc-import>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:12.5px;color:var(--rs-neutral-600)">{{ carouselHint }}</span>
+            <span style="flex:1"></span>
+            <sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+              <span style="{{ d }}"></span>
+            </sc-for>
+          </div>
+          <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:16px;font-weight:600">
+            Full catalog
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="18" hint-size="18px,18px"></x-import>
+          </a>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="{{ secGold }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:60ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#6d5019">The low-MOQ advantage</span>
+          <h2 style="{{ h2Style }}">Custom brand printing, from one box</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--rs-neutral-800);margin:0">Most printers ask for 10 to 25 boxes before they will mount a cylinder. We start at one box of tape, or one bag of strapping patty — so a first order can carry your logo.</p>
+        </div>
+      </div>
+
+      <div style="{{ moqSplit }}">
+        <div style="{{ roadmap }}">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--rs-white);border:1px solid var(--rs-gold-200);border-radius:var(--radius-md)">
+              <span style="flex:none;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--rs-gold-300);color:var(--rs-neutral-950);font-family:var(--font-display);font-size:22px;line-height:1;font-weight:600">{{ s.n }}</span>
+              <span style="display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:15.5px;font-weight:700;color:var(--rs-neutral-900)">{{ s.title }}</span>
+                <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700)">{{ s.body }}</span>
+                <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#6d5019">{{ s.when }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="{{ mathCard }}">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">What one box actually holds</span>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <span style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <span style="width:70px;height:70px;border-radius:var(--radius-md);background:var(--rs-blue-50);border:2px solid var(--rs-blue-300);display:flex;align-items:center;justify-content:center;color:var(--rs-blue-800)">
+                <x-import component-from-global-scope="RsIcon" name="package" size="32" hint-size="32px,32px"></x-import>
+              </span>
+              <span style="font-family:var(--font-display);font-size:20px;line-height:1;color:var(--rs-neutral-900)">1 box</span>
+            </span>
+            <span style="flex:none;display:flex;color:var(--rs-neutral-600)">
+              <x-import component-from-global-scope="RsIcon" name="arrow-right" size="26" hint-size="26px,26px"></x-import>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:150px">
+              <span style="display:flex;gap:4px;flex-wrap:wrap">
+                <sc-for list="{{ rollGlyphs }}" as="g" hint-placeholder-count="12">
+                  <span style="{{ g }}"></span>
+                </sc-for>
+              </span>
+              <span style="font-family:var(--font-display);font-size:32px;line-height:1;color:var(--rs-neutral-900)">36–72 rolls</span>
+            </span>
+          </div>
+          <span style="font-size:14px;line-height:1.6;color:var(--rs-neutral-700)">A box of 48mm tape holds 36 rolls; at 24mm it holds 72. At 65m a roll, one box seals roughly 2,300 medium cartons — enough for a season of e-commerce dispatch, all of it printed with your logo.</span>
+          <div style="display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--border-subtle)">
+            <span style="display:flex;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:700;color:var(--rs-neutral-900);min-width:96px">Print colours</span><span style="font-size:13.5px;color:var(--rs-neutral-700)">Up to 3, on tan or milky white film</span></span>
+            <span style="display:flex;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:700;color:var(--rs-neutral-900);min-width:96px">Artwork</span><span style="font-size:13.5px;color:var(--rs-neutral-700)">PDF, AI or CDR with fonts outlined</span></span>
+            <span style="display:flex;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:700;color:var(--rs-neutral-900);min-width:96px">Lead time</span><span style="font-size:13.5px;color:var(--rs-neutral-700)">5–7 working days after proof approval</span></span>
+          </div>
+          <a href="#" style="{{ ctaAccentFull }}" style-hover="background:var(--rs-gold-400)">
+            <x-import component-from-global-scope="RsIcon" name="stamp" size="19" hint-size="19px,19px"></x-import>
+            Start a custom print enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ secWhite }}">
+    <div style="{{ inner }}">
+      <div style="{{ secHead }}">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:60ch">
+          <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Industries we secure</span>
+          <h2 style="{{ h2Style }}">Different loads need different tack</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--rs-neutral-700);margin:0">A frozen-food carton and a textile bale fail in opposite ways. Each industry page carries the micron, adhesive and strap gauge we recommend, and why.</p>
+        </div>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:15px;font-weight:600;flex:none" style-hover="background:var(--rs-blue-50);color:var(--rs-blue-900)">
+            All industries
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="17" hint-size="17px,17px"></x-import>
+          </a>
+        </sc-if>
+      </div>
+      <div style="{{ industryGrid }}">
+        <sc-for list="{{ industries }}" as="i" hint-placeholder-count="6">
+          <a href="#" style="{{ i.tileStyle }}">
+            <span style="{{ i.artStyle }}">
+              <span style="{{ i.blob }}"></span>
+            </span>
+            <span style="display:flex;flex-direction:column;gap:5px;padding:16px 16px 18px">
+              <span style="display:flex;align-items:center;gap:9px">
+                <span style="flex:none;display:flex;color:var(--rs-blue-800)">
+                  <x-import component-from-global-scope="RsIcon" name="{{ i.icon }}" size="19" hint-size="19px,19px"></x-import>
+                </span>
+                <span style="font-family:var(--font-display);font-size:21px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">{{ i.name }}</span>
+              </span>
+              <span style="font-size:13.5px;line-height:1.5;color:var(--rs-neutral-700)">{{ i.spec }}</span>
+            </span>
+            <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+              <span style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:18px;background:linear-gradient(180deg,rgba(24,75,102,.10) 0%,rgba(24,75,102,.94) 62%);opacity:0;transition:opacity 200ms cubic-bezier(.4,0,.2,1)" style-hover="opacity:1">
+                <span style="font-family:var(--font-display);font-size:21px;line-height:1.15;font-weight:600;color:#fff">{{ i.name }}</span>
+                <span style="font-size:13.5px;line-height:1.55;color:#dbeef8">{{ i.reveal }}</span>
+                <span style="display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#fff">
+                  Read the spec
+                  <x-import component-from-global-scope="RsIcon" name="arrow-right" size="16" hint-size="16px,16px"></x-import>
+                </span>
+              </span>
+            </sc-if>
+          </a>
+        </sc-for>
+      </div>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-size:16px;font-weight:600">
+          All industries
+          <x-import component-from-global-scope="RsIcon" name="arrow-right" size="18" hint-size="18px,18px"></x-import>
+        </a>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="{{ secEco }}">
+    <div style="{{ inner }}">
+      <div style="{{ ecoSplit }}">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:var(--rs-white);border:1px solid #247651;color:#1d6243;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+            <x-import component-from-global-scope="RsIcon" name="leaf" size="15" hint-size="15px,15px"></x-import>
+            Going green
+          </span>
+          <h2 style="{{ h2Style }}">Solvent-free adhesive, recyclable strapping, thinner film where the load allows</h2>
+          <p style="font-size:15.5px;line-height:1.65;color:var(--rs-neutral-800);margin:0">Sustainability here is a manufacturing decision, not a label. Our adhesive is water-based, so there is no solvent recovery to manage. Our PP strapping replaces steel on most pallet loads and goes back into the recycling stream. Where a carton is light, we will recommend 38 micron instead of selling you 50.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ ecoPoints }}" as="e" hint-placeholder-count="4">
+              <span style="display:flex;gap:10px;align-items:flex-start">
+                <span style="flex:none;width:26px;height:26px;border-radius:50%;background:var(--rs-white);border:1px solid #247651;color:#1d6243;display:flex;align-items:center;justify-content:center;margin-top:1px">
+                  <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+                </span>
+                <span style="font-size:14.5px;line-height:1.55;color:var(--rs-neutral-800)"><span style="font-weight:700;color:var(--rs-neutral-900)">{{ e.lead }}</span> {{ e.body }}</span>
+              </span>
+            </sc-for>
+          </div>
+          <a href="#" style="{{ ctaEco }}" style-hover="background:#1d6243" style-active="background:#175137;transform:translateY(1px)">
+            Read our sustainability approach
+            <x-import component-from-global-scope="RsIcon" name="arrow-right" size="19" hint-size="19px,19px"></x-import>
+          </a>
+        </div>
+        <div style="{{ ecoArtWrap }}">
+          <div role="img" aria-label="Coils of green polypropylene strapping stacked beside a carton bound with a single strap, photographed against a pale background." style="position:relative;width:100%;aspect-ratio:4 / 3;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(150deg,#e6f4ec 0%,#e8eef2 55%,#d3e9f6 100%);border:1px solid var(--border-subtle)">
+            <span style="position:absolute;width:210px;height:210px;border-radius:50%;right:-46px;top:-38px;border:30px solid #d6f0e2"></span>
+            <span style="position:absolute;width:130px;height:130px;border-radius:50%;right:64px;top:96px;border:22px solid #b9dcf0"></span>
+            <span style="position:absolute;left:26px;top:74px;width:150px;height:12px;border-radius:2px;background:#247651"></span>
+            <span style="position:absolute;left:26px;top:104px;width:110px;height:12px;border-radius:2px;background:#1d6243"></span>
+            <span style="position:absolute;left:16px;bottom:12px;right:16px;font-size:11.5px;line-height:1.4;color:var(--rs-neutral-600)">Studio: green PP strapping coils beside a single-strapped carton, cool daylight, pale slate ground.</span>
+          </div>
+          <span style="font-size:11.5px;line-height:1.45;color:var(--rs-neutral-600)">alt: Coils of green polypropylene strapping stacked beside a carton bound with a single strap, photographed against a pale background.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" variant="{{ variant }}" hint-size="100%,420px"></dc-import>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:50;display:flex;gap:1px;background:var(--rs-neutral-300);border-top:1px solid var(--rs-neutral-300)">
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:#247651;color:#fff;font-size:15px;font-weight:600" style-hover="background:#1d6243">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        Chat on WhatsApp
+      </a>
+      <a href="#" style="flex:1;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600" style-hover="background:var(--rs-blue-800)">
+        <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+        Instant Spec Quote
+      </a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:sticky;bottom:0;z-index:50;height:0;display:flex;justify-content:flex-end;pointer-events:none">
+      <span style="display:flex;align-items:center;gap:8px;padding:8px;margin:0 28px -84px 0;border-radius:999px;background:var(--rs-white);border:1px solid var(--border-default);box-shadow:0 10px 26px rgba(26,34,43,.16);pointer-events:auto">
+        <a href="#" aria-label="Chat with a specialist on WhatsApp" style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#247651;color:#fff" style-hover="background:#1d6243">
+          <x-import component-from-global-scope="RsIcon" name="message-circle" size="20" hint-size="20px,20px"></x-import>
+        </a>
+        <a href="#" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;background:var(--rs-blue-700);color:#fff;font-size:15px;font-weight:600" style-hover="background:var(--rs-blue-800)">
+          <x-import component-from-global-scope="RsIcon" name="ruler" size="18" hint-size="18px,18px"></x-import>
+          Instant Spec Quote
+        </a>
+      </span>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+const PRODUCTS = [
+  {
+    key: "tapes", artwork: "bopp", eco: true,
+    name: "BOPP Self-Adhesive Tapes",
+    blurb: "The workhorse carton seal. Pick micron by box weight, not by habit.",
+    badges: ["38–60 micron", "12–72mm", "40m / 65m / 100m"],
+    metaLabel: "Adhesive", metaValue: "Water-based acrylic",
+    moq: "Custom print from 1 box",
+    price: "From ₹385 per box",
+    shot: "Studio: stacked tan BOPP rolls, 45° isometric, soft top light.",
+    alt: "Four rolls of tan BOPP packaging tape stacked in a pyramid on a pale grey surface."
+  },
+  {
+    key: "custom", artwork: "printed", eco: false,
+    name: "Customized Printed Logo Tapes",
+    blurb: "Your logo in up to three colours, on the adhesive we ship to pharma.",
+    badges: ["40–50 micron", "48mm / 72mm", "2–3 colour print"],
+    metaLabel: "Print process", metaValue: "Flexographic, water-based ink",
+    moq: "Minimum 1 box · industry norm 10–25",
+    price: "Priced to spec",
+    priceNote: "Made to order. Quoted on artwork, width and quantity.",
+    shot: "Studio: printed logo tape mid-application along a carton seam, shallow depth.",
+    alt: "A hand applying custom-printed tape carrying a repeated logo along a cardboard carton seam."
+  },
+  {
+    key: "strapping", artwork: "strapping", eco: true,
+    name: "PP Strapping Patty",
+    blurb: "High-tensile bundling for pallets and heavy cases. Recyclable polypropylene.",
+    badges: ["8–19mm width", "0.5–1.0mm gauge", "Manual / machine"],
+    metaLabel: "Break strength", metaValue: "Up to 1,250 N per 25mm",
+    moq: "Custom print from 1 bag (5 boxes)",
+    price: "From ₹1,240 per bag",
+    shot: "Studio: two coils of green strapping stacked flat, raking side light.",
+    alt: "Two coils of green polypropylene strapping laid flat, one resting on the other."
+  },
+  {
+    key: "tapes", artwork: "masking", eco: false,
+    name: "Masking & Filament Tapes",
+    blurb: "Clean-peel paper masking for finishing lines, glass-reinforced filament for bundling.",
+    badges: ["24mm / 48mm", "Low-tack & high-tensile", "Paper / reinforced"],
+    metaLabel: "Adhesive", metaValue: "Rubber-resin, clean removal",
+    moq: "Sold from 1 box",
+    price: "From ₹460 per box",
+    shot: "Studio: cream masking roll beside a reinforced filament roll, cool daylight.",
+    alt: "A cream paper masking tape roll standing beside a roll of glass-filament reinforced tape."
+  }
+];
+
+class Component extends DCLogic {
+  state = { tab: "All" };
+
+  renderVals() {
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const pad = mobile ? "0 16px" : "0 32px";
+    const inner = { maxWidth: 1200, margin: "0 auto", padding: pad, display: "flex", flexDirection: "column", gap: mobile ? 22 : 30, width: "100%", boxSizing: "border-box" };
+    const secPad = mobile ? "44px 0" : "84px 0";
+
+    const counts = { All: PRODUCTS.length };
+    PRODUCTS.forEach(p => { counts[p.key] = (counts[p.key] || 0) + 1; });
+    const tabDefs = [
+      { label: "All lines", key: "All" },
+      { label: "Self-adhesive tapes", key: "tapes" },
+      { label: "Strapping", key: "strapping" },
+      { label: "Custom printed", key: "custom" }
+    ];
+    const tabs = tabDefs.map(t => {
+      const on = this.state.tab === t.key;
+      return {
+        label: t.label,
+        count: counts[t.key] || 0,
+        on,
+        onClick: () => this.setState({ tab: t.key }),
+        style: {
+          display: "inline-flex", alignItems: "center", gap: 8, minHeight: 48,
+          padding: on ? "0 15px" : "0 16px", borderRadius: "var(--radius-md)",
+          background: on ? "var(--rs-blue-50)" : "var(--rs-white)",
+          border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+          color: on ? "var(--rs-blue-900)" : "var(--rs-neutral-800)",
+          fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer",
+          whiteSpace: "nowrap"
+        },
+        countStyle: {
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          minWidth: 22, height: 22, padding: "0 6px", borderRadius: 999,
+          background: on ? "var(--rs-blue-700)" : "var(--rs-neutral-200)",
+          color: on ? "#fff" : "var(--rs-neutral-700)",
+          fontSize: 12, fontWeight: 700
+        }
+      };
+    });
+
+    const shown = this.state.tab === "All" ? PRODUCTS : PRODUCTS.filter(p => p.key === this.state.tab);
+    const shownProducts = shown.map(p => Object.assign({ variant: mobile ? "mobile" : "desktop" }, p));
+
+    const rollGlyphs = [];
+    for (let i = 0; i < 12; i++) {
+      rollGlyphs.push({
+        width: 16, height: 16, borderRadius: "50%",
+        border: "4px solid " + (i < 9 ? "#41a9dc" : "#f3d170"),
+        display: "block"
+      });
+    }
+
+    const industryDefs = [
+      { name: "Pharma & healthcare", icon: "pill", spec: "45µ tan, tamper-evident print", reveal: "Batch-traceable rolls and a water-based adhesive that leaves no residue on validated cartons. Print carries your batch legend.", tone: "#e2f1fa" },
+      { name: "E-commerce fulfilment", icon: "package", spec: "40–45µ, 48mm, printed", reveal: "Built for high-volume manual sealing: consistent unwind, low noise, and logo print that survives the last mile.", tone: "#dbe9f2" },
+      { name: "Cold storage & frozen", icon: "snowflake", spec: "50µ+, low-temperature tack", reveal: "Adhesive selected to hold at −18°C on damp fibreboard, where standard acrylic lets go at the flap.", tone: "#d3e9f6" },
+      { name: "FMCG & food", icon: "shopping-basket", spec: "38–42µ, high-speed lines", reveal: "Machine-grade rolls with tight core tolerance so automatic taping heads do not stall mid-shift.", tone: "#e6f0f5" },
+      { name: "Textiles & apparel", icon: "shirt", spec: "12mm PP strap, 0.5mm", reveal: "Bale strapping that grips compressed fabric without cutting into it, and prints cleanly for despatch marking.", tone: "#e8eef2" },
+      { name: "Heavy engineering", icon: "wrench", spec: "19mm strap, filament tape", reveal: "PP and PET strapping specified against real pallet weight, replacing steel banding on most crated loads.", tone: "#dfe8ee" }
+    ];
+    const industries = industryDefs.map(i => ({
+      name: i.name, icon: i.icon, spec: i.spec, reveal: i.reveal,
+      tileStyle: {
+        position: "relative", display: "flex", flexDirection: "column",
+        background: "var(--rs-white)", border: "1px solid var(--border-subtle)",
+        borderRadius: "var(--radius-lg)", overflow: "hidden", textDecoration: "none",
+        boxShadow: "0 1px 2px rgba(26,34,43,.06)"
+      },
+      artStyle: {
+        position: "relative", display: "block", width: "100%",
+        aspectRatio: mobile ? "16 / 9" : "5 / 3",
+        background: "linear-gradient(140deg," + i.tone + " 0%,#eef2f5 100%)",
+        overflow: "hidden", flex: "none"
+      },
+      blob: {
+        position: "absolute", width: 120, height: 120, borderRadius: "50%",
+        right: -26, top: -22, border: "20px solid rgba(255,255,255,.72)"
+      }
+    }));
+
+    return {
+      variant: mobile ? "mobile" : "desktop",
+      isMobile: mobile,
+      isDesktop: !mobile,
+      pageStyle: {
+        fontFamily: "var(--font-body)", background: "var(--rs-white)",
+        color: "var(--rs-neutral-900)", width: "100%",
+        minHeight: "100%", display: "flex", flexDirection: "column"
+      },
+      inner,
+      secWhite: { background: "var(--rs-white)", padding: secPad },
+      secSubtle: { background: "var(--rs-neutral-50)", padding: secPad, borderTop: "1px solid var(--border-subtle)", borderBottom: "1px solid var(--border-subtle)" },
+      secGold: { background: "var(--rs-gold-100)", padding: secPad, borderBottom: "1px solid var(--rs-gold-200)" },
+      secEco: { background: "var(--rs-success-soft)", padding: secPad, borderTop: "1px solid #b9ddc9" },
+
+      heroWrap: mobile
+        ? { maxWidth: 1200, margin: "0 auto", padding: "28px 16px 36px", display: "flex", flexDirection: "column", gap: 24, width: "100%", boxSizing: "border-box" }
+        : { maxWidth: 1200, margin: "0 auto", padding: "64px 32px 76px", display: "grid", gridTemplateColumns: "1.05fr .95fr", gap: 56, alignItems: "center", width: "100%", boxSizing: "border-box" },
+      heroCopy: { display: "flex", flexDirection: "column", gap: mobile ? 14 : 18 },
+      h1Style: {
+        margin: 0, fontFamily: "var(--font-display)", fontWeight: 600,
+        fontSize: mobile ? 38 : 60, lineHeight: 1.04, letterSpacing: "-.01em",
+        color: "var(--rs-neutral-900)", textWrap: "balance"
+      },
+      heroSub: { margin: 0, fontSize: mobile ? 16 : 18, lineHeight: 1.6, color: "var(--rs-neutral-700)", maxWidth: "56ch" },
+      heroCtas: { display: "flex", flexDirection: mobile ? "column" : "row", gap: 12, paddingTop: 4 },
+      ctaPrimary: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: mobile ? 52 : 54, padding: "0 24px", borderRadius: "var(--radius-md)",
+        background: "var(--rs-blue-700)", color: "#fff", fontSize: 16.5, fontWeight: 600,
+        textDecoration: "none", boxShadow: "0 1px 2px rgba(26,34,43,.18)"
+      },
+      ctaAccent: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: mobile ? 52 : 54, padding: "0 22px", borderRadius: "var(--radius-md)",
+        background: "var(--rs-gold-300)", color: "var(--rs-neutral-950)",
+        fontSize: 16.5, fontWeight: 700, textDecoration: "none"
+      },
+      ctaAccentFull: {
+        display: "flex", alignItems: "center", justifyContent: "center", gap: 9,
+        minHeight: 52, borderRadius: "var(--radius-md)", background: "var(--rs-gold-300)",
+        color: "var(--rs-neutral-950)", fontSize: 16, fontWeight: 700, textDecoration: "none"
+      },
+      ctaEco: {
+        display: "inline-flex", alignSelf: "flex-start", alignItems: "center", justifyContent: "center",
+        gap: 9, minHeight: mobile ? 52 : 52, padding: "0 22px", borderRadius: "var(--radius-md)",
+        background: "#247651", color: "#fff", fontSize: 16, fontWeight: 600, textDecoration: "none"
+      },
+      trust: [
+        { icon: "droplets", label: "Water-based adhesive, no solvent" },
+        { icon: "ruler", label: "Micron tested per batch" },
+        { icon: "stamp", label: "Custom print from 1 box" },
+        { icon: "truck", label: "Dispatch in 24 hours on stock lines" }
+      ],
+      trustShort: [
+        { icon: "stamp", label: "Custom print from 1 box" },
+        { icon: "ruler", label: "Micron tested per batch" },
+        { icon: "truck", label: "Dispatch in 24 hours" }
+      ],
+      heroArtWrap: { display: "flex", flexDirection: "column", gap: 10, order: mobile ? -1 : 0 },
+      artCaption: { fontSize: 11.5, lineHeight: 1.45, color: "var(--rs-neutral-600)", textAlign: mobile ? "left" : "right" },
+
+      quoteWrap: {
+        display: "flex", gap: mobile ? 12 : 20, alignItems: "flex-start",
+        padding: mobile ? "18px" : "26px 30px", background: "var(--rs-blue-50)",
+        border: "1px solid var(--rs-blue-200)", borderLeft: "5px solid var(--rs-blue-700)",
+        borderRadius: "var(--radius-lg)"
+      },
+      quoteMark: {
+        fontFamily: "var(--font-display)", fontSize: mobile ? 48 : 64, lineHeight: .72,
+        color: "var(--rs-blue-700)", flex: "none"
+      },
+      quoteText: {
+        margin: 0, fontFamily: "var(--font-display)", fontWeight: 500,
+        fontSize: mobile ? 24 : 34, lineHeight: 1.18, color: "var(--rs-neutral-900)",
+        textWrap: "pretty", maxWidth: "38ch"
+      },
+      promiseGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "repeat(3,1fr)", gap: mobile ? 12 : 20 },
+      promises: [
+        { icon: "ruler", title: "Specified, not guessed", body: "Tell us the carton weight and how it travels. We come back with a micron and an adhesive, and we say when a cheaper grade would hold just as well.", proof: "Tensile and peel checked per batch" },
+        { icon: "package", title: "One box is a real order", body: "Industry minimums for printed tape run 10 to 25 boxes. Ours is one box, or one bag of strapping patty — the same film, the same ink, the same plant.", proof: "MOQ: 1 box tape · 1 bag patty" },
+        { icon: "indian-rupee", title: "Priced for who you are", body: "Marketplace listings carry honest D2C pricing for small packs. Volume moves to slab pricing with freight stated up front, never buried in the unit rate.", proof: "Slab pricing quoted in one working day" }
+      ],
+      secHead: {
+        display: "flex", flexDirection: mobile ? "column" : "row",
+        gap: mobile ? 14 : 32, alignItems: mobile ? "flex-start" : "flex-end",
+        justifyContent: "space-between"
+      },
+      h2Style: {
+        margin: 0, fontFamily: "var(--font-display)", fontWeight: 600,
+        fontSize: mobile ? 30 : 42, lineHeight: 1.08, letterSpacing: "-.005em",
+        color: "var(--rs-neutral-900)", textWrap: "balance"
+      },
+      tabRow: mobile
+        ? { display: "flex", gap: 8, overflowX: "auto", padding: "2px 16px 6px", margin: "0 -16px" }
+        : { display: "flex", flexWrap: "wrap", gap: 10 },
+      tabs, shownProducts,
+      carouselHint: shown.length + " of " + PRODUCTS.length + " lines · swipe for more",
+      dots: shown.map((p, i) => ({
+        width: i === 0 ? 20 : 7, height: 7, borderRadius: 999,
+        background: i === 0 ? "var(--rs-blue-700)" : "var(--rs-neutral-300)",
+        display: "block"
+      })),
+
+      moqSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1fr 1fr", gap: mobile ? 14 : 24, alignItems: "start" },
+      roadmap: { display: "flex", flexDirection: "column", gap: 10 },
+      steps: [
+        { n: "1", title: "Send your artwork", body: "PDF, AI or CDR with fonts outlined. One to three spot colours. No artwork yet? Send a logo and we will set the repeat.", when: "Same day acknowledgement" },
+        { n: "2", title: "We confirm the spec", body: "Micron, width and adhesive matched to your carton weight and how it ships. You get the reasoning, not just a rate.", when: "Within 1 working day" },
+        { n: "3", title: "Approve a digital proof", body: "Repeat length, colour placement and print direction shown on the actual film before we mount a cylinder.", when: "1–2 working days" },
+        { n: "4", title: "Print and dispatch", body: "Printed, slit to your width and boxed. Reorders skip straight to production on the same cylinder.", when: "5–7 working days" }
+      ],
+      mathCard: {
+        display: "flex", flexDirection: "column", gap: 14,
+        padding: mobile ? 18 : 24, background: "var(--rs-white)",
+        border: "1px solid var(--rs-gold-200)", borderRadius: "var(--radius-lg)",
+        boxShadow: "0 1px 2px rgba(26,34,43,.06)"
+      },
+      rollGlyphs,
+
+      industryGrid: { display: "grid", gridTemplateColumns: mobile ? "1fr 1fr" : "repeat(3,1fr)", gap: mobile ? 10 : 18 },
+      industries,
+
+      ecoSplit: { display: "grid", gridTemplateColumns: mobile ? "1fr" : "1.05fr .95fr", gap: mobile ? 20 : 44, alignItems: "center" },
+      ecoArtWrap: { display: "flex", flexDirection: "column", gap: 8, order: mobile ? -1 : 0 },
+      ecoPoints: [
+        { lead: "Water-based acrylic.", body: "No solvent in the coating line, so no solvent recovery and no residual smell in a sealed carton." },
+        { lead: "PP strapping over steel.", body: "Recyclable, lighter to freight, and it will not rust-mark a crate in monsoon transit." },
+        { lead: "Right-sized film.", body: "If 38 micron holds your load, we quote 38 micron. Selling you thickness you do not need is waste we are paid for." },
+        { lead: "Core and carton reuse.", body: "Returned cores go back into the winding line; outer cartons are reused for local dispatch." }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>

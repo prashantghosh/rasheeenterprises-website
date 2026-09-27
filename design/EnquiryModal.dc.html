@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+:root{
+  --color-primary:var(--rs-blue-700);
+  --color-primary-hover:var(--rs-blue-800);
+  --color-primary-active:var(--rs-blue-900);
+  --text-link:var(--rs-blue-800);
+  --text-muted:var(--rs-neutral-600);
+  --rs-eco:#247651;
+  --ring-focus:0 0 0 3px rgba(34,114,155,.55);
+}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="position:relative;width:100%;min-height:100%;background:rgba(16,24,33,.56);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;font-family:var(--font-body)">
+  <div role="dialog" aria-modal="true" aria-labelledby="enq-title" style="{{ shellStyle }}">
+
+    <div style="display:flex;align-items:flex-start;gap:16px;padding:20px 20px 16px;border-bottom:1px solid var(--border-subtle);background:var(--rs-white)">
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Specification enquiry</span>
+        <h2 id="enq-title" style="margin:0;font-family:var(--font-display);font-size:26px;line-height:1.1;color:var(--rs-neutral-900);font-weight:600">Tell us your spec. We will quote it honestly.</h2>
+      </div>
+      <button type="button" aria-label="Close enquiry form" style="flex:none;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-neutral-700);cursor:pointer" style-hover="background:var(--rs-neutral-100);color:var(--rs-neutral-900)">
+        <x-import component-from-global-scope="RsIcon" name="x" size="20" hint-size="20px,20px"></x-import>
+      </button>
+    </div>
+
+    <div style="display:flex;gap:8px;padding:14px 20px;background:var(--rs-neutral-50);border-bottom:1px solid var(--border-subtle)">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="{{ s.style }}">
+          <span style="font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.02em">{{ s.num }}</span>
+          <span style="font-family:var(--font-body);font-size:13px;font-weight:600">{{ s.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="flex:1 1 auto;min-height:0;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:20px;background:var(--rs-white)">
+
+      <div style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px solid var(--rs-blue-200);border-left:4px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-blue-50)">
+        <span style="font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-800)">Enquiring about</span>
+        <span style="font-family:var(--font-body);font-size:16px;font-weight:600;line-height:1.35;color:var(--rs-neutral-900)">Custom BOPP Tape — 45 Micron, 48mm</span>
+        <span style="font-family:var(--font-body);font-size:13px;line-height:1.5;color:var(--rs-neutral-700)">Water-based acrylic · Tan · 65m roll · Custom print from 1 box. Loaded from your selection — edit anything below.</span>
+      </div>
+
+      <sc-if value="{{ showAlert }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--rs-danger);border-radius:var(--radius-md);background:var(--rs-danger-soft)">
+          <span style="flex:none;color:#a8322a;display:flex;padding-top:1px">
+            <x-import component-from-global-scope="RsIcon" name="alert-circle" size="18" hint-size="18px,18px"></x-import>
+          </span>
+          <span style="font-family:var(--font-body);font-size:14px;line-height:1.5;color:#8f2b24;font-weight:500">Two fields need attention before we can route this to the right specialist.</span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:{{ gridCols }};gap:16px">
+            <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" from="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js" label="Estimated quantity" placeholder="e.g. 40 boxes" size="lg" value="{{ qty }}" error="{{ qtyError }}" hint="Boxes, bags or pallets — an estimate is fine." hint-size="100%,74px"></x-import>
+            <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" from="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js" label="Typical box weight" placeholder="e.g. 12 kg" size="lg" value="{{ weight }}" hint="Lets us confirm the micron grade." hint-size="100%,74px"></x-import>
+          </div>
+          <div style="display:grid;grid-template-columns:{{ gridCols }};gap:16px">
+            <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" from="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js" label="Work email" placeholder="you@company.com" size="lg" value="{{ email }}" error="{{ emailError }}" hint-size="100%,74px"></x-import>
+            <x-import component-from-global-scope="RasheeEnterprisesDesignSystem_cf8188.Input" from="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js" label="Mobile / WhatsApp" placeholder="+91 " size="lg" value="{{ phone }}" hint-size="100%,74px"></x-import>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--rs-neutral-900)">Requirement notes</span>
+            <textarea rows="3" placeholder="Width, adhesion conditions, cold storage, logo colours — anything that affects the spec." style="font-family:var(--font-body);font-size:16px;line-height:1.5;color:var(--rs-neutral-900);padding:12px 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:var(--rs-white);resize:vertical;min-height:88px" style-focus="border-color:var(--rs-blue-700);box-shadow:var(--ring-focus);outline:none" defaultValue="{{ notes }}"></textarea>
+            <span style="font-family:var(--font-body);font-size:13px;color:var(--rs-neutral-600)">Sealing on a high-speed carton line? Say so — it changes the tack we recommend.</span>
+          </label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSuccess }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:18px;padding:8px 0 4px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--rs-success-soft);color:#1d6243;display:flex;align-items:center;justify-content:center;border:2px solid #247651">
+              <x-import component-from-global-scope="RsIcon" name="check" size="26" hint-size="26px,26px"></x-import>
+            </span>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-family:var(--font-display);font-size:24px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Enquiry received</span>
+              <span style="font-family:var(--font-body);font-size:14px;color:var(--rs-neutral-700)">Reference RQ-2451 · sent to our tape specialists</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);background:var(--rs-neutral-50)">
+            <span style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--rs-neutral-900)">What happens next</span>
+            <span style="font-family:var(--font-body);font-size:14px;line-height:1.6;color:var(--rs-neutral-700)">A specialist confirms micron and adhesive suitability for a 12 kg box, then sends indicative volume pricing within one working day. If your artwork is ready, attach it to the WhatsApp thread and we will return a print proof with it.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px solid var(--rs-blue-200);border-radius:var(--radius-md);background:var(--rs-blue-50)">
+            <span style="font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-blue-800)">Your spec, on record</span>
+            <span style="font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--rs-neutral-900)">Custom BOPP Tape — 45µ · 48mm · Tan · 40 boxes</span>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="{{ footerStyle }}">
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:10px;width:100%">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="button" style="flex:1 1 180px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;border:0;border-radius:var(--radius-md);background:var(--rs-blue-700);color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(26,34,43,.18)" style-hover="background:var(--rs-blue-800)" style-active="background:var(--rs-blue-900);transform:translateY(1px)">
+              <x-import component-from-global-scope="RsIcon" name="mail" size="18" hint-size="18px,18px"></x-import>
+              Send enquiry by email
+            </button>
+            <button type="button" style="flex:1 1 180px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;border:0;border-radius:var(--radius-md);background:#247651;color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:#1d6243" style-active="background:#175137;transform:translateY(1px)">
+              <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+              Send on WhatsApp
+            </button>
+          </div>
+          <span style="font-family:var(--font-body);font-size:13px;line-height:1.5;color:var(--rs-neutral-600)">No obligation, no automated sales calls. Your budget, our honest execution.</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showSuccess }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:10px;width:100%;flex-wrap:wrap">
+          <button type="button" style="flex:1 1 160px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;border:0;border-radius:var(--radius-md);background:#247651;color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:#1d6243">
+            <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+            Continue on WhatsApp
+          </button>
+          <button type="button" style="flex:1 1 160px;min-height:52px;display:flex;align-items:center;justify-content:center;padding:0 20px;border:1px solid var(--rs-blue-700);border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-800);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:var(--rs-blue-50)">Back to catalog</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:760},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;empty&quot;,&quot;filled&quot;,&quot;error&quot;,&quot;submitted&quot;],&quot;default&quot;:&quot;empty&quot;,&quot;tsType&quot;:&quot;'empty'|'filled'|'error'|'submitted'&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.props.state || "empty";
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const step = st === "submitted" ? 4 : st === "empty" ? 1 : 3;
+    const steps = [
+      { num: "1", label: "Product" },
+      { num: "2", label: "Quantity" },
+      { num: "3", label: "Notes" }
+    ].map((s, i) => {
+      const n = i + 1;
+      const done = n < step, cur = n === step;
+      return Object.assign({}, s, {
+        style: {
+          flex: "1 1 0",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          minHeight: 40,
+          padding: "0 12px",
+          borderRadius: "var(--radius-md)",
+          border: cur ? "2px solid var(--rs-blue-700)" : "1px solid var(--border-default)",
+          background: cur ? "var(--rs-blue-50)" : done ? "var(--rs-neutral-100)" : "var(--rs-white)",
+          color: cur ? "var(--rs-blue-900)" : "var(--rs-neutral-700)"
+        }
+      });
+    });
+    return {
+      steps,
+      showForm: st !== "submitted",
+      showSuccess: st === "submitted",
+      showAlert: st === "error",
+      gridCols: mobile ? "1fr" : "1fr 1fr",
+      qty: st === "empty" ? "" : st === "error" ? "" : "40 boxes",
+      weight: st === "empty" ? "" : "12 kg",
+      email: st === "empty" ? "" : st === "error" ? "procurement@" : "n.iyer@vitalpharma.in",
+      phone: st === "empty" ? "" : "+91 98200 41125",
+      notes: st === "empty" ? "" : "Sealing 12 kg cartons on a semi-auto line. Two-colour logo print, artwork ready in PDF. Need recyclable options if available.",
+      qtyError: st === "error" ? "Add an estimated quantity so we can price the right slab." : undefined,
+      emailError: st === "error" ? "This email looks incomplete." : undefined,
+      shellStyle: mobile
+        ? { position: "relative", width: "100%", height: 780, display: "flex", flexDirection: "column", background: "var(--rs-white)", overflow: "hidden" }
+        : { width: "100%", maxWidth: 640, height: 760, display: "flex", flexDirection: "column", background: "var(--rs-white)", borderRadius: "var(--radius-lg)", boxShadow: "0 24px 60px rgba(16,24,33,.34)", overflow: "hidden", margin: "24px 0" },
+      footerStyle: {
+        display: "flex",
+        padding: mobile ? "16px 20px 20px" : "16px 20px",
+        borderTop: "1px solid var(--border-subtle)",
+        background: "var(--rs-neutral-50)"
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

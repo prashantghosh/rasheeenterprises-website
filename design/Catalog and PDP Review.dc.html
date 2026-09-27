@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--rs-neutral-100);}
+a{color:var(--rs-blue-800);}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<section style="font-family:var(--font-body);padding:40px;display:flex;flex-direction:column;gap:26px;background:var(--rs-neutral-100)">
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px;justify-content:space-between;max-width:1400px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:72ch">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Batch 2 · Catalog &amp; product detail</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-size:44px;line-height:1.05;font-weight:600;color:var(--rs-neutral-900)">Catalog and PDP, with all three marketplace states</h1>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:var(--rs-neutral-700)">Both pages are one component switched on props. Pick a page below — one page renders at a time so the review file stays responsive, and each frame scrolls internally. Everything inside is live: catalog filters, the updating and no-results states, the mobile filter drawer, PDP variant chips, pack cards, gallery thumbnails, and the enquiry modal.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);min-width:250px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Reused, not rebuilt</span>
+      <span style="font-size:13.5px;line-height:1.7;color:var(--rs-neutral-800)">SiteHeader · SiteFooter · ProductCard · CtaBlock · EnquiryModal</span>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:center;padding:16px 18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Page</span>
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="2">
+        <button type="button" onClick="{{ p.onClick }}" aria-pressed="{{ p.on }}" style="{{ p.style }}">
+          <sc-if value="{{ p.on }}" hint-placeholder-val="{{ false }}">
+            <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+              <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+            </span>
+          </sc-if>
+          {{ p.label }}
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showPdp }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-left:22px;border-left:1px solid var(--border-subtle)">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Marketplace state</span>
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="3">
+          <button type="button" onClick="{{ m.onClick }}" aria-pressed="{{ m.on }}" style="{{ m.style }}">
+            <sc-if value="{{ m.on }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+              </span>
+            </sc-if>
+            {{ m.label }}
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span style="{{ badgeStyle }}">{{ badgeId }}</span>
+      <span style="font-family:var(--font-display);font-size:24px;line-height:1;font-weight:600;color:var(--rs-neutral-900)">{{ frameTitle }}</span>
+    </div>
+    <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700);max-width:78ch">{{ frameNote }}</span>
+
+    <div style="display:flex;gap:32px;align-items:flex-start">
+      <div id="{{ deskAnchor }}" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop — 1440px viewport, frame scrolls</span>
+        <div style="width:1440px;height:920px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);overflow:auto;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.14);display:flex">
+          <sc-if value="{{ showCatalog }}" hint-placeholder-val="{{ true }}">
+            <dc-import name="Catalog" variant="desktop" hint-size="1440px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showPdp }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="PDP" variant="desktop" marketplace="{{ mode }}" hint-size="1440px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+        </div>
+      </div>
+      <div id="{{ mobAnchor }}" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile — 390px, frame scrolls</span>
+        <div style="width:390px;height:920px;border:8px solid var(--rs-neutral-900);border-radius:30px;overflow:auto;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.2);display:flex">
+          <sc-if value="{{ showCatalog }}" hint-placeholder-val="{{ true }}">
+            <dc-import name="Catalog" variant="mobile" hint-size="374px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showPdp }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="PDP" variant="mobile" marketplace="{{ mode }}" hint-size="374px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { page: "catalog", mode: "three" };
+
+  renderVals() {
+    const page = this.state.page;
+    const mode = this.state.mode;
+    const isCat = page === "catalog";
+
+    const btn = (label, on, onClick) => ({
+      label, on, onClick,
+      style: {
+        display: "inline-flex", alignItems: "center", gap: 7, minHeight: 44,
+        padding: on ? "0 13px" : "0 14px", borderRadius: "var(--radius-md)",
+        background: on ? "var(--rs-blue-50)" : "var(--rs-white)",
+        border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+        color: on ? "var(--rs-blue-900)" : "var(--rs-neutral-800)",
+        fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer"
+      }
+    });
+
+    const modeDefs = [
+      { key: "three", id: "2c", label: "Three links", note: "Stocked variant. Block A lists Shopify, Amazon and Flipkart; availability reads “In stock — dispatches in 24 hours”; price is “From ₹385 per box” with the D2C qualifier. Select 12mm or 38µ in the chip rows to watch availability flip to made-to-order live." },
+      { key: "one", id: "2e", label: "One link", note: "Only one marketplace carries this variant. Block A shows a single link and still holds a full half of the split — no empty slots and no “unavailable elsewhere” language." },
+      { key: "zero", id: "2g", label: "Zero links — Made to Order", note: "The custom-printed line, which is never sold through marketplaces. Block A becomes a Made to Order statement in brand gold, price reads “Priced to spec”, and the summary panel says “Available to order — made to your spec”. Nothing is greyed out or disabled." }
+    ];
+    const cur = modeDefs.filter(d => d.key === mode)[0] || modeDefs[0];
+
+    return {
+      showCatalog: isCat,
+      showPdp: !isCat,
+      mode,
+      pages: [
+        btn("Catalog", isCat, () => this.setState({ page: "catalog" })),
+        btn("Product detail", !isCat, () => this.setState({ page: "pdp" }))
+      ],
+      modes: modeDefs.map(d => btn(d.label, d.key === mode, () => this.setState({ mode: d.key }))),
+      badgeId: isCat ? "2a" : cur.id,
+      badgeStyle: {
+        display: "inline-flex", alignItems: "center", height: 26, padding: "0 10px",
+        borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: ".06em",
+        background: !isCat && mode === "zero" ? "var(--rs-gold-300)" : "var(--rs-blue-800)",
+        color: !isCat && mode === "zero" ? "var(--rs-neutral-950)" : "#fff"
+      },
+      frameTitle: isCat ? "Catalog" : "Product detail page",
+      frameNote: isCat
+        ? "Sticky 25% filter rail on desktop with Category, Thickness, Width, Colour and Application; full-screen drawer on mobile with an active-count badge and removable applied-filter chips. Change a filter to see the updating state; try Strapping plus Masking & finishing for the no-results enquiry state."
+        : cur.note,
+      deskAnchor: isCat ? "2a" : "2c",
+      mobAnchor: isCat ? "2b" : "2d"
+    };
+  }
+}
+
+</script>
+</body>
+</html>

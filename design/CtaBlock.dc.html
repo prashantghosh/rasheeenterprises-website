@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+:root{
+  --color-primary:var(--rs-blue-700);
+  --text-muted:var(--rs-neutral-600);
+  --ring-focus:0 0 0 3px rgba(34,114,155,.55);
+}
+*,*::before,*::after{box-sizing:border-box}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<div style="{{ wrapStyle }}">
+
+  <div style="{{ blockAStyle }}">
+    <sc-if value="{{ hasLinks }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:var(--font-display);font-size:20px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Buying a few boxes?</span>
+          <span style="font-family:var(--font-body);font-size:14px;line-height:1.5;color:var(--rs-neutral-700)">This exact variant is listed and ready to ship. D2C pricing, no minimum.</span>
+        </div>
+        <div style="{{ linkGridStyle }}">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+            <a href="#" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:52px;padding:0 16px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-md);background:var(--rs-white);text-decoration:none;color:var(--rs-neutral-900)" style-hover="border-color:var(--rs-blue-700);background:var(--rs-blue-50);color:var(--rs-blue-900)">
+              <span style="display:flex;flex-direction:column;gap:1px">
+                <span style="font-family:var(--font-body);font-size:15px;font-weight:600;line-height:1.2">{{ l.name }}</span>
+                <span style="font-family:var(--font-body);font-size:12px;color:var(--rs-neutral-600)">{{ l.note }}</span>
+              </span>
+              <span style="flex:none;display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                <x-import component-from-global-scope="RsIcon" name="external-link" size="16" hint-size="16px,16px"></x-import>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+        <span style="font-family:var(--font-body);font-size:12px;line-height:1.5;color:var(--rs-neutral-600)">Opens in a new tab. Marketplace listings carry D2C pricing only.</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ madeToOrder }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:var(--rs-gold-300);color:var(--rs-neutral-950);font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+          <x-import component-from-global-scope="RsIcon" name="factory" size="15" hint-size="15px,15px"></x-import>
+          Made to order
+        </span>
+        <span style="font-family:var(--font-display);font-size:20px;line-height:1.15;font-weight:600;color:var(--rs-neutral-900)">Printed to your artwork, so it is produced per order</span>
+        <span style="font-family:var(--font-body);font-size:14px;line-height:1.55;color:var(--rs-neutral-700)">Custom-printed tape is not sold through marketplaces — every run carries your logo, micron and width. Priced to spec, from just one box.</span>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="{{ blockBStyle }}">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <span style="font-family:var(--font-display);font-size:20px;line-height:1.15;font-weight:600;color:var(--rs-white)">Buying for your business?</span>
+      <span style="font-family:var(--font-body);font-size:14px;line-height:1.55;color:var(--rs-blue-100)">Volume pricing, custom brand print from 1 box, and a specialist who matches micron and tack to your carton weight.</span>
+    </div>
+    <div style="{{ ctaRowStyle }}">
+      <button type="button" style="flex:1 1 200px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;border:0;border-radius:var(--radius-md);background:var(--rs-white);color:var(--rs-blue-900);font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer" style-hover="background:var(--rs-blue-50)" style-active="background:var(--rs-blue-100);transform:translateY(1px)">
+        Enquire for Bulk Order
+        <x-import component-from-global-scope="RsIcon" name="arrow-right" size="18" hint-size="18px,18px"></x-import>
+      </button>
+      <button type="button" style="flex:1 1 170px;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;border:0;border-radius:var(--radius-md);background:#247651;color:#fff;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer" style-hover="background:#1d6243" style-active="background:#175137;transform:translateY(1px)">
+        <x-import component-from-global-scope="RsIcon" name="message-circle" size="18" hint-size="18px,18px"></x-import>
+        WhatsApp a Specialist
+      </button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 18px;padding-top:4px;border-top:1px solid rgba(255,255,255,.22)">
+      <span style="display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--rs-blue-100)">
+        <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+        Custom print from 1 box
+      </span>
+      <span style="display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--rs-blue-100)">
+        <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+        Spec matched to box weight
+      </span>
+      <span style="display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--rs-blue-100)">
+        <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+        Reply within one working day
+      </span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:420},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;three&quot;,&quot;one&quot;,&quot;zero&quot;],&quot;default&quot;:&quot;three&quot;,&quot;tsType&quot;:&quot;'three'|'one'|'zero'&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;'desktop'|'mobile'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const mode = this.props.mode || "three";
+    const mobile = (this.props.variant || "desktop") === "mobile";
+    const all = [
+      { name: "Buy on Shopify", note: "Rashee official store" },
+      { name: "Buy on Amazon", note: "Prime eligible" },
+      { name: "Buy on Flipkart", note: "Pack of 6" }
+    ];
+    const links = mode === "three" ? all : mode === "one" ? [all[1]] : [];
+    const zero = mode === "zero";
+    const cardBase = {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: mobile ? "18px" : "22px",
+      borderRadius: "var(--radius-lg)"
+    };
+    return {
+      links,
+      hasLinks: !zero,
+      madeToOrder: zero,
+      wrapStyle: {
+        display: "grid",
+        gridTemplateColumns: mobile ? "1fr" : zero ? "5fr 7fr" : "1fr 1fr",
+        gap: mobile ? 14 : 18,
+        alignItems: "stretch",
+        fontFamily: "var(--font-body)"
+      },
+      blockAStyle: Object.assign({}, cardBase, {
+        border: zero ? "1px solid var(--rs-gold-200)" : "1px solid var(--border-subtle)",
+        background: zero ? "var(--rs-gold-100)" : "var(--rs-neutral-50)"
+      }),
+      blockBStyle: Object.assign({}, cardBase, {
+        gap: mobile ? 14 : 16,
+        border: "1px solid var(--rs-blue-900)",
+        background: "var(--rs-blue-800)",
+        boxShadow: "0 8px 24px rgba(24,75,102,.22)"
+      }),
+      linkGridStyle: {
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gap: 10
+      },
+      ctaRowStyle: { display: "flex", flexWrap: "wrap", gap: 10 }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

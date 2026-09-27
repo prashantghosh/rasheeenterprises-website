@@ -1,20 +1,19 @@
 <?php
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/solutions', [PageController::class, 'solutions'])->name('solutions');
+
+Route::get('/packaging-products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/packaging-products/{slug}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/custom-solutions', [PageController::class, 'custom'])->name('custom');
+Route::get('/industries', [PageController::class, 'industries'])->name('industries');
+Route::get('/sustainability', [PageController::class, 'sustainability'])->name('sustainability');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products');
-
-Route::post('/quote/items/{slug}', [QuoteController::class, 'add'])->name('quote.add');
-Route::delete('/quote/items/{slug}', [QuoteController::class, 'remove'])->name('quote.remove');
-Route::post('/quote', [QuoteController::class, 'submit'])->middleware('throttle:10,1')->name('quote.submit');
-
-Route::get('/contact', [ContactController::class, 'show'])->name('contact');
-Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:10,1')->name('contact.store');
+Route::get('/contact', [EnquiryController::class, 'contact'])->name('contact');
+Route::post('/enquiries', [EnquiryController::class, 'store'])->middleware('throttle:10,1')->name('enquiries.store');

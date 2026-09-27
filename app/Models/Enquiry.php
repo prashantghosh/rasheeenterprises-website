@@ -6,30 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
-    public const TYPE_CONTACT = 'contact';
+    public const TYPE_SPEC = 'spec';
 
-    public const TYPE_QUOTE = 'quote';
+    public const TYPE_CONTACT = 'contact';
 
     protected $fillable = [
         'type',
-        'first_name',
-        'last_name',
+        'name',
         'email',
+        'phone',
         'company',
-        'interest',
+        'quantity',
+        'box_weight',
+        'product',
+        'spec',
         'message',
-        'items',
+        'source',
     ];
 
-    protected function casts(): array
+    public function reference(): string
     {
-        return [
-            'items' => 'array',
-        ];
-    }
-
-    public function fullName(): string
-    {
-        return trim($this->first_name.' '.$this->last_name);
+        return 'RQ-'.str_pad((string) $this->id, 4, '0', STR_PAD_LEFT);
     }
 }

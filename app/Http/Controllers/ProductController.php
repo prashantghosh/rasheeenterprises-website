@@ -2,42 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\Quote;
-use Illuminate\Http\Request;
+use App\Support\Catalog;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public const SORTS = ['popularity' => 'Popularity', 'price' => 'Price', 'name' => 'Name'];
-
-    public function index(Request $request, Quote $quote): View
+    public function index(): View
     {
-        $categories = config('rashee.categories');
+        return view('pages.catalog', ['products' => Catalog::all()]);
+    }
 
-        $active = array_values(array_intersect($categories, (array) $request->query('category', [])));
-        $search = trim((string) $request->query('q', ''));
-        $sort = array_key_exists($request->query('sort'), self::SORTS) ? $request->query('sort') : 'popularity';
+    public function show(string $slug): View
+    {
+        $product = Catalog::find($slug) ?? abort(404);
 
-        $products = collect(config('rashee.catalog'))
-            ->when($active, fn ($c) => $c->whereIn('category', $active))
-            ->when($search !== '', fn ($c) => $c->filter(
-                fn ($p) => str_contains(mb_strtolower($p['name']), mb_strtolower($search))
-            ))
-            ->pipe(fn ($c) => match ($sort) {
-                'price' => $c->sortBy('price'),
-                'name' => $c->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE),
-                default => $c->sortByDesc('popularity'),
-            })
-            ->values();
-
-        return view('pages.products', [
-            'products' => $products,
-            'categories' => $categories,
-            'active' => $active,
-            'search' => $search,
-            'sort' => $sort,
-            'sorts' => self::SORTS,
-            'quote' => $quote,
+        return view('pages.product', [
+            'product' => $product,
+            'related' => Catalog::many($product['related'] ?? []),
         ]);
     }
 }

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/colors.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/typography.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/tokens/effects.css">
+<link rel="stylesheet" href="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/styles.css">
+<script src="rs-icon.js"></script>
+<script src="_ds/rashee-enterprises-design-system-cf8188ee-c8e4-4da6-bbdf-f765ea4e77f9/_ds_bundle.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--rs-neutral-100);}
+a{color:var(--rs-blue-800);}
+:focus-visible{outline:3px solid var(--rs-blue-700);outline-offset:2px;}
+</style>
+</helmet>
+<section style="font-family:var(--font-body);padding:40px;display:flex;flex-direction:column;gap:26px;background:var(--rs-neutral-100)">
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px;justify-content:space-between;max-width:1400px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:72ch">
+      <span style="font-family:var(--font-display);font-size:18px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--rs-blue-800)">Batch 4 · Sustainability, About, Contact</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-size:44px;line-height:1.05;font-weight:600;color:var(--rs-neutral-900)">The three remaining pages</h1>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:var(--rs-neutral-700)">One page renders at a time; each frame scrolls internally. Sustainability expands the homepage Going Green section — same eco ground, same four claims, now with the material-efficiency comparison behind them. Contact reuses the enquiry modal's field patterns inline and has its own state switcher.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);min-width:250px">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--rs-neutral-600)">Reused, not rebuilt</span>
+      <span style="font-size:13.5px;line-height:1.7;color:var(--rs-neutral-800)">SiteHeader · SiteFooter · CtaBlock · EnquiryModal · DS Input</span>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:center;padding:16px 18px;background:var(--rs-white);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Page</span>
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="3">
+        <button type="button" onClick="{{ p.onClick }}" aria-pressed="{{ p.on }}" style="{{ p.style }}">
+          <sc-if value="{{ p.on }}" hint-placeholder-val="{{ false }}">
+            <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+              <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+            </span>
+          </sc-if>
+          {{ p.label }}
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showContact }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-left:22px;border-left:1px solid var(--border-subtle)">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Form state</span>
+        <sc-for list="{{ states }}" as="s" hint-placeholder-count="4">
+          <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.on }}" style="{{ s.style }}">
+            <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex;color:var(--rs-blue-800)" aria-hidden="true">
+                <x-import component-from-global-scope="RsIcon" name="check" size="15" hint-size="15px,15px"></x-import>
+              </span>
+            </sc-if>
+            {{ s.label }}
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span style="{{ badgeStyle }}">{{ badgeId }}</span>
+      <span style="font-family:var(--font-display);font-size:24px;line-height:1;font-weight:600;color:var(--rs-neutral-900)">{{ frameTitle }}</span>
+    </div>
+    <span style="font-size:14px;line-height:1.55;color:var(--rs-neutral-700);max-width:80ch">{{ frameNote }}</span>
+
+    <div style="display:flex;gap:32px;align-items:flex-start">
+      <div id="{{ deskAnchor }}" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Desktop — 1440px viewport, frame scrolls</span>
+        <div style="width:1440px;height:920px;border:1px solid var(--rs-neutral-300);border-radius:var(--radius-lg);overflow:auto;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.14);display:flex">
+          <sc-if value="{{ showEco }}" hint-placeholder-val="{{ true }}">
+            <dc-import name="Sustainability" variant="desktop" hint-size="1440px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="About" variant="desktop" hint-size="1440px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showContact }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="Contact" variant="desktop" form-state="{{ formState }}" hint-size="1440px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+        </div>
+      </div>
+      <div id="{{ mobAnchor }}" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--rs-neutral-600)">Mobile — 390px, frame scrolls</span>
+        <div style="width:390px;height:920px;border:8px solid var(--rs-neutral-900);border-radius:30px;overflow:auto;background:var(--rs-white);box-shadow:0 14px 40px rgba(26,34,43,.2);display:flex">
+          <sc-if value="{{ showEco }}" hint-placeholder-val="{{ true }}">
+            <dc-import name="Sustainability" variant="mobile" hint-size="374px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="About" variant="mobile" hint-size="374px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+          <sc-if value="{{ showContact }}" hint-placeholder-val="{{ false }}">
+            <dc-import name="Contact" variant="mobile" form-state="{{ formState }}" hint-size="374px,920px" style="flex:1 1 auto;min-width:0"></dc-import>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { page: "eco", formState: "empty" };
+
+  renderVals() {
+    const page = this.state.page;
+    const btn = (label, on, onClick) => ({
+      label, on, onClick,
+      style: {
+        display: "inline-flex", alignItems: "center", gap: 7, minHeight: 44,
+        padding: on ? "0 13px" : "0 14px", borderRadius: "var(--radius-md)",
+        background: on ? "var(--rs-blue-50)" : "var(--rs-white)",
+        border: on ? "2px solid var(--rs-blue-700)" : "1px solid var(--rs-neutral-300)",
+        color: on ? "var(--rs-blue-900)" : "var(--rs-neutral-800)",
+        fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 600, cursor: "pointer"
+      }
+    });
+
+    const meta = {
+      eco: {
+        id: "4a", title: "Sustainability & Vision", tone: "eco",
+        note: "The expansion of the homepage Going Green section: same eco ground and the same four claims, now with the reasoning behind each. The material-efficiency argument is the centrepiece — a side-by-side of 38µ versus 50µ on the same 3 kg mailer showing identical seam strength, 26 per cent more film, 31 per cent more cost. The roadmap section deliberately states what is unfinished, including a recycled-content trial that has failed two of four batches."
+      },
+      about: {
+        id: "4c", title: "About Us & Quality Promise", tone: "blue",
+        note: "Founder's philosophy stated as a trade-off the company accepts — quoting the thinner grade even when the heavier line earns more. Three ethos cards each carry a “what that means concretely” footer so the claims are checkable. Then the five-stage QC process with its actual measurements, a navy capability band stated as ranges, and plant and compliance detail including openness to audit."
+      },
+      contact: {
+        id: "4e", title: "Contact", tone: "blue",
+        note: "Three channel cards with WhatsApp in eco green as the primary route. The form reuses the enquiry modal's exact field patterns and the design system's Input component, plus a topic chip row. Switch form state above to see empty, filled, error and submitted; the submit button also transitions to submitted live. Aside carries the plant address with a locator diagram, business hours, and who picks up which kind of enquiry."
+      }
+    }[page];
+
+    return {
+      showEco: page === "eco",
+      showAbout: page === "about",
+      showContact: page === "contact",
+      formState: this.state.formState,
+      pages: [
+        btn("Sustainability & Vision", page === "eco", () => this.setState({ page: "eco" })),
+        btn("About & Quality", page === "about", () => this.setState({ page: "about" })),
+        btn("Contact", page === "contact", () => this.setState({ page: "contact" }))
+      ],
+      states: ["empty", "filled", "error", "submitted"].map(s =>
+        btn(s.charAt(0).toUpperCase() + s.slice(1), this.state.formState === s, () => this.setState({ formState: s }))
+      ),
+      badgeId: meta.id,
+      badgeStyle: {
+        display: "inline-flex", alignItems: "center", height: 26, padding: "0 10px",
+        borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: ".06em",
+        background: meta.tone === "eco" ? "#247651" : "var(--rs-blue-800)", color: "#fff"
+      },
+      frameTitle: meta.title,
+      frameNote: meta.note,
+      deskAnchor: meta.id,
+      mobAnchor: meta.id.replace(/[ace]$/, c => ({ a: "b", c: "d", e: "f" }[c]))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
